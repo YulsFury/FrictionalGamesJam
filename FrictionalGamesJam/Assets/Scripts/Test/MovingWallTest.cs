@@ -5,7 +5,7 @@ using UnityEngine;
 public class MovingWallTest : MonoBehaviour
 {
     public float speedRate = 1f;
-    public NavemeshController navMeshController;
+    public NavMeshController navMeshController;
 
     void Update()
     {
