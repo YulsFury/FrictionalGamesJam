@@ -22,13 +22,18 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(GM);
     }
 
-    public void ReduceBatteryLevel(float decreasedAmmount)
+    public void ReduceBatteryLevel()
     {
-        BC.DecreaseSingleTimeBattery(decreasedAmmount);
+        BC.DecreaseSingleTimeBattery();
     }
 
-    public void ReduceBatteryOvertime(float decreasedAmmount)
+    public void ReduceBatteryOvertime()
     {
-        BC.DecreaseOvertimeBattery(decreasedAmmount);
+        BC.DecreaseOvertimeBattery();
+    }
+
+    public void StopReducingBatteryOvertime()
+    {
+        BC.StopUseOverTimeBattery();
     }
 }

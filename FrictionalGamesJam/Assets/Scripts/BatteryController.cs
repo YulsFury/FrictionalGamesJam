@@ -9,6 +9,7 @@ public class BatteryController : MonoBehaviour
     private float currentBatteryLvl;
     public float standarSingleUseDecrease;
     public float standarOvertimeUseDecrease;
+    public float TimerUseDecrease;
 
     // Start is called before the first frame update
     void Start()
@@ -16,22 +17,26 @@ public class BatteryController : MonoBehaviour
         currentBatteryLvl = maxBatteryLvl;
     }
 
-    public void DecreaseSingleTimeBattery(float _decreaseAmount)
+    public void DecreaseSingleTimeBattery()
     {
-        currentBatteryLvl = currentBatteryLvl - _decreaseAmount;
+        currentBatteryLvl = currentBatteryLvl - standarSingleUseDecrease;
 
         //TODO: Update Interface.
     }
 
-    public IEnumerator DecreaseOvertimeBattery(float _decreaseAmount)
+    public void DecreaseOvertimeBattery()
     {
-        while (true)
-        {
+        StartCoroutine(DecreaseOverTimeCoroutine());
+    }
 
-        }
+    public void StopUseOverTimeBattery()
+    {
+        StopCoroutine(DecreaseOverTimeCoroutine());
+    }
 
-        //TODO: Update Interface
-
-        yield return new WaitForSeconds(1);
+    IEnumerator DecreaseOverTimeCoroutine()
+    {
+        currentBatteryLvl = currentBatteryLvl - standarOvertimeUseDecrease;
+        yield return new WaitForSeconds(TimerUseDecrease);
     }
 }

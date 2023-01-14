@@ -6,8 +6,6 @@ public class DoorBehaviour : MonoBehaviour
 {
 
     bool doorOpen;
-    //variable game  manager
-    //variable batteria controller
 
     public float DecreaseEneryRate;
 
@@ -28,6 +26,7 @@ public class DoorBehaviour : MonoBehaviour
 
         else if (collision.transform.tag == "Enemy")
         {
+            //Animación abrirse puerta
             //Añadir en lo que sea que afecte la puerta en la patrulla del enemigo
         }
     }
@@ -40,7 +39,9 @@ public class DoorBehaviour : MonoBehaviour
         //Door is open so we close it
         if(doorOpen == true)
         {
-            //Llamar a gastar energía
+            doorOpen = false;
+
+            GameManager.GM.ReduceBatteryOvertime();
 
             //Animación sellar puerta
 
@@ -50,7 +51,9 @@ public class DoorBehaviour : MonoBehaviour
         //Door is closed so we open it
         else if(doorOpen == false)
         {
-            //Detener timer energía
+            doorOpen = true;
+
+            GameManager.GM.StopReducingBatteryOvertime();
 
             //Animación dejar de sella puerta
 
