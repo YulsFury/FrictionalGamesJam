@@ -4,23 +4,8 @@ using UnityEngine;
 
 public class NavMeshController : MonoBehaviour
 {
-    public static NavMeshController navMeshController;
     private NavMeshPlus.Components.NavMeshSurface navMesh;
-    [HideInInspector] public List<NavMeshNodes> graph;
-
-    private void Awake()
-    {
-        if (navMeshController)
-        {
-            NavMeshController.Destroy(navMeshController.gameObject);
-        }
-        else
-        {
-            navMeshController = this;
-        }
-
-        DontDestroyOnLoad(navMeshController.gameObject);
-    }
+    [HideInInspector] public List<NavMeshNode> graph;
 
     private void Start()
     {
@@ -29,7 +14,7 @@ public class NavMeshController : MonoBehaviour
         int numOfChildren = transform.childCount;
         for(int i = 0; i < numOfChildren; i++)
         {
-            NavMeshNodes node = transform.GetChild(i).gameObject.GetComponent<NavMeshNodes>();
+            NavMeshNode node = transform.GetChild(i).gameObject.GetComponent<NavMeshNode>();
             graph.Add(node);
         }
     }

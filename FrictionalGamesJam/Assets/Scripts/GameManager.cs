@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager GM;
     public InterfaceManager IM;
     public BatteryController BC;
+    public NavMeshController NMC;
 
     private void Awake()
     {

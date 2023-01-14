@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class RobotoMovement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     private Vector3 target;
     NavMeshAgent agent;

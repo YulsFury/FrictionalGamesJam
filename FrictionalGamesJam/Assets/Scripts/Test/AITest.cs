@@ -6,7 +6,7 @@ public class AITest : MonoBehaviour
     private Vector3 target;
     NavMeshAgent agent;
     public float range = 10.0f;
-    public RobotoMovement roboto;
+    public PlayerController roboto;
     public bool followPlayer = false;
 
     void Awake()

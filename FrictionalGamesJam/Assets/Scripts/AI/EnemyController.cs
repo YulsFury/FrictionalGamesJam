@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     private Vector3 target;
-    private NavMeshNodes actualNode;
+    private NavMeshNode actualNode;
     private NavMeshAgent agent;
     [HideInInspector] public bool isFollowingPlayer = false;
 
@@ -31,7 +31,6 @@ public class EnemyController : MonoBehaviour
                 {
                     if (agent.hasPath || agent.velocity.sqrMagnitude == 0f)
                     {
-                        print("Yas");
                         SetTarget();
                     }
                 }  
@@ -51,7 +50,7 @@ public class EnemyController : MonoBehaviour
     {
         if (!actualNode)
         {
-            actualNode = NavMeshController.navMeshController.graph[0];
+            actualNode = GameManager.GM.NMC.graph[0];
         }
 
         int numOfAdjacentsNodes = actualNode.adjacentsNodes.Count;
