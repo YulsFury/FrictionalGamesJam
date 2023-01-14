@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager GC;
-    public InterfaceManager IC;
+    public static GameManager GM;
+    public InterfaceManager IM;
     public BatteryController BC;
 
     private void Awake()
     {
-        if(GC != null)
+        if(GM != null)
         {
-            GameManager.Destroy(GC);
+            GameManager.Destroy(GM);
         }
         else
         {
-            GC = this;
+            GM = this;
         }
 
-        DontDestroyOnLoad(GC);
+        DontDestroyOnLoad(GM);
     }
 
     public void ReduceBatteryLevel(float decreasedAmmount)

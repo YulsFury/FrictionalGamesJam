@@ -25,8 +25,13 @@ public class BatteryController : MonoBehaviour
 
     public IEnumerator DecreaseOvertimeBattery(float _decreaseAmount)
     {
-        yield return 0;
+        while (true)
+        {
+
+        }
 
         //TODO: Update Interface
+
+        yield return new WaitForSeconds(1);
     }
 }
