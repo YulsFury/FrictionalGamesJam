@@ -19,9 +19,16 @@ public class BatteryController : MonoBehaviour
 
     public void DecreaseSingleTimeBattery()
     {
-        currentBatteryLvl = currentBatteryLvl - standarSingleUseDecrease;
+        if(currentBatteryLvl - standarSingleUseDecrease < 0)
+        {
+            currentBatteryLvl = 0;
+        }
+        else
+        {
+            currentBatteryLvl = currentBatteryLvl - standarSingleUseDecrease;
+        }
 
-        //TODO: Update Interface.
+        GameManager.GM.IM.UpdateBattery(currentBatteryLvl);
     }
 
     public void DecreaseOvertimeBattery()
@@ -36,7 +43,17 @@ public class BatteryController : MonoBehaviour
 
     IEnumerator DecreaseOverTimeCoroutine()
     {
-        currentBatteryLvl = currentBatteryLvl - standarOvertimeUseDecrease;
+        if (currentBatteryLvl - standarSingleUseDecrease < 0)
+        {
+            currentBatteryLvl = 0;
+        }
+        else
+        {
+            currentBatteryLvl = currentBatteryLvl - standarSingleUseDecrease;
+        }
+
+        GameManager.GM.IM.UpdateBattery(currentBatteryLvl);
+
         yield return new WaitForSeconds(TimerUseDecrease);
     }
 }
