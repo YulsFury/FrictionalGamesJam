@@ -6,9 +6,10 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     private Vector3 target;
-    private NavMeshNode actualNode;
+    private NavMeshNode currentNode;
     private NavMeshAgent agent;
     [HideInInspector] public bool isFollowingPlayer = false;
+    [HideInInspector] public Floor currentFloor;
 
     void Start()
     {
@@ -48,14 +49,14 @@ public class EnemyController : MonoBehaviour
 
     private void SetTarget()
     {
-        if (!actualNode)
+        if (!currentNode)
         {
-            actualNode = GameManager.GM.NMC.graph[0];
+            currentNode = GameManager.GM.NMC.graph[0];
         }
 
-        int numOfAdjacentsNodes = actualNode.adjacentsNodes.Count;
-        actualNode = actualNode.adjacentsNodes[Random.Range(0, numOfAdjacentsNodes)];
-        target = actualNode.transform.position;
+        int numOfAdjacentsNodes = currentNode.adjacentsNodes.Count;
+        currentNode = currentNode.adjacentsNodes[Random.Range(0, numOfAdjacentsNodes)];
+        target = currentNode.transform.position;
     }
 
     private void Move()
