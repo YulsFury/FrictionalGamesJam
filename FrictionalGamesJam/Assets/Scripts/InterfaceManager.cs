@@ -5,19 +5,7 @@ using UnityEngine.UI;
 
 public class InterfaceManager : MonoBehaviour
 {
-    public Slider batterySprite;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Slider batterySlider;
 
     /// <summary>
     /// Updates de battery interface in fixed ranges.
@@ -27,27 +15,27 @@ public class InterfaceManager : MonoBehaviour
     {
         if(batteryLevel == 0)
         {
-            batterySprite.value = 0;
+            batterySlider.value = 0;
         }
-        else if (batteryLevel > 0)
+        else if (batteryLevel > 0 && batteryLevel <=20)
         {
-            batterySprite.value = 20;
+            batterySlider.value = 20;
         }
-        else if (batteryLevel > 20)
+        else if (batteryLevel > 20 && batteryLevel <= 40)
         {
-            batterySprite.value = 40;
+            batterySlider.value = 40;
         }
-        else if (batteryLevel > 40)
+        else if (batteryLevel > 40 && batteryLevel <= 60)
         {
-            batterySprite.value = 60;
+            batterySlider.value = 60;
         }
-        else if (batteryLevel > 60)
+        else if (batteryLevel > 60 && batteryLevel <= 80)
         {
-            batterySprite.value = 80;
+            batterySlider.value = 80;
         }
         else if (batteryLevel > 80)
         {
-            batterySprite.value = 100;
+            batterySlider.value = 100;
         }
     }
 }

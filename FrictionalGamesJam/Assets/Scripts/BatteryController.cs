@@ -4,19 +4,28 @@ using UnityEngine;
 
 public class BatteryController : MonoBehaviour
 {
-    [Header("Battery")]
-    private float maxBatteryLvl = 100;
-    private float currentBatteryLvl;
+    [Header("Battery Usage")]
     public float standarSingleUseDecrease;
     public float standarOvertimeUseDecrease;
-    public float TimerUseDecrease;
+    public float timerUseDecrease;
+
+    private int elementsUsingBattery = 0;
+
+    private float maxBatteryLvl = 100;
+    private float currentBatteryLvl;
+
+    private IEnumerator decreaseOverTimeCoroutine;
 
     // Start is called before the first frame update
     void Start()
     {
         currentBatteryLvl = maxBatteryLvl;
+        decreaseOverTimeCoroutine = DecreaseOverTimeCoroutine(); //This is made so we know the exact coroutine that was started when we want to stop it.
     }
 
+    /// <summary>
+    /// Reduces de battery ammount a single time.
+    /// </summary>
     public void DecreaseSingleTimeBattery()
     {
         if(currentBatteryLvl - standarSingleUseDecrease < 0)
@@ -31,29 +40,58 @@ public class BatteryController : MonoBehaviour
         GameManager.GM.IM.UpdateBattery(currentBatteryLvl);
     }
 
+    /// <summary>
+    /// Tells the battery that one element has starte using electricity.
+    /// </summary>
     public void DecreaseOvertimeBattery()
     {
-        StartCoroutine(DecreaseOverTimeCoroutine());
-    }
-
-    public void StopUseOverTimeBattery()
-    {
-        StopCoroutine(DecreaseOverTimeCoroutine());
-    }
-
-    IEnumerator DecreaseOverTimeCoroutine()
-    {
-        if (currentBatteryLvl - standarSingleUseDecrease < 0)
+        if (elementsUsingBattery == 0)
         {
-            currentBatteryLvl = 0;
+            StartCoroutine(decreaseOverTimeCoroutine);
         }
         else
         {
-            currentBatteryLvl = currentBatteryLvl - standarSingleUseDecrease;
+            elementsUsingBattery++;
         }
+        //TODO: Update interface to show how many elements are using battery currently.
+    }
 
-        GameManager.GM.IM.UpdateBattery(currentBatteryLvl);
+    /// <summary>
+    /// Tells the battery that one element has stoped using electricity.
+    /// </summary>
+    public void StopUseOverTimeBattery()
+    {
+        if (elementsUsingBattery == 0)
+        {
+            StopCoroutine(decreaseOverTimeCoroutine);
+        }
+        else
+        {
+            elementsUsingBattery--;
+        }
+        //TODO: Update interface to show how many elements are using battery currently.
+    }
 
-        yield return new WaitForSeconds(TimerUseDecrease);
+    /// <summary>
+    /// Reduces the battery ammount depending on how many elements are using electricity.
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator DecreaseOverTimeCoroutine()
+    {
+        while (true)
+        {
+            if (currentBatteryLvl - (standarOvertimeUseDecrease * elementsUsingBattery) < 0)
+            {
+                currentBatteryLvl = 0;
+            }
+            else
+            {
+                currentBatteryLvl = currentBatteryLvl - (standarOvertimeUseDecrease * elementsUsingBattery);
+            }
+
+            GameManager.GM.IM.UpdateBattery(currentBatteryLvl);
+
+            yield return new WaitForSeconds(timerUseDecrease);
+        }
     }
 }
