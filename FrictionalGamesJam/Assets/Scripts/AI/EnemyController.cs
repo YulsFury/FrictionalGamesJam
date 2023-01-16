@@ -8,7 +8,6 @@ public class EnemyController : MonoBehaviour
     private Vector3 target;
     private NavMeshNode currentNode;
     private NavMeshAgent agent;
-    [HideInInspector] public bool isFollowingPlayer = false;
     [HideInInspector] public Floor currentFloor;
 
     void Start()
@@ -20,31 +19,39 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        if (isFollowingPlayer)
+        if (IsInSameFloorAsPlayer())
         {
             GetPlayerPosition();
         }
         else
         {
-            if (!agent.pathPending)
+            if (!IsFollowingPath())
             {
-                if (agent.remainingDistance <= agent.stoppingDistance)
-                {
-                    if (agent.hasPath || agent.velocity.sqrMagnitude == 0f)
-                    {
-                        SetTarget();
-                    }
-                }  
+                SetTarget();
             }
         }
 
-        Move();
+        MoveToTarget();
     }
 
-    //To be implemented. It will get the player position and set it has the target
+    private bool IsInSameFloorAsPlayer()
+    {
+        Floor playerFloor = GameManager.GM.PC.currentFloor;
+
+        return playerFloor && currentFloor ? playerFloor.Equals(currentFloor) : false;
+    }
+
+
     private void GetPlayerPosition()
     {
-        
+        target = GameManager.GM.PC.transform.position;
+    }
+
+    private bool IsFollowingPath()
+    {
+        return (agent.pathPending) || 
+            !(agent.remainingDistance <= agent.stoppingDistance) || 
+            !(agent.hasPath || agent.velocity.sqrMagnitude == 0f);
     }
 
     private void SetTarget()
@@ -59,12 +66,16 @@ public class EnemyController : MonoBehaviour
         target = currentNode.transform.position;
     }
 
-    private void Move()
+    private void MoveToTarget()
     {
         agent.SetDestination(new Vector3(target.x, target.y, transform.position.z));
     }
 
-    
-
-    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            print("Game Over!");
+        }
+    }
 }

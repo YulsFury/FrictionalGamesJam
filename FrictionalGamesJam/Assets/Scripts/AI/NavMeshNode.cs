@@ -21,13 +21,11 @@ public class NavMeshNode : MonoBehaviour
 
         if (controller.showGraph)
         {
-            Gizmos.color = controller.connectionsColor;
-
             if (adjacentsNodes.Count != 0)
             {
                 foreach (NavMeshNode node in adjacentsNodes)
                 {
-                    Gizmos.DrawLine(this.transform.position, node.transform.position);
+                    DrawArrow.ForGizmo(this.transform.position, node.transform.position - this.transform.position, controller.connectionsColor);
                 }
             }
         }    
