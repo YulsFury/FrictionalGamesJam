@@ -5,7 +5,13 @@ using UnityEngine.UI;
 
 public class InterfaceManager : MonoBehaviour
 {
+    [Header ("Battery")]
     public Slider batterySlider;
+
+    [Header("Screens")]
+    //public Button movementButtonScreen;
+    //public Button secondButtonScreen;
+    public Image temporalPanel;
 
     /// <summary>
     /// Updates de battery interface in fixed ranges.
@@ -37,5 +43,15 @@ public class InterfaceManager : MonoBehaviour
         {
             batterySlider.value = 100;
         }
+    }
+
+    public void SwitchToMovementScreen()
+    {
+        temporalPanel.enabled = false;
+    }
+
+    public void SwitchToSecondScreen()
+    {
+        temporalPanel.enabled = true;
     }
 }
