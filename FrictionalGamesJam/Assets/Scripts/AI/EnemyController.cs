@@ -10,6 +10,7 @@ public class EnemyController : MonoBehaviour
     private NavMeshNode currentNode;
     private NavMeshAgent agent;
     [HideInInspector] public Floor currentFloor;
+    public float probabilityGoingBack;
     public bool resetLevel;
 
     void Start()
