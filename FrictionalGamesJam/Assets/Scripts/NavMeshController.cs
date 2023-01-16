@@ -6,6 +6,8 @@ public class NavMeshController : MonoBehaviour
 {
     private NavMeshPlus.Components.NavMeshSurface navMesh;
     [HideInInspector] public List<NavMeshNode> graph;
+    public bool showGraph = false;
+    public Color connectionsColor = Color.blue;
 
     private void Start()
     {
@@ -16,7 +18,7 @@ public class NavMeshController : MonoBehaviour
         {
             NavMeshNode node = transform.GetChild(i).gameObject.GetComponent<NavMeshNode>();
             graph.Add(node);
-        }
+        }  
     }
 
 
