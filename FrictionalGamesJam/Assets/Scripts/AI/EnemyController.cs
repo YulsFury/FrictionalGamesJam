@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class EnemyController : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class EnemyController : MonoBehaviour
     private NavMeshNode currentNode;
     private NavMeshAgent agent;
     [HideInInspector] public Floor currentFloor;
+    public bool resetLevel;
 
     void Start()
     {
@@ -71,11 +73,15 @@ public class EnemyController : MonoBehaviour
         agent.SetDestination(new Vector3(target.x, target.y, transform.position.z));
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             print("Game Over!");
+            if (resetLevel)
+            {
+                SceneManager.LoadScene("MainLevel");
+            }
         }
     }
 }
