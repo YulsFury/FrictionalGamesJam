@@ -6,7 +6,7 @@ public class Scanner : MonoBehaviour
 {
     public float searchTimer = 1;
     public List<GameObject> enemies = new List<GameObject>();
-    public List<Floor> enemyScanFloors = new List<Floor>();
+    public List<Room> enemyScanRooms = new List<Room>();
     public float blurTimer = 5;
     public float cooldownTimer;
 
@@ -21,23 +21,23 @@ public class Scanner : MonoBehaviour
   
     private IEnumerator ScanLevel()
     {
-        Floor enemyFloor;
-        SpriteRenderer floorSprite;
+        Room enemyRoom;
+        SpriteRenderer roomSprite;
 
         for(int i = 0; i < enemies.Count; i++)
         {
-            enemyFloor = enemies[0].GetComponent<EnemyController>().currentFloor;
-            enemyScanFloors.Add(enemyFloor);
-            floorSprite = enemyFloor.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
-            floorSprite.color = Color.red;
+            enemyRoom = enemies[0].GetComponent<EnemyController>().currentRoom;
+            enemyScanRooms.Add(enemyRoom);
+            roomSprite = enemyRoom.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
+            roomSprite.color = Color.red;
         }
 
         yield return new WaitForSeconds(blurTimer);
         //TODO: Make it actually blur.
 
-        for (int j = 0; j < enemyScanFloors.Count; j++)
+        for (int j = 0; j < enemyScanRooms.Count; j++)
         {
-            enemyScanFloors[j].GetComponentInChildren<SpriteRenderer>().color = Color.white;
+            enemyScanRooms[j].GetComponentInChildren<SpriteRenderer>().color = Color.white;
         }
     }
 }

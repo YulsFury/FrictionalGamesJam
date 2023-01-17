@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     private Vector3 target;
     NavMeshAgent agent;
-    [HideInInspector] public Floor currentFloor;
+    [HideInInspector] public Room currentRoom;
     NavMeshPath path;
 
     void Awake()

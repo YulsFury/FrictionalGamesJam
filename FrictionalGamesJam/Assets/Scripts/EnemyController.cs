@@ -14,7 +14,7 @@ public class EnemyController : MonoBehaviour
     private Coroutine coroutineReferenceAutomaticFollowing;
     private bool isWithoutFinndingCouroutineRunning;
     private bool automaticFollowPlayer;
-    [HideInInspector] public Floor currentFloor;
+    [HideInInspector] public Room currentRoom;
     public float probabilityGoingBack;
     public float timeBeforeGoingAfterPlayer;
     public float durationAutomaticFollowingPlayer;
@@ -74,9 +74,9 @@ public class EnemyController : MonoBehaviour
 
     private bool IsInSameFloorAsPlayer()
     {
-        Floor playerFloor = GameManager.GM.PC.currentFloor;
+        Room playerFloor = GameManager.GM.PC.currentRoom;
 
-        return playerFloor && currentFloor ? playerFloor.Equals(currentFloor) : false;
+        return playerFloor && currentRoom ? playerFloor.Equals(currentRoom) : false;
     }
 
 
@@ -150,9 +150,8 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator TimerAutomaticFollowPlayer()
     {
-        print("Dale");
         yield return new WaitForSeconds(durationAutomaticFollowingPlayer);
-        print("Deja de darle");
+        
         automaticFollowPlayer = false;
         StopCoroutine(coroutineReferenceAutomaticFollowing);
     }

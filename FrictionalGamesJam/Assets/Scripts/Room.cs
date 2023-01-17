@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Floor : MonoBehaviour
+public class Room : MonoBehaviour
 {
     PlayerController player;
     private void Start()
@@ -14,12 +14,12 @@ public class Floor : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-            player.currentFloor = this;
+            player.currentRoom = this;
         }
         else if (collision.gameObject.tag == "Enemy")
         {
             EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
-            enemy.currentFloor = this;
+            enemy.currentRoom = this;
         }
     }
 
