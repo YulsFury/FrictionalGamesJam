@@ -24,9 +24,14 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         SetTargetPosition();
-        SetAgentPosition();
+        //SetAgentPosition();
     }
 
+    public void MovePlayer(Vector3 mousePosition)
+    {
+        target = new Vector3(Camera.main.ScreenToWorldPoint(mousePosition).x, Camera.main.ScreenToWorldPoint(mousePosition).y, 0);
+        SetAgentPosition();
+    }
     void SetTargetPosition()
     {
         if (Input.GetMouseButtonDown(0))

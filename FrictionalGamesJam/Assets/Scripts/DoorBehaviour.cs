@@ -35,9 +35,9 @@ public class DoorBehaviour : MonoBehaviour
 
     private void OnMouseDown()
     {
-
+        Debug.Log("mouse down");
         //Door is open so we close it
-        if(doorOpen == true)
+        if (doorOpen == true)
         {
             doorOpen = false;
 
