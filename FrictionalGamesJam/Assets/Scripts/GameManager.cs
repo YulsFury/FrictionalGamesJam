@@ -38,4 +38,9 @@ public class GameManager : MonoBehaviour
     {
         BC.StopUseOverTimeBattery();
     }
+
+    public void GameOver()
+    {
+        Debug.LogWarning("GameOver");
+    }
 }

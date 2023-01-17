@@ -45,14 +45,13 @@ public class BatteryController : MonoBehaviour
     /// </summary>
     public void DecreaseOvertimeBattery()
     {
-        if (elementsUsingBattery == 0)
+        elementsUsingBattery++;
+
+        if (elementsUsingBattery == 1)
         {
             StartCoroutine(decreaseOverTimeCoroutine);
         }
-        else
-        {
-            elementsUsingBattery++;
-        }
+
         //TODO: Update interface to show how many elements are using battery currently.
     }
 
@@ -61,14 +60,13 @@ public class BatteryController : MonoBehaviour
     /// </summary>
     public void StopUseOverTimeBattery()
     {
+        elementsUsingBattery--;
+
         if (elementsUsingBattery == 0)
         {
             StopCoroutine(decreaseOverTimeCoroutine);
         }
-        else
-        {
-            elementsUsingBattery--;
-        }
+
         //TODO: Update interface to show how many elements are using battery currently.
     }
 
@@ -76,13 +74,17 @@ public class BatteryController : MonoBehaviour
     /// Reduces the battery ammount depending on how many elements are using electricity.
     /// </summary>
     /// <returns></returns>
-    IEnumerator DecreaseOverTimeCoroutine()
+    public IEnumerator DecreaseOverTimeCoroutine()
     {
         while (true)
         {
             if (currentBatteryLvl - (standarOvertimeUseDecrease * elementsUsingBattery) < 0)
             {
                 currentBatteryLvl = 0;
+
+                GameManager.GM.GameOver();
+
+                StopCoroutine(decreaseOverTimeCoroutine);
             }
             else
             {
