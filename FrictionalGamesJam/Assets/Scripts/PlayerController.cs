@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         SetTargetPosition();
-        //SetAgentPosition();
+        SetAgentPosition();
     }
 
     public void MovePlayer(Vector3 mousePosition)
@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
             target = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0);
             //RaycastHit hit;
             NavMesh.CalculatePath(agent.transform.position, target, NavMesh.AllAreas, path);
-            if(path.status == (NavMeshPathStatus.PathPartial))
+            /*if(path.status == (NavMeshPathStatus.PathPartial))
             {
                 Debug.Log("path incomplete");
             }
@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
             else
             {
                 Debug.Log("No hay path");
-            }
+            }*/
 
            
             
@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
             //}
 
                 //print(CanReachPosition(target));
-            }
+        }
     }
 
     public bool CanReachPosition(Vector3 position)

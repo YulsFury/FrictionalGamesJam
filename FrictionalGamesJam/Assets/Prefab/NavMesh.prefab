@@ -70,7 +70,7 @@ MonoBehaviour:
   m_VoxelSize: 0.033333335
   m_BuildHeightMesh: 0
   m_HideEditorLogs: 0
-  m_NavMeshData: {fileID: 23800000, guid: c26305cb037952e4da1feaea38348bd3, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: ee14b49d108ca494b9ed8060c3a87b22, type: 2}
 --- !u!114 &2904447807401594482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,6 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graph: []
+  showGraph: 0
+  connectionsColor: {r: 0.00030612946, g: 0, b: 1, a: 1}
 --- !u!1001 &181365906
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -119,6 +121,10 @@ PrefabInstance:
       propertyPath: adjacentsNodes.Array.data[1]
       value: 
       objectReference: {fileID: 2540358584501820827}
+    - target: {fileID: 3630788267678388725, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4298132151772005861, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
       propertyPath: m_Name
       value: NavMeshNode (2)
@@ -129,15 +135,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5871149143678148491, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.98
+      value: 8.86
       objectReference: {fileID: 0}
     - target: {fileID: 5871149143678148491, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5871149143678148491, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.35
+      value: -0.32
       objectReference: {fileID: 0}
     - target: {fileID: 5871149143678148491, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
       propertyPath: m_LocalRotation.w
@@ -204,6 +210,10 @@ PrefabInstance:
       propertyPath: adjacentsNodes.Array.data[1]
       value: 
       objectReference: {fileID: 2540358583114447050}
+    - target: {fileID: 3630788267678388725, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4298132151772005861, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
       propertyPath: m_Name
       value: NavMeshNode
@@ -214,7 +224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5871149143678148491, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.603001
+      value: 9.59
       objectReference: {fileID: 0}
     - target: {fileID: 5871149143678148491, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
       propertyPath: m_LocalPosition.y
@@ -222,7 +232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5871149143678148491, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.7469378
+      value: -6.64
       objectReference: {fileID: 0}
     - target: {fileID: 5871149143678148491, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
       propertyPath: m_LocalRotation.w
@@ -293,6 +303,10 @@ PrefabInstance:
       propertyPath: adjacentsNodes.Array.data[2]
       value: 
       objectReference: {fileID: 2540358584881735505}
+    - target: {fileID: 3630788267678388725, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4298132151772005861, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
       propertyPath: m_Name
       value: NavMeshNode (4)
@@ -303,7 +317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5871149143678148491, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.28
+      value: 5.79
       objectReference: {fileID: 0}
     - target: {fileID: 5871149143678148491, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
       propertyPath: m_LocalPosition.y
@@ -311,7 +325,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5871149143678148491, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.9
+      value: -6.34
       objectReference: {fileID: 0}
     - target: {fileID: 5871149143678148491, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
       propertyPath: m_LocalRotation.w
@@ -378,6 +392,10 @@ PrefabInstance:
       propertyPath: adjacentsNodes.Array.data[1]
       value: 
       objectReference: {fileID: 2540358584025953932}
+    - target: {fileID: 3630788267678388725, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4298132151772005861, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
       propertyPath: m_Name
       value: NavMeshNode (1)
@@ -388,15 +406,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5871149143678148491, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.62
+      value: 9.98
       objectReference: {fileID: 0}
     - target: {fileID: 5871149143678148491, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5871149143678148491, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.96
+      value: -2.7
       objectReference: {fileID: 0}
     - target: {fileID: 5871149143678148491, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
       propertyPath: m_LocalRotation.w
@@ -463,6 +481,10 @@ PrefabInstance:
       propertyPath: adjacentsNodes.Array.data[1]
       value: 
       objectReference: {fileID: 2540358584897002688}
+    - target: {fileID: 3630788267678388725, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4298132151772005861, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
       propertyPath: m_Name
       value: NavMeshNode (5)
@@ -473,15 +495,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5871149143678148491, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.02
+      value: 2.65
       objectReference: {fileID: 0}
     - target: {fileID: 5871149143678148491, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5871149143678148491, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.03
+      value: -4.69
       objectReference: {fileID: 0}
     - target: {fileID: 5871149143678148491, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
       propertyPath: m_LocalRotation.w
@@ -548,6 +570,10 @@ PrefabInstance:
       propertyPath: adjacentsNodes.Array.data[1]
       value: 
       objectReference: {fileID: 2540358584501820827}
+    - target: {fileID: 3630788267678388725, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4298132151772005861, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
       propertyPath: m_Name
       value: NavMeshNode (6)
@@ -558,15 +584,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5871149143678148491, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.22
+      value: 3.73
       objectReference: {fileID: 0}
     - target: {fileID: 5871149143678148491, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5871149143678148491, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.25
+      value: -1.88
       objectReference: {fileID: 0}
     - target: {fileID: 5871149143678148491, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
       propertyPath: m_LocalRotation.w
@@ -637,6 +663,10 @@ PrefabInstance:
       propertyPath: adjacentsNodes.Array.data[2]
       value: 
       objectReference: {fileID: 2540358584897002688}
+    - target: {fileID: 3630788267678388725, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4298132151772005861, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
       propertyPath: m_Name
       value: NavMeshNode (3)
@@ -647,7 +677,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5871149143678148491, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.61
+      value: 6.43
       objectReference: {fileID: 0}
     - target: {fileID: 5871149143678148491, guid: 151a7b9534f4f5c4bbcebb3c3ae0ab67, type: 3}
       propertyPath: m_LocalPosition.y

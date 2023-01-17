@@ -10,12 +10,14 @@ public class EnemyController : MonoBehaviour
     private NavMeshNode currentNode;
     private NavMeshNode lastNode;
     private NavMeshAgent agent;
-    private Coroutine coroutineReference;
-    private bool isCouroutineRunning;
+    private Coroutine coroutineReferenceWithoutFinding;
+    private Coroutine coroutineReferenceAutomaticFollowing;
+    private bool isWithoutFinndingCouroutineRunning;
     private bool automaticFollowPlayer;
     [HideInInspector] public Floor currentFloor;
     public float probabilityGoingBack;
     public float timeBeforeGoingAfterPlayer;
+    public float durationAutomaticFollowingPlayer;
     public bool resetLevel;
 
     void Start()
@@ -23,7 +25,7 @@ public class EnemyController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
-        isCouroutineRunning = false;
+        isWithoutFinndingCouroutineRunning = false;
         automaticFollowPlayer = false;
     }
 
@@ -34,6 +36,7 @@ public class EnemyController : MonoBehaviour
             if (IsInSameFloorAsPlayer())
             {
                 automaticFollowPlayer = false;
+                StopCoroutine(coroutineReferenceAutomaticFollowing);
             }
             else
             {
@@ -44,19 +47,19 @@ public class EnemyController : MonoBehaviour
         {
             if (IsInSameFloorAsPlayer())
             {
-                if (isCouroutineRunning)
+                if (isWithoutFinndingCouroutineRunning)
                 {
-                    StopCoroutine(coroutineReference);
-                    isCouroutineRunning = false;
+                    StopCoroutine(coroutineReferenceWithoutFinding);
+                    isWithoutFinndingCouroutineRunning = false;
                 }
                 
                 GetPlayerPosition();
             }
             else
             {
-                if (!isCouroutineRunning)
+                if (!isWithoutFinndingCouroutineRunning)
                 {
-                    coroutineReference = StartCoroutine(TimerWithoutFindingPlayer());
+                    coroutineReferenceWithoutFinding = StartCoroutine(TimerWithoutFindingPlayer());
                 }
 
                 if (!IsFollowingPath())
@@ -135,13 +138,22 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator TimerWithoutFindingPlayer()
     {
-        print("start");
-        isCouroutineRunning = true;
+        isWithoutFinndingCouroutineRunning = true;
 
         yield return new WaitForSeconds(timeBeforeGoingAfterPlayer);
 
         automaticFollowPlayer = true;
-        StopCoroutine(coroutineReference);
-        isCouroutineRunning = false;
+        coroutineReferenceAutomaticFollowing = StartCoroutine(TimerAutomaticFollowPlayer());
+        isWithoutFinndingCouroutineRunning = false;
+        StopCoroutine(coroutineReferenceWithoutFinding);
+    }
+
+    IEnumerator TimerAutomaticFollowPlayer()
+    {
+        print("Dale");
+        yield return new WaitForSeconds(durationAutomaticFollowingPlayer);
+        print("Deja de darle");
+        automaticFollowPlayer = false;
+        StopCoroutine(coroutineReferenceAutomaticFollowing);
     }
 }
