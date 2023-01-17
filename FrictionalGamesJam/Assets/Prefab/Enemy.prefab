@@ -108,6 +108,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentFloor: {fileID: 0}
+  probabilityGoingBack: 15
+  timeBeforeGoingAfterPlayer: 5
+  resetLevel: 0
 --- !u!1 &6425390449200870508
 GameObject:
   m_ObjectHideFlags: 0

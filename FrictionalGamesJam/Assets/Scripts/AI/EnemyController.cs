@@ -8,9 +8,14 @@ public class EnemyController : MonoBehaviour
 {
     private Vector3 target;
     private NavMeshNode currentNode;
+    private NavMeshNode lastNode;
     private NavMeshAgent agent;
+    private Coroutine coroutineReference;
+    private bool isCouroutineRunning;
+    private bool automaticFollowPlayer;
     [HideInInspector] public Floor currentFloor;
     public float probabilityGoingBack;
+    public float timeBeforeGoingAfterPlayer;
     public bool resetLevel;
 
     void Start()
@@ -18,22 +23,49 @@ public class EnemyController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        isCouroutineRunning = false;
+        automaticFollowPlayer = false;
     }
 
     void Update()
     {
-        if (IsInSameFloorAsPlayer())
+        if (automaticFollowPlayer)
         {
-            GetPlayerPosition();
+            if (IsInSameFloorAsPlayer())
+            {
+                automaticFollowPlayer = false;
+            }
+            else
+            {
+                GetPlayerPosition();
+            }
         }
         else
         {
-            if (!IsFollowingPath())
+            if (IsInSameFloorAsPlayer())
             {
-                SetTarget();
+                if (isCouroutineRunning)
+                {
+                    StopCoroutine(coroutineReference);
+                    isCouroutineRunning = false;
+                }
+                
+                GetPlayerPosition();
+            }
+            else
+            {
+                if (!isCouroutineRunning)
+                {
+                    coroutineReference = StartCoroutine(TimerWithoutFindingPlayer());
+                }
+
+                if (!IsFollowingPath())
+                {
+                    SetTarget();
+                }
             }
         }
-
+       
         MoveToTarget();
     }
 
@@ -65,7 +97,22 @@ public class EnemyController : MonoBehaviour
         }
 
         int numOfAdjacentsNodes = currentNode.adjacentsNodes.Count;
-        currentNode = currentNode.adjacentsNodes[Random.Range(0, numOfAdjacentsNodes)];
+        float probabilityGoingForward = (100 - probabilityGoingBack) / (numOfAdjacentsNodes - 1);
+        float acumulatedProbability = 0;
+        float randomProbability = Random.Range(0, 100);
+
+        foreach(NavMeshNode node in currentNode.adjacentsNodes)
+        {
+            acumulatedProbability += node.Equals(lastNode) ? probabilityGoingBack : probabilityGoingForward;
+
+            if(randomProbability < acumulatedProbability)
+            {
+                lastNode = currentNode;
+                currentNode = node;
+                break;
+            }
+        }
+
         target = currentNode.transform.position;
     }
 
@@ -84,5 +131,17 @@ public class EnemyController : MonoBehaviour
                 SceneManager.LoadScene("MainLevel");
             }
         }
+    }
+
+    IEnumerator TimerWithoutFindingPlayer()
+    {
+        print("start");
+        isCouroutineRunning = true;
+
+        yield return new WaitForSeconds(timeBeforeGoingAfterPlayer);
+
+        automaticFollowPlayer = true;
+        StopCoroutine(coroutineReference);
+        isCouroutineRunning = false;
     }
 }
