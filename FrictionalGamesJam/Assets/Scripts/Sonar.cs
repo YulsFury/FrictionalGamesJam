@@ -31,16 +31,20 @@ public class Sonar : MonoBehaviour
                     GameObject.Destroy(enemyTrails[i]);
                     enemyTrails.RemoveAt(i);
                 }
+
+                GameManager.GM.ReduceBatteryOvertime();
             }
             else
             {
                 StartCoroutine(activeSonar);
                 active = true;
+
+                GameManager.GM.StopReducingBatteryOvertime();
             }
         }
     }
 
-    public IEnumerator ActiveSonar()
+    private IEnumerator ActiveSonar()
     {
         GameObject trail;
 

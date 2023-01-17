@@ -74,7 +74,7 @@ public class BatteryController : MonoBehaviour
     /// Reduces the battery ammount depending on how many elements are using electricity.
     /// </summary>
     /// <returns></returns>
-    public IEnumerator DecreaseOverTimeCoroutine()
+    private IEnumerator DecreaseOverTimeCoroutine()
     {
         while (true)
         {

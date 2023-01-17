@@ -3963,6 +3963,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2809149507337804929, guid: 8603a9b94f9158044b913819075c420a, type: 3}
   m_PrefabInstance: {fileID: 780741886}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &786448193 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6233763113570792147, guid: ac4387234a460a444b87b9bbecd5a078, type: 3}
+  m_PrefabInstance: {fileID: 343618684}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &815917707
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6584,6 +6589,14 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4987421953727659190, guid: 40d342e22aa349343b0da4791252b3d1, type: 3}
+      propertyPath: enemies.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987421953727659190, guid: 40d342e22aa349343b0da4791252b3d1, type: 3}
+      propertyPath: enemies.Array.data[0]
+      value: 
+      objectReference: {fileID: 786448193}
     - target: {fileID: 5589927324602471199, guid: 40d342e22aa349343b0da4791252b3d1, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -6639,7 +6652,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5589927324602471264, guid: 40d342e22aa349343b0da4791252b3d1, type: 3}
   m_PrefabInstance: {fileID: 1601427639}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1844683254}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4618e0e27be3e2d4c968213b18d4b0e9, type: 3}
@@ -7972,6 +7985,29 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 152111055418895045, guid: f20086818a5998f46807ebea6a879163, type: 3}
   m_PrefabInstance: {fileID: 1817063970}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1844683254 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5589927324602471267, guid: 40d342e22aa349343b0da4791252b3d1, type: 3}
+  m_PrefabInstance: {fileID: 1601427639}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1844683255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844683254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b962abfb68412446bff63823847ce6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  searchTimer: 1
+  enemies:
+  - {fileID: 786448193}
+  enemyScanFloors: []
+  blurTimer: 2
+  cooldownTimer: 0
 --- !u!1001 &1857106368
 PrefabInstance:
   m_ObjectHideFlags: 0
