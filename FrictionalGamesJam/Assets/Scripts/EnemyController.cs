@@ -12,7 +12,7 @@ public class EnemyController : MonoBehaviour
     private NavMeshAgent agent;
     private Coroutine coroutineReferenceWithoutFinding;
     private Coroutine coroutineReferenceAutomaticFollowing;
-    private bool isWithoutFinndingCouroutineRunning;
+    private bool isWithoutFindingCouroutineRunning;
     private bool automaticFollowPlayer;
     [HideInInspector] public Room currentRoom;
     public Room startingRoom;
@@ -26,7 +26,7 @@ public class EnemyController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
-        isWithoutFinndingCouroutineRunning = false;
+        isWithoutFindingCouroutineRunning = false;
         automaticFollowPlayer = false;
         currentRoom = startingRoom;
     }
@@ -49,17 +49,17 @@ public class EnemyController : MonoBehaviour
         {
             if (IsInSameFloorAsPlayer())
             {
-                if (isWithoutFinndingCouroutineRunning)
+                if (isWithoutFindingCouroutineRunning)
                 {
                     StopCoroutine(coroutineReferenceWithoutFinding);
-                    isWithoutFinndingCouroutineRunning = false;
+                    isWithoutFindingCouroutineRunning = false;
                 }
                 
                 GetPlayerPosition();
             }
             else
             {
-                if (!isWithoutFinndingCouroutineRunning)
+                if (!isWithoutFindingCouroutineRunning)
                 {
                     coroutineReferenceWithoutFinding = StartCoroutine(TimerWithoutFindingPlayer());
                 }
@@ -136,17 +136,21 @@ public class EnemyController : MonoBehaviour
                 SceneManager.LoadScene("MainLevel");
             }
         }
+        else if (collision.gameObject.tag == "Door")
+        {
+
+        }
     }
 
     IEnumerator TimerWithoutFindingPlayer()
     {
-        isWithoutFinndingCouroutineRunning = true;
+        isWithoutFindingCouroutineRunning = true;
 
         yield return new WaitForSeconds(timeBeforeGoingAfterPlayer);
 
         automaticFollowPlayer = true;
         coroutineReferenceAutomaticFollowing = StartCoroutine(TimerAutomaticFollowPlayer());
-        isWithoutFinndingCouroutineRunning = false;
+        isWithoutFindingCouroutineRunning = false;
         StopCoroutine(coroutineReferenceWithoutFinding);
     }
 

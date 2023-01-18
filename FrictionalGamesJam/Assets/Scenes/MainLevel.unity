@@ -3395,6 +3395,7 @@ MonoBehaviour:
   BC: {fileID: 1809917721}
   NMC: {fileID: 465008246}
   PC: {fileID: 1601427640}
+  EC: {fileID: 496640999}
 --- !u!114 &1251820107 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8024610952615143837, guid: 8603a9b94f9158044b913819075c420a, type: 3}
@@ -4993,10 +4994,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b962abfb68412446bff63823847ce6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  searchTimer: 1
   enemies:
   - {fileID: 0}
-  enemyScanRooms: []
+  timeToReveal: 0
   blurTimer: 2
   cooldownTimer: 0
 --- !u!1001 &1857106368

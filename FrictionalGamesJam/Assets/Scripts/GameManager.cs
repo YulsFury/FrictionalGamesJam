@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public BatteryController BC;
     public NavMeshController NMC;
     public PlayerController PC;
+    public EnemiesManager EC;
 
     private void Awake()
     {
