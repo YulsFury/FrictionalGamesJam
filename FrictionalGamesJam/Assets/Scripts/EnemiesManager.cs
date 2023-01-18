@@ -7,7 +7,7 @@ public class EnemiesManager : MonoBehaviour
     public GameObject enemiesGameObject;
     [HideInInspector] public List<EnemyController> enemiesList;
 
-    private void Start()
+    private void Awake()
     {
         int numOfChildren = enemiesGameObject.transform.childCount;
         for (int i = 0; i < numOfChildren; i++)
