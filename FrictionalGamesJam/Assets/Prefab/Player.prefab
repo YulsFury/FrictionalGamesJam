@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 4987421953727659190}
   - component: {fileID: 1844683255}
   - component: {fileID: 1498607828058271087}
+  - component: {fileID: 1437434893653809169}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -231,6 +232,23 @@ MonoBehaviour:
   blurTimer: 2
   cooldownTimer: 0
 --- !u!114 &1498607828058271087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5589927324602471267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b962abfb68412446bff63823847ce6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies:
+  - {fileID: 0}
+  timeToReveal: 0
+  blurTimer: 2
+  cooldownTimer: 0
+--- !u!114 &1437434893653809169
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
