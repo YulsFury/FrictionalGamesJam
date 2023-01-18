@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class EnemyController : MonoBehaviour
 {
+    private SpriteRenderer sprite;
     private Vector3 target;
     private NavMeshNode currentNode;
     private NavMeshNode lastNode;
@@ -16,6 +17,7 @@ public class EnemyController : MonoBehaviour
     private bool isWithoutFindingCouroutineRunning;
     private bool automaticFollowPlayer;
     private bool isWaitingBecauseOfDoor;
+    private bool isChasing;
 
     [HideInInspector] public Room currentRoom;
     [Header ("Initial State")]
@@ -39,6 +41,9 @@ public class EnemyController : MonoBehaviour
     {
         Random.InitState(((int)System.DateTime.Now.Ticks));
 
+        sprite = GetComponentInChildren<SpriteRenderer>();
+        sprite.enabled = false;
+
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
@@ -46,17 +51,26 @@ public class EnemyController : MonoBehaviour
         currentRoom = startingRoom;
 
         isWithoutFindingCouroutineRunning = false;
-        automaticFollowPlayer = false; 
+        automaticFollowPlayer = false;
+
+        isChasing = false;
     }
 
     void Update()
     {
-        if (automaticFollowPlayer)
+        if (isChasing)
+        {
+            sprite.enabled = IsInSameFloorAsPlayer();
+            GetPlayerPosition();
+        }
+        else if (automaticFollowPlayer)
         {
             if (IsInSameFloorAsPlayer())
             {
                 automaticFollowPlayer = false;
                 StopCoroutine(coroutineAutomaticFollowing);
+
+                isChasing = true;
             }
             else
             {
@@ -72,8 +86,8 @@ public class EnemyController : MonoBehaviour
                     StopCoroutine(coroutineWithoutFinding);
                     isWithoutFindingCouroutineRunning = false;
                 }
-                
-                GetPlayerPosition();
+
+                isChasing = true;
             }
             else
             {
@@ -160,8 +174,10 @@ public class EnemyController : MonoBehaviour
         else if (collision.gameObject.tag == "Door")
         {
             Vector3 doorPosition = collision.gameObject.transform.position;
-            Vector3 vectorEnemyDoor = doorPosition - this.transform.position;
-            target = this.transform.position - vectorEnemyDoor;
+            Vector3 vectorDoorEnemy = this.transform.position - doorPosition;
+            target = this.transform.position + vectorDoorEnemy;
+
+            isChasing = false;
 
             StopCoroutine(coroutineWithoutFinding);
             isWithoutFindingCouroutineRunning = false;
@@ -201,6 +217,9 @@ public class EnemyController : MonoBehaviour
 
         currentNode = lastNode;
         lastNode = currentNode;
+        float temp = probabilityGoingBack;
+        probabilityGoingBack = 0;
         SetTarget();
+        probabilityGoingBack = temp;
     }
 }
