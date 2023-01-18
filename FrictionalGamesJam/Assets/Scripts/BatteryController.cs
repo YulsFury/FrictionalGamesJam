@@ -46,7 +46,6 @@ public class BatteryController : MonoBehaviour
     public void DecreaseOvertimeBattery()
     {
         elementsUsingBattery++;
-
         if (elementsUsingBattery == 1)
         {
             StartCoroutine(decreaseOverTimeCoroutine);
@@ -78,17 +77,19 @@ public class BatteryController : MonoBehaviour
     {
         while (true)
         {
+            print(currentBatteryLvl);
             if (currentBatteryLvl - (standarOvertimeUseDecrease * elementsUsingBattery) < 0)
             {
                 currentBatteryLvl = 0;
 
                 GameManager.GM.GameOver();
-
+                
                 StopCoroutine(decreaseOverTimeCoroutine);
             }
             else
             {
                 currentBatteryLvl = currentBatteryLvl - (standarOvertimeUseDecrease * elementsUsingBattery);
+                print(currentBatteryLvl);
             }
 
             GameManager.GM.IM.UpdateBattery(currentBatteryLvl);

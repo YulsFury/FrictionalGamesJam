@@ -58,6 +58,7 @@ public class Scanner : MonoBehaviour
 
         if (enemyScanRooms.Count > 0 && !bluring)
         {
+            bluring = true;
             while (enemyScanRooms[0].GetComponentInChildren<SpriteRenderer>().color != Color.white)
             {
                 if (timeLeft <= Time.deltaTime)
@@ -84,6 +85,7 @@ public class Scanner : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
             enemyScanRooms.RemoveRange(0, enemyScanRooms.Count);
+            bluring = false;
         }        
     }
 

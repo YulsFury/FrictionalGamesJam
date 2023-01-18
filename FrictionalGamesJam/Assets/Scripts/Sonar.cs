@@ -31,15 +31,13 @@ public class Sonar : MonoBehaviour
                 StopCoroutine(activeSonar);
                 active = false;
                 StartCoroutine(BlurSonar());
-
-                GameManager.GM.ReduceBatteryOvertime();
+                GameManager.GM.StopReducingBatteryOvertime();
             }
             else
             {
                 StartCoroutine(activeSonar);
                 active = true;
-
-                GameManager.GM.StopReducingBatteryOvertime();
+                GameManager.GM.ReduceBatteryOvertime();             
             }
         }
     }
