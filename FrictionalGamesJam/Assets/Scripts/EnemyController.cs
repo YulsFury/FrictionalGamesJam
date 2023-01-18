@@ -34,15 +34,16 @@ public class EnemyController : MonoBehaviour
     public float minTimeWhenFindingClosedDoor;
     public float maxTimeWhenFindingClosedDoor;
 
-    [Header ("Game over")]
+    [Header ("Debbug")]
     public bool resetLevel;
+    public bool hideEnemy = true;
 
     void Start()
     {
         Random.InitState(((int)System.DateTime.Now.Ticks));
 
         sprite = GetComponentInChildren<SpriteRenderer>();
-        sprite.enabled = false;
+        sprite.enabled = !hideEnemy;
 
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
@@ -60,7 +61,7 @@ public class EnemyController : MonoBehaviour
     {
         if (isChasing)
         {
-            sprite.enabled = IsInSameFloorAsPlayer();
+            sprite.enabled = !hideEnemy && IsInSameFloorAsPlayer();
             GetPlayerPosition();
         }
         else if (automaticFollowPlayer)

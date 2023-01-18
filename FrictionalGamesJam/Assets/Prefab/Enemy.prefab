@@ -108,10 +108,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentRoom: {fileID: 0}
+  startingRoom: {fileID: 0}
   probabilityGoingBack: 15
-  timeBeforeGoingAfterPlayer: 5
+  timeBeforeGoingAfterPlayer: 20
   durationAutomaticFollowingPlayer: 2
+  minTimeWhenFindingClosedDoor: 1
+  maxTimeWhenFindingClosedDoor: 5
   resetLevel: 0
+  hideEnemy: 1
 --- !u!1 &6425390449200870508
 GameObject:
   m_ObjectHideFlags: 0
