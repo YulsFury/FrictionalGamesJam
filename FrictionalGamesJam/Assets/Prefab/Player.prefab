@@ -194,6 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentRoom: {fileID: 0}
+  playerDestination: {fileID: 3981243849827471533, guid: 4152cb6fea2869a47bc4cdd8e76779a4, type: 3}
 --- !u!114 &4987421953727659190
 MonoBehaviour:
   m_ObjectHideFlags: 0

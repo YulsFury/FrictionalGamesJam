@@ -2,19 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorBehaviour : MonoBehaviour
+public class DoorController : MonoBehaviour
 {
 
     bool doorOpen;
     public float DecreaseEneryRate;
+    bool isAvailable;
 
 
     void Start()
     {
         doorOpen = true;
+        isAvailable = false;
 
         DisableCollisions();
-
     }
 
 
@@ -88,5 +89,10 @@ public class DoorBehaviour : MonoBehaviour
         }
 
         Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), GameManager.GM.PC.GetComponent<Collider2D>(), false);
+    }
+
+    public void ToggleAvailability()
+    {
+        isAvailable = true;
     }
 }

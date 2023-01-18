@@ -5,6 +5,7 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     PlayerController player;
+    public List<DoorController> roomDoors;
     private void Start()
     {
         player = FindObjectOfType<PlayerController>();
@@ -15,6 +16,7 @@ public class Room : MonoBehaviour
         {
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
             player.currentRoom = this;
+            ToggleDoorsAvailability();
         }
         else if (collision.gameObject.tag == "Enemy")
         {
@@ -29,6 +31,14 @@ public class Room : MonoBehaviour
         {
             player.MovePlayer(Input.mousePosition);
             player.PaintDestinationSprite(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        }
+    }
+
+    private void ToggleDoorsAvailability()
+    {
+        foreach(DoorController door in roomDoors)
+        {
+            door.ToggleAvailability();
         }
     }
 
