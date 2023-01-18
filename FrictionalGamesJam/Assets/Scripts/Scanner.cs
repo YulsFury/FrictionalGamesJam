@@ -12,6 +12,7 @@ public class Scanner : MonoBehaviour
     public float cooldownTimer;
 
     private bool cooldownTimerUp;
+    private bool bluring = false;
 
     private void Start()
     {
@@ -55,32 +56,35 @@ public class Scanner : MonoBehaviour
     {
         float timeLeft = blurTimer;
 
-        while (enemyScanRooms[0].GetComponentInChildren<SpriteRenderer>().color != Color.white)
+        if (enemyScanRooms.Count > 0 && !bluring)
         {
-            if (timeLeft <= Time.deltaTime)
+            while (enemyScanRooms[0].GetComponentInChildren<SpriteRenderer>().color != Color.white)
             {
-                for (int i = 0; i < enemyScanRooms.Count; i++)
+                if (timeLeft <= Time.deltaTime)
                 {
-                    enemyScanRooms[i].GetComponentInChildren<SpriteRenderer>().color = Color.white;
+                    for (int i = 0; i < enemyScanRooms.Count; i++)
+                    {
+                        enemyScanRooms[i].GetComponentInChildren<SpriteRenderer>().color = Color.white;
+                    }
                 }
-            }
-            else
-            {
-                // transition in progress
-                // calculate interpolated color
-                
-                for (int j = 0; j < enemyScanRooms.Count; j++)
+                else
                 {
-                    enemyScanRooms[j].GetComponentInChildren<SpriteRenderer>().color = Color.Lerp(enemyScanRooms[j].GetComponentInChildren<SpriteRenderer>().color, Color.white, Time.deltaTime / timeLeft);
+                    // transition in progress
+                    // calculate interpolated color
+
+                    for (int j = 0; j < enemyScanRooms.Count; j++)
+                    {
+                        enemyScanRooms[j].GetComponentInChildren<SpriteRenderer>().color = Color.Lerp(enemyScanRooms[j].GetComponentInChildren<SpriteRenderer>().color, Color.white, Time.deltaTime / timeLeft);
+                    }
+
+                    // update the timer
+                    timeLeft -= Time.deltaTime;
                 }
 
-                // update the timer
-                timeLeft -= Time.deltaTime;
+                yield return new WaitForEndOfFrame();
             }
-
-            yield return new WaitForEndOfFrame();
-        }
-        enemyScanRooms.RemoveRange(0, enemyScanRooms.Count);
+            enemyScanRooms.RemoveRange(0, enemyScanRooms.Count);
+        }        
     }
 
     private IEnumerator CooldownTimer()

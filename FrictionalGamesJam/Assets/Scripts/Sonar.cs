@@ -8,7 +8,7 @@ public class Sonar : MonoBehaviour
     [Header ("Timers")]
     public float cooldownTimer = 1;
     public float blurTimer;
-    private bool bluring;
+    private bool bluring = false;
     private bool active = false;
     private List<EnemyController> enemies = new List<EnemyController>();
     private List<GameObject> enemyTrails = new List<GameObject>();
@@ -54,7 +54,6 @@ public class Sonar : MonoBehaviour
             {
                 if(Vector2.Distance(enemies[i].transform.position, this.transform.position) <= radius)
                 {
-                    print("efectivamente: 'Enemigo'");
                     trail = Instantiate(enemyTrail, enemies[i].transform.position, enemies[i].transform.rotation);
                     enemyTrails.Add(trail);
                 }
