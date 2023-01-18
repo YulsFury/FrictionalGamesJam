@@ -25,7 +25,7 @@ public class DoorBehaviour : MonoBehaviour
         if (collision.transform.tag == "Player")
         {
 
-            GameManager.GM.PC.GetComponent<PlayerController>().StopPlayer(this.transform.position);
+            GameManager.GM.PC.GetComponent<PlayerController>().RepositionPlayer(this.transform.position);
             //Animación abrirse puerta
         }
 
