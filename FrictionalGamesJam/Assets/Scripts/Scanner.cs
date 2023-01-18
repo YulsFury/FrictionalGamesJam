@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Scanner : MonoBehaviour
 {
-    public List<GameObject> enemies = new List<GameObject>();
+    private List<EnemyController> enemies = new List<EnemyController>();
     private List<Room> enemyScanRooms = new List<Room>();
     [Header("Timers")]
     public float timeToReveal;
@@ -12,6 +12,11 @@ public class Scanner : MonoBehaviour
     public float cooldownTimer;
 
     private bool cooldownTimerUp;
+
+    private void Start()
+    {
+        enemies = GameManager.GM.EM.enemiesList;
+    }
 
     // Update is called once per frame
     void Update()

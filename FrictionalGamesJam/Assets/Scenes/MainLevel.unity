@@ -3395,7 +3395,7 @@ MonoBehaviour:
   BC: {fileID: 1809917721}
   NMC: {fileID: 465008246}
   PC: {fileID: 1601427640}
-  EC: {fileID: 496640999}
+  EM: {fileID: 496640999}
 --- !u!114 &1251820107 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8024610952615143837, guid: 8603a9b94f9158044b913819075c420a, type: 3}
@@ -4439,6 +4439,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4987421953727659190, guid: 40d342e22aa349343b0da4791252b3d1, type: 3}
+      propertyPath: blurTimer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987421953727659190, guid: 40d342e22aa349343b0da4791252b3d1, type: 3}
       propertyPath: enemies.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -4994,8 +4998,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b962abfb68412446bff63823847ce6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies:
-  - {fileID: 0}
   timeToReveal: 0
   blurTimer: 2
   cooldownTimer: 0
