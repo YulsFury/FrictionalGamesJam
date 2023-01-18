@@ -5,7 +5,10 @@ using UnityEngine;
 public class Sonar : MonoBehaviour
 {
     public float radius;
-    public float searchTimer = 1;
+    [Header ("Timers")]
+    public float cooldownTimer = 1;
+    public float blurTimer;
+    private bool bluring;
     private bool active = false;
     public List<GameObject> enemies = new List<GameObject>();
     private List<GameObject> enemyTrails = new List<GameObject>();
@@ -26,11 +29,7 @@ public class Sonar : MonoBehaviour
             {
                 StopCoroutine(activeSonar);
                 active = false;
-                for (int i = 0; i < enemyTrails.Count; i++)
-                {
-                    GameObject.Destroy(enemyTrails[i]);
-                    enemyTrails.RemoveAt(i);
-                }
+                StartCoroutine(BlurSonar());
 
                 GameManager.GM.ReduceBatteryOvertime();
             }
@@ -50,15 +49,6 @@ public class Sonar : MonoBehaviour
 
         while (true)
         {
-            if (enemyTrails.Count > 0)
-            {
-                for (int i = 0; i < enemyTrails.Count; i++)
-                {
-                    GameObject.Destroy(enemyTrails[i]);
-                    enemyTrails.RemoveAt(i);
-                }
-            }
-
             for (int i = 0; i < enemies.Count; i++)
             {
                 if(Vector2.Distance(enemies[i].transform.position, this.transform.position) <= radius)
@@ -67,8 +57,52 @@ public class Sonar : MonoBehaviour
                     enemyTrails.Add(trail);
                 }
 
-                yield return new WaitForSeconds(searchTimer);
+                StartCoroutine(BlurSonar());
+
+                yield return new WaitForSeconds(cooldownTimer);
             }
+        }
+    }
+
+    private IEnumerator BlurSonar()
+    {
+        float timeLeft = blurTimer;
+
+        if (enemyTrails.Count > 0 && !bluring)
+        {
+            bluring = true;
+            while (enemyTrails[0].GetComponentInChildren<SpriteRenderer>().color != Color.clear)
+            {
+                if (timeLeft <= Time.deltaTime)
+                {
+                    for (int i = 0; i < enemyTrails.Count; i++)
+                    {
+                        enemyTrails[i].GetComponentInChildren<SpriteRenderer>().color = Color.clear;
+                    }
+                }
+                else
+                {
+                    // transition in progress
+                    // calculate interpolated color
+
+                    for (int j = 0; j < enemyTrails.Count; j++)
+                    {
+                        enemyTrails[j].GetComponentInChildren<SpriteRenderer>().color = Color.Lerp(enemyTrails[j].GetComponentInChildren<SpriteRenderer>().color, Color.clear, Time.deltaTime / timeLeft);
+                    }
+
+                    // update the timer
+                    timeLeft -= Time.deltaTime;
+                }
+
+                yield return new WaitForEndOfFrame();
+            }
+
+            for (int i = 0; i < enemyTrails.Count; i++)
+            {
+                Destroy(enemyTrails[i]);
+                enemyTrails.RemoveAt(i);
+            }
+            bluring = false;
         }
     }
 }

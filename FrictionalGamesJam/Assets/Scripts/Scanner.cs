@@ -44,12 +44,6 @@ public class Scanner : MonoBehaviour
         }
 
         StartCoroutine(BlurScan());
-
-        
-        /*for (int i = 0; i < enemies.Count; i++)
-        {
-            enemyScanRooms.RemoveAt(i);
-        }*/
     }
 
     private IEnumerator BlurScan()
@@ -58,7 +52,6 @@ public class Scanner : MonoBehaviour
 
         while (enemyScanRooms[0].GetComponentInChildren<SpriteRenderer>().color != Color.white)
         {
-            print("Bluring");
             if (timeLeft <= Time.deltaTime)
             {
                 for (int i = 0; i < enemyScanRooms.Count; i++)
