@@ -25,7 +25,6 @@ public class Room : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log("mouse down");
         if (player)
         {
             player.MovePlayer(Input.mousePosition);

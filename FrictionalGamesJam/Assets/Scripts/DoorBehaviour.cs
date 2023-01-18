@@ -6,14 +6,13 @@ public class DoorBehaviour : MonoBehaviour
 {
 
     bool doorOpen;
-    bool ignorePlayerCollision;
     public float DecreaseEneryRate;
 
 
     void Start()
     {
         doorOpen = true;
-        ignorePlayerCollision = true;
+        Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), GameManager.GM.PC.GetComponent<Collider2D>(), true);
     }
 
 
@@ -23,7 +22,7 @@ public class DoorBehaviour : MonoBehaviour
     {
         if (collision.transform.tag == "Player")
         {
-            Debug.Log("collision");
+
 
             //Animación abrirse puerta
         }
@@ -39,7 +38,6 @@ public class DoorBehaviour : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log("mouse down");
         //Door is open so we close it
         if (doorOpen == true)
         {
@@ -65,7 +63,7 @@ public class DoorBehaviour : MonoBehaviour
 
             //Sonido dejar de sellar puerta
         }
-        Debug.Log("puerta a " + doorOpen);
+
     }
 
 }
