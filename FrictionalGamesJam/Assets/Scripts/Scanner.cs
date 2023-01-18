@@ -4,25 +4,36 @@ using UnityEngine;
 
 public class Scanner : MonoBehaviour
 {
-    public float searchTimer = 1;
     public List<GameObject> enemies = new List<GameObject>();
-    public List<Room> enemyScanRooms = new List<Room>();
+    private List<Room> enemyScanRooms = new List<Room>();
+    [Header("Timers")]
+    public float timeToReveal;
     public float blurTimer = 5;
     public float cooldownTimer;
+
+    private bool cooldownTimerUp;
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            StartCoroutine(ScanLevel());
+            if (!cooldownTimerUp)
+            {
+                StartCoroutine(ScanLevel());
+            }
         }
     }
   
     private IEnumerator ScanLevel()
     {
+        StartCoroutine(CooldownTimer());
+        GameManager.GM.ReduceBatteryLevel();
+
         Room enemyRoom;
         SpriteRenderer roomSprite;
+
+        yield return new WaitForSeconds(timeToReveal);
 
         for(int i = 0; i < enemies.Count; i++)
         {
@@ -32,12 +43,52 @@ public class Scanner : MonoBehaviour
             roomSprite.color = Color.red;
         }
 
-        yield return new WaitForSeconds(blurTimer);
-        //TODO: Make it actually blur.
+        StartCoroutine(BlurScan());
 
-        for (int j = 0; j < enemyScanRooms.Count; j++)
+        
+        /*for (int i = 0; i < enemies.Count; i++)
         {
-            enemyScanRooms[j].GetComponentInChildren<SpriteRenderer>().color = Color.white;
+            enemyScanRooms.RemoveAt(i);
+        }*/
+    }
+
+    private IEnumerator BlurScan()
+    {
+        float timeLeft = blurTimer;
+
+        while (enemyScanRooms[0].GetComponentInChildren<SpriteRenderer>().color != Color.white)
+        {
+            print("Bluring");
+            if (timeLeft <= Time.deltaTime)
+            {
+                for (int i = 0; i < enemyScanRooms.Count; i++)
+                {
+                    enemyScanRooms[i].GetComponentInChildren<SpriteRenderer>().color = Color.white;
+                }
+            }
+            else
+            {
+                // transition in progress
+                // calculate interpolated color
+                
+                for (int j = 0; j < enemyScanRooms.Count; j++)
+                {
+                    enemyScanRooms[j].GetComponentInChildren<SpriteRenderer>().color = Color.Lerp(enemyScanRooms[j].GetComponentInChildren<SpriteRenderer>().color, Color.white, Time.deltaTime / timeLeft);
+                }
+
+                // update the timer
+                timeLeft -= Time.deltaTime;
+            }
+
+            yield return new WaitForEndOfFrame();
         }
+        enemyScanRooms.RemoveRange(0, enemyScanRooms.Count);
+    }
+
+    private IEnumerator CooldownTimer()
+    {
+        cooldownTimerUp = true;
+        yield return new WaitForSeconds(cooldownTimer);
+        cooldownTimerUp = false;
     }
 }
