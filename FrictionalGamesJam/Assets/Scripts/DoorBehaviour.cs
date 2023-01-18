@@ -38,11 +38,12 @@ public class DoorBehaviour : MonoBehaviour
 
     private void OnMouseDown()
     {
-        //Door is open so we close it
+        //Close door
         if (doorOpen == true)
         {
             doorOpen = false;
             Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), GameManager.GM.PC.GetComponent<Collider2D>(), false);
+            GetComponentInChildren<SpriteRenderer>().color = Color.red;
 
             GameManager.GM.ReduceBatteryOvertime();
 
@@ -51,11 +52,12 @@ public class DoorBehaviour : MonoBehaviour
             //Sonido sellar puerta
         }
 
-        //Door is closed so we open it
+        //Open door
         else if(doorOpen == false)
         {
             doorOpen = true;
             Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), GameManager.GM.PC.GetComponent<Collider2D>(), true);
+            GetComponentInChildren<SpriteRenderer>().color = Color.white;
 
             GameManager.GM.StopReducingBatteryOvertime();
 
