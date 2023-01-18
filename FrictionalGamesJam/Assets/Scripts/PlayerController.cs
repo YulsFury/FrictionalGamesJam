@@ -30,8 +30,19 @@ public class PlayerController : MonoBehaviour
     public void MovePlayer(Vector3 mousePosition)
     {
         target = new Vector3(Camera.main.ScreenToWorldPoint(mousePosition).x, Camera.main.ScreenToWorldPoint(mousePosition).y);
-        SetAgentPosition();
+        SetAgentPosition(target);
     }
+    void SetAgentPosition(Vector3 target)
+    {
+        agent.SetDestination(new Vector3(target.x, target.y, transform.position.z));
+    }
+
+    public void StopPlayer(Vector3 doorPosition)
+    {
+        Vector3 playerAwayFromDoor = this.transform.position - doorPosition;
+        SetAgentPosition(this.transform.position + playerAwayFromDoor);        
+    }
+
     //void SetTargetPosition()
     //{
     //    if (Input.GetMouseButtonDown(0))
@@ -70,7 +81,7 @@ public class PlayerController : MonoBehaviour
     //        //}
     //        //if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity))
     //        //{
-                
+
     //        //    print("sí");
     //        //    agent.destination = hit.point;
     //        //}
@@ -86,8 +97,5 @@ public class PlayerController : MonoBehaviour
     //    return path.status == NavMeshPathStatus.PathComplete;
     //}
 
-    void SetAgentPosition()
-    {
-        agent.SetDestination(new Vector3(target.x, target.y, transform.position.z));
-    }
+
 }

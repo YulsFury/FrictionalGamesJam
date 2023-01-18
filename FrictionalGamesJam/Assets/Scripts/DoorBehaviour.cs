@@ -12,7 +12,9 @@ public class DoorBehaviour : MonoBehaviour
     void Start()
     {
         doorOpen = true;
-        Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), GameManager.GM.PC.GetComponent<Collider2D>(), true);
+
+        DisableCollisions();
+
     }
 
 
@@ -23,7 +25,7 @@ public class DoorBehaviour : MonoBehaviour
         if (collision.transform.tag == "Player")
         {
 
-
+            GameManager.GM.PC.GetComponent<PlayerController>().StopPlayer(this.transform.position);
             //Animación abrirse puerta
         }
 
@@ -42,7 +44,7 @@ public class DoorBehaviour : MonoBehaviour
         if (doorOpen == true)
         {
             doorOpen = false;
-            Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), GameManager.GM.PC.GetComponent<Collider2D>(), false);
+            UnableCollisions();
             GetComponentInChildren<SpriteRenderer>().color = Color.red;
 
             GameManager.GM.ReduceBatteryOvertime();
@@ -56,7 +58,7 @@ public class DoorBehaviour : MonoBehaviour
         else if(doorOpen == false)
         {
             doorOpen = true;
-            Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), GameManager.GM.PC.GetComponent<Collider2D>(), true);
+            DisableCollisions();
             GetComponentInChildren<SpriteRenderer>().color = Color.white;
 
             GameManager.GM.StopReducingBatteryOvertime();
@@ -68,4 +70,23 @@ public class DoorBehaviour : MonoBehaviour
 
     }
 
+    void DisableCollisions()
+    {
+        for (int i = 0; i < GameManager.GM.EM.enemiesList.Count; i++)
+        {
+            Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), GameManager.GM.EM.enemiesList[i].GetComponent<Collider2D>(), true);
+        }
+
+        Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), GameManager.GM.PC.GetComponent<Collider2D>(), true);
+    }
+
+    void UnableCollisions()
+    {
+        for (int i = 0; i < GameManager.GM.EM.enemiesList.Count; i++)
+        {
+            Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), GameManager.GM.EM.enemiesList[i].GetComponent<Collider2D>(), false);
+        }
+
+        Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), GameManager.GM.PC.GetComponent<Collider2D>(), false);
+    }
 }
