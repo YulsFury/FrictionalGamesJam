@@ -9,9 +9,8 @@ public class InterfaceManager : MonoBehaviour
     public Slider batterySlider;
 
     [Header("Screens")]
-    //public Button movementButtonScreen;
-    //public Button secondButtonScreen;
-    public Image temporalPanel;
+    public GameObject movementScreen;
+    public GameObject sonarScreen;
 
     /// <summary>
     /// Updates de battery interface in fixed ranges.
@@ -45,13 +44,31 @@ public class InterfaceManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Switch the main screen elements to de Movement Screen.
+    /// </summary>
     public void SwitchToMovementScreen()
     {
-        temporalPanel.enabled = false;
+        movementScreen.SetActive(true);
+        sonarScreen.SetActive(false);        
     }
 
-    public void SwitchToSecondScreen()
+    /// <summary>
+    /// Switch the main screen elements to de Sonar Screen.
+    /// </summary>
+    public void SwitchToSonarScreen()
     {
-        temporalPanel.enabled = true;
+        sonarScreen.SetActive(true);
+        movementScreen.SetActive(false);
+    }
+
+    public void ScannerPressed()
+    {
+        GameManager.GM.ScannerUsed();
+    }
+
+    public void SonarPressed()
+    {
+        GameManager.GM.SonarUsed();
     }
 }

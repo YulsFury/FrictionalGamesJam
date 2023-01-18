@@ -18,38 +18,29 @@ public class Scanner : MonoBehaviour
     {
         enemies = GameManager.GM.EM.enemiesList;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if (!cooldownTimerUp)
-            {
-                StartCoroutine(ScanLevel());
-            }
-        }
-    }
   
-    private IEnumerator ScanLevel()
+    public IEnumerator ActiveScanner()
     {
-        StartCoroutine(CooldownTimer());
-        GameManager.GM.ReduceBatteryLevel();
-
-        Room enemyRoom;
-        SpriteRenderer roomSprite;
-
-        yield return new WaitForSeconds(timeToReveal);
-
-        for(int i = 0; i < enemies.Count; i++)
+        if (!cooldownTimerUp)
         {
-            enemyRoom = enemies[0].GetComponent<EnemyController>().currentRoom;
-            enemyScanRooms.Add(enemyRoom);
-            roomSprite = enemyRoom.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
-            roomSprite.color = Color.red;
-        }
+            StartCoroutine(CooldownTimer());
+            GameManager.GM.ReduceBatteryLevel();
 
-        StartCoroutine(BlurScan());
+            Room enemyRoom;
+            SpriteRenderer roomSprite;
+
+            yield return new WaitForSeconds(timeToReveal);
+
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                enemyRoom = enemies[0].GetComponent<EnemyController>().currentRoom;
+                enemyScanRooms.Add(enemyRoom);
+                roomSprite = enemyRoom.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
+                roomSprite.color = Color.red;
+            }
+
+            StartCoroutine(BlurScan());
+        }
     }
 
     private IEnumerator BlurScan()

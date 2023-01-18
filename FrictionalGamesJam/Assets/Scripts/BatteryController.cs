@@ -77,7 +77,6 @@ public class BatteryController : MonoBehaviour
     {
         while (true)
         {
-            print(currentBatteryLvl);
             if (currentBatteryLvl - (standarOvertimeUseDecrease * elementsUsingBattery) < 0)
             {
                 currentBatteryLvl = 0;
@@ -89,7 +88,6 @@ public class BatteryController : MonoBehaviour
             else
             {
                 currentBatteryLvl = currentBatteryLvl - (standarOvertimeUseDecrease * elementsUsingBattery);
-                print(currentBatteryLvl);
             }
 
             GameManager.GM.IM.UpdateBattery(currentBatteryLvl);

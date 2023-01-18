@@ -19,33 +19,39 @@ public class Sonar : MonoBehaviour
     private void Start()
     {
         enemies = GameManager.GM.EM.enemiesList;
-        activeSonar = ActiveSonar();
+        activeSonar = UseSonar();
     }
 
-    void Update()
+    public void SonarInteraction()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (!active)
         {
-            if (active)
-            {
-                StopCoroutine(activeSonar);
-                active = false;
-                StartCoroutine(BlurSonar());
-                GameManager.GM.StopReducingBatteryOvertime();
-            }
-            else
-            {
-                StartCoroutine(activeSonar);
-                active = true;
-                GameManager.GM.ReduceBatteryOvertime();             
-            }
+            ActivateSonar();
+        }
+        else
+        {
+            DeactivateSonar();
         }
     }
 
-    private IEnumerator ActiveSonar()
+    private void ActivateSonar()
+    {
+        StartCoroutine(activeSonar);
+        GameManager.GM.ReduceBatteryOvertime();
+        active = true;
+    }
+
+    private void DeactivateSonar()
+    {
+        StopCoroutine(activeSonar);
+        StartCoroutine(BlurSonar());
+        GameManager.GM.StopReducingBatteryOvertime();
+        active = false;
+    }
+
+    private IEnumerator UseSonar()
     {
         GameObject trail;
-
         while (true)
         {
             for (int i = 0; i < enemies.Count; i++)
@@ -61,6 +67,7 @@ public class Sonar : MonoBehaviour
                 yield return new WaitForSeconds(cooldownTimer);
             }
         }
+
     }
 
     private IEnumerator BlurSonar()

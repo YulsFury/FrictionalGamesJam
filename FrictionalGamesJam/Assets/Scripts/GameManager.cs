@@ -40,6 +40,16 @@ public class GameManager : MonoBehaviour
         BC.StopUseOverTimeBattery();
     }
 
+    public void ScannerUsed()
+    {
+        StartCoroutine(PC.GetComponent<Scanner>().ActiveScanner());
+    }
+
+    public void SonarUsed()
+    {
+        PC.GetComponent<Sonar>().SonarInteraction();
+    }
+
     public void GameOver()
     {
         Debug.LogWarning("GameOver");
