@@ -208,8 +208,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 10
-  cooldownTimer: 1
-  blurTimer: 0
+  cooldownTimer: 2.5
+  blurTimer: 2
   enemyTrail: {fileID: 6233763113570792147, guid: 77369b0171770f54ca7ecec17fc6f71c, type: 3}
 --- !u!114 &1844683255
 MonoBehaviour:
@@ -223,6 +223,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b962abfb68412446bff63823847ce6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToReveal: 0
-  blurTimer: 2
-  cooldownTimer: 0
+  timeToReveal: 0.5
+  blurTimer: 5
+  cooldownTimer: 5
