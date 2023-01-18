@@ -15,6 +15,7 @@ public class EnemyController : MonoBehaviour
     private bool isWithoutFinndingCouroutineRunning;
     private bool automaticFollowPlayer;
     [HideInInspector] public Room currentRoom;
+    public Room startingRoom;
     public float probabilityGoingBack;
     public float timeBeforeGoingAfterPlayer;
     public float durationAutomaticFollowingPlayer;
@@ -27,6 +28,7 @@ public class EnemyController : MonoBehaviour
         agent.updateUpAxis = false;
         isWithoutFinndingCouroutineRunning = false;
         automaticFollowPlayer = false;
+        currentRoom = startingRoom;
     }
 
     void Update()
