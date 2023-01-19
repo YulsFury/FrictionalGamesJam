@@ -54,4 +54,9 @@ public class GameManager : MonoBehaviour
     {
         Debug.LogWarning("GameOver");
     }
+
+    public void Victory()
+    {
+        Debug.LogWarning("VICTORY!");
+    }
 }

@@ -11,6 +11,12 @@ public class Room : MonoBehaviour
     [Header("Debbug")]
     public Color highlightColor = Color.red;
 
+    [Header("Exit related")]
+    public bool isExit;
+    public KeyItemController keyItem;
+    public bool unlockKey;
+
+
     private void Start()
     {
         player = FindObjectOfType<PlayerController>();
@@ -21,6 +27,7 @@ public class Room : MonoBehaviour
         {
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
             player.currentRoom = this;
+            CheckIfThereIsKey();
             ToggleDoorsAvailability(true);
         }
         else if (collision.gameObject.tag == "Enemy")
@@ -35,6 +42,11 @@ public class Room : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             ToggleDoorsAvailability(false);
+
+            if (keyItem != null & unlockKey == true)
+            {
+                keyItem.ToggleAvailability(false);
+            }
         }
     }
 
@@ -52,6 +64,23 @@ public class Room : MonoBehaviour
         foreach(DoorController door in roomDoors)
         {    
             door.ToggleAvailability(availability);
+        }
+    }
+
+    private void CheckIfThereIsKey()
+    {
+        if(keyItem != null)
+        {
+            if(!unlockKey)
+            {
+                keyItem.GetComponent<KeyItemController>().EnableKeyItem();
+                unlockKey = true;
+            }
+            
+            else if(unlockKey)
+            {
+                keyItem.ToggleAvailability(true);
+            }
         }
     }
 

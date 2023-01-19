@@ -29,13 +29,15 @@ public class PlayerController : MonoBehaviour
         {
             playerAnimator.SetBool("isMoving", false);
         }
+        else
+        {
+            playerAnimator.SetBool("isMoving", true);
+        }
     }
     public void MovePlayer(Vector3 mousePosition)
     {
         target = new Vector3(Camera.main.ScreenToWorldPoint(mousePosition).x, Camera.main.ScreenToWorldPoint(mousePosition).y);
         SetAgentPosition(target);
-
-        playerAnimator.SetBool("isMoving", true);
     }
     void SetAgentPosition(Vector3 target)
     {
