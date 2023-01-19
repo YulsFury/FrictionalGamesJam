@@ -3142,6 +3142,18 @@ PrefabInstance:
       propertyPath: node
       value: 
       objectReference: {fileID: 2123820943}
+    - target: {fileID: 8024610952615143837, guid: 8603a9b94f9158044b913819075c420a, type: 3}
+      propertyPath: roomDoors.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8024610952615143837, guid: 8603a9b94f9158044b913819075c420a, type: 3}
+      propertyPath: roomDoors.Array.data[0]
+      value: 
+      objectReference: {fileID: 1788106080}
+    - target: {fileID: 8024610952615143837, guid: 8603a9b94f9158044b913819075c420a, type: 3}
+      propertyPath: roomDoors.Array.data[1]
+      value: 
+      objectReference: {fileID: 436149808}
     - target: {fileID: 8794994042582626333, guid: 8603a9b94f9158044b913819075c420a, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.data[0].x
       value: 2.8508968
@@ -4198,10 +4210,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4987421953727659190, guid: 40d342e22aa349343b0da4791252b3d1, type: 3}
-      propertyPath: blurTimer
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5589927324602471199, guid: 40d342e22aa349343b0da4791252b3d1, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -4246,10 +4254,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5589927324602471264, guid: 40d342e22aa349343b0da4791252b3d1, type: 3}
-      propertyPath: playerDestination
-      value: 
-      objectReference: {fileID: 3981243849827471533, guid: 4152cb6fea2869a47bc4cdd8e76779a4, type: 3}
     - target: {fileID: 5589927324602471267, guid: 40d342e22aa349343b0da4791252b3d1, type: 3}
       propertyPath: m_Name
       value: Player

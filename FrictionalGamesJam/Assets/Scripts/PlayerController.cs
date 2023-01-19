@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     NavMeshAgent agent;
     [HideInInspector] public Room currentRoom;
     NavMeshPath path;
+    Animator playerAnimator;
 
     [Header("Destination sprite")]
     public GameObject playerDestination;
@@ -18,12 +19,23 @@ public class PlayerController : MonoBehaviour
         agent.updateRotation = false;
         agent.updateUpAxis = false;
         Destination = null;
+        playerAnimator = GetComponent<Animator>();
     }
 
+    private void Update()
+    {
+        float distanceToTarget = Vector3.Distance(transform.position, target);
+        if (agent.velocity.magnitude / agent.speed <= 0.01f)
+        {
+            playerAnimator.SetBool("isMoving", false);
+        }
+    }
     public void MovePlayer(Vector3 mousePosition)
     {
         target = new Vector3(Camera.main.ScreenToWorldPoint(mousePosition).x, Camera.main.ScreenToWorldPoint(mousePosition).y);
         SetAgentPosition(target);
+
+        playerAnimator.SetBool("isMoving", true);
     }
     void SetAgentPosition(Vector3 target)
     {
