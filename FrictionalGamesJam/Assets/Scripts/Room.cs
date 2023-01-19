@@ -37,6 +37,7 @@ public class Room : MonoBehaviour
         {
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
             player.currentRoom = this;
+            RoomExplored();
             CheckIfThereIsKey();
             ToggleDoorsAvailability(true);
             if(exitRoomIsEnabled)
@@ -107,6 +108,14 @@ public class Room : MonoBehaviour
     {
         exitRoomIsEnabled = true;
         GetComponentInChildren<SpriteRenderer>().color = Color.green;
+    }
+
+    private void RoomExplored()
+    {
+        if (!isExit)
+        {
+            GetComponentInChildren<SpriteRenderer>().color = new Color(1, 0.9f, 0.6f, 1);
+        }   
     }
 
     private void OnDrawGizmosSelected()
