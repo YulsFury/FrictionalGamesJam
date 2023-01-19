@@ -20,23 +20,17 @@ public class EnemyController : MonoBehaviour
     private bool isChasing;
 
     [HideInInspector] public Room currentRoom;
-    [Header ("Initial State")]
-    public Room startingRoom;
 
-    [Header ("Path finding")]
-    public float probabilityGoingBack;
-
-    [Header ("Follow player")]
-    public float timeBeforeGoingAfterPlayer;
-    public float durationAutomaticFollowingPlayer;
-
-    [Header ("Doors")]
-    public float minTimeWhenFindingClosedDoor;
-    public float maxTimeWhenFindingClosedDoor;
-
-    [Header ("Debbug")]
-    public bool resetLevel;
-    public bool hideEnemy = true;
+    
+    private Room startingRoom;
+    private float probabilityGoingBack;
+    private float minTimeBeforeGoingAfterPlayer;
+    private float maxTimeBeforeGoingAfterPlayer;
+    private float durationAutomaticFollowingPlayer;
+    private float minTimeWhenFindingClosedDoor;
+    private float maxTimeWhenFindingClosedDoor;
+    private bool resetLevel;
+    private bool hideEnemy;
 
     void Start()
     {
@@ -61,7 +55,11 @@ public class EnemyController : MonoBehaviour
     {
         if (isChasing)
         {
-            sprite.enabled = !hideEnemy && IsInSameFloorAsPlayer();
+            if (hideEnemy)
+            {
+                sprite.enabled = IsInSameFloorAsPlayer();
+            }
+
             GetPlayerPosition();
         }
         else if (automaticFollowPlayer)
@@ -117,7 +115,6 @@ public class EnemyController : MonoBehaviour
         return playerFloor && currentRoom ? playerFloor.Equals(currentRoom) : false;
     }
 
-
     private void GetPlayerPosition()
     {
         target = GameManager.GM.PC.transform.position;
@@ -134,7 +131,7 @@ public class EnemyController : MonoBehaviour
     {
         if (!currentNode)
         {
-            currentNode = GameManager.GM.NMC.graph[0];
+            currentNode = startingRoom.node;
         }
 
         int numOfAdjacentsNodes = currentNode.adjacentsNodes.Count;
@@ -160,6 +157,25 @@ public class EnemyController : MonoBehaviour
     private void MoveToTarget()
     {
         agent.SetDestination(new Vector3(target.x, target.y, transform.position.z));
+    }
+
+    public void InitializeValues(EnemiesManager manager)
+    {
+        probabilityGoingBack = manager.probabilityGoingBack;
+        minTimeBeforeGoingAfterPlayer = manager.minTimeBeforeGoingAfterPlayer;
+        maxTimeBeforeGoingAfterPlayer = manager.maxTimeBeforeGoingAfterPlayer;
+        durationAutomaticFollowingPlayer = manager.durationAutomaticFollowingPlayer;
+        minTimeWhenFindingClosedDoor = manager.minTimeWhenFindingClosedDoor;
+        maxTimeWhenFindingClosedDoor = manager.maxTimeWhenFindingClosedDoor;
+        resetLevel = manager.resetLevel;
+        hideEnemy = manager.hideEnemy;
+    }
+
+    public void UpdateNodes(Room room)
+    {
+        currentRoom = room;
+        lastNode = currentNode;
+        currentNode = room.node;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -193,8 +209,9 @@ public class EnemyController : MonoBehaviour
     IEnumerator TimerWithoutFindingPlayer()
     {
         isWithoutFindingCouroutineRunning = true;
+        float timer = Random.Range(minTimeBeforeGoingAfterPlayer, maxTimeBeforeGoingAfterPlayer);
 
-        yield return new WaitForSeconds(timeBeforeGoingAfterPlayer);
+        yield return new WaitForSeconds(timer);
 
         automaticFollowPlayer = true;
         coroutineAutomaticFollowing = StartCoroutine(TimerAutomaticFollowPlayer());
@@ -208,6 +225,7 @@ public class EnemyController : MonoBehaviour
         
         automaticFollowPlayer = false;
         StopCoroutine(coroutineAutomaticFollowing);
+        SetTarget();
     }
 
     IEnumerator FindNewPath()

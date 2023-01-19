@@ -24,7 +24,6 @@ public class NavMeshController : MonoBehaviour
         }  
     }
 
-
     public void UpdateNavmesh()
     {
         navMesh.UpdateNavMesh(navMesh.navMeshData);
