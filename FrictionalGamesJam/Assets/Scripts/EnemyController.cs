@@ -21,8 +21,6 @@ public class EnemyController : MonoBehaviour
 
     [HideInInspector] public Room currentRoom;
 
-    
-    private Room startingRoom;
     private float probabilityGoingBack;
     private float minTimeBeforeGoingAfterPlayer;
     private float maxTimeBeforeGoingAfterPlayer;
@@ -31,6 +29,8 @@ public class EnemyController : MonoBehaviour
     private float maxTimeWhenFindingClosedDoor;
     private bool resetLevel;
     private bool hideEnemy;
+
+    public Room startingRoom;
 
     void Start()
     {
