@@ -37,7 +37,7 @@ public class BatteryController : MonoBehaviour
             currentBatteryLvl = currentBatteryLvl - standarSingleUseDecrease;
         }
 
-        GameManager.GM.IM.UpdateBattery(currentBatteryLvl);
+        GameManager.GM.IM.UpdateBatteryLevelContinuous(currentBatteryLvl);
     }
 
     /// <summary>
@@ -46,12 +46,13 @@ public class BatteryController : MonoBehaviour
     public void DecreaseOvertimeBattery()
     {
         elementsUsingBattery++;
+
+        GameManager.GM.IM.UpdateBatteryUsage(elementsUsingBattery);
+
         if (elementsUsingBattery == 1)
         {
             StartCoroutine(decreaseOverTimeCoroutine);
         }
-
-        //TODO: Update interface to show how many elements are using battery currently.
     }
 
     /// <summary>
@@ -61,12 +62,12 @@ public class BatteryController : MonoBehaviour
     {
         elementsUsingBattery--;
 
+        GameManager.GM.IM.UpdateBatteryUsage(elementsUsingBattery);
+
         if (elementsUsingBattery == 0)
         {
             StopCoroutine(decreaseOverTimeCoroutine);
         }
-
-        //TODO: Update interface to show how many elements are using battery currently.
     }
 
     /// <summary>
@@ -90,7 +91,7 @@ public class BatteryController : MonoBehaviour
                 currentBatteryLvl = currentBatteryLvl - (standarOvertimeUseDecrease * elementsUsingBattery);
             }
 
-            GameManager.GM.IM.UpdateBattery(currentBatteryLvl);
+            GameManager.GM.IM.UpdateBatteryLevelContinuous(currentBatteryLvl);
 
             yield return new WaitForSeconds(timerUseDecrease);
         }
