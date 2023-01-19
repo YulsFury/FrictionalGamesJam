@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public NavMeshController NMC;
     public PlayerController PC;
     public EnemiesManager EM;
+    public KeyItemsManager KIM;
 
     private void Awake()
     {
