@@ -26,7 +26,7 @@ public class Room : MonoBehaviour
         else if (collision.gameObject.tag == "Enemy")
         {
             EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
-            enemy.currentRoom = this;
+            enemy.UpdateNodes(this);
         }
     }
 
