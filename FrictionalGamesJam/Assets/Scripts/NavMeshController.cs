@@ -6,8 +6,11 @@ public class NavMeshController : MonoBehaviour
 {
     private NavMeshPlus.Components.NavMeshSurface navMesh;
     [HideInInspector] public List<NavMeshNode> graph;
+
+    [Header ("Debbug")]
     public bool showGraph = false;
     public Color connectionsColor = Color.blue;
+    public Color higlihgtColor = Color.red;
 
     private void Start()
     {

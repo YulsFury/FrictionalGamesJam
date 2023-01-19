@@ -21,13 +21,33 @@ public class NavMeshNode : MonoBehaviour
 
         if (controller.showGraph)
         {
-            if (adjacentsNodes.Count != 0)
+            if (adjacentsNodes.Count > 0)
             {
                 foreach (NavMeshNode node in adjacentsNodes)
                 {
                     DrawArrow.ForGizmo(this.transform.position, node.transform.position - this.transform.position, controller.connectionsColor);
                 }
             }
-        }    
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        NavMeshController controller = this.GetComponentInParent<NavMeshController>();
+
+        if (controller.showGraph)
+        {
+            if (adjacentsNodes.Count > 0)
+            {
+                foreach (NavMeshNode node in adjacentsNodes)
+                {
+                    Gizmos.color = controller.higlihgtColor;
+
+                    SpriteRenderer spriteNode = node.GetComponentInChildren<SpriteRenderer>();
+                    Vector3 nodeScale = spriteNode.size * node.transform.localScale * spriteNode.transform.localScale;
+                    Gizmos.DrawWireSphere(node.transform.position, nodeScale.magnitude * 3f);
+                }
+            }
+        }
     }
 }

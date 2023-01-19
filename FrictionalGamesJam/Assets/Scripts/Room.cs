@@ -6,6 +6,11 @@ public class Room : MonoBehaviour
 {
     PlayerController player;
     public List<DoorController> roomDoors;
+    public NavMeshNode node;
+
+    [Header("Debbug")]
+    public Color highlightColor = Color.red;
+
     private void Start()
     {
         player = FindObjectOfType<PlayerController>();
@@ -39,6 +44,31 @@ public class Room : MonoBehaviour
         foreach(DoorController door in roomDoors)
         {
             door.ToggleAvailability();
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = highlightColor;
+
+        if (roomDoors.Count > 0)
+        {
+            foreach (DoorController door in roomDoors)
+            {
+                SpriteRenderer spriteDoor = door.GetComponentInChildren<SpriteRenderer>();
+                Vector3 doorScale = spriteDoor.size * door.transform.localScale * spriteDoor.transform.localScale;
+                Gizmos.DrawWireCube(door.transform.position, door.transform.rotation*(doorScale*1.5f));
+            }
+        }
+
+        if (node)
+        {
+            if (node.GetComponentInParent<NavMeshController>().showGraph)
+            {
+                SpriteRenderer spriteNode = node.GetComponentInChildren<SpriteRenderer>();
+                Vector3 nodeScale = spriteNode.size * node.transform.localScale * spriteNode.transform.localScale;
+                Gizmos.DrawWireSphere(node.transform.position, nodeScale.magnitude * 3f);
+            }
         }
     }
 
