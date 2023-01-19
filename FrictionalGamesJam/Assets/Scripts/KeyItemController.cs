@@ -25,11 +25,11 @@ public class KeyItemController : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if(isAvailable)
+        if(isAvailable & !activated)
         {
             activated = true;
             sprite.color = Color.green;
-            //llamar a key manaager para contar
+            GameManager.GM.KIM.AddActivatedKeyItem();
         }
                     
     }

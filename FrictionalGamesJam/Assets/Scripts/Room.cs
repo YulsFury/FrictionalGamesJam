@@ -14,12 +14,22 @@ public class Room : MonoBehaviour
     [Header("Exit related")]
     public bool isExit;
     public KeyItemController keyItem;
-    public bool unlockKey;
+    bool unlockKey;
+    bool exitRoomIsEnabled;
+   
 
 
+    private void Awake()
+    {
+        if(isExit)
+        {
+            GetComponentInChildren<SpriteRenderer>().color = Color.magenta;
+        }
+    }
     private void Start()
     {
         player = FindObjectOfType<PlayerController>();
+        exitRoomIsEnabled = false;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -29,6 +39,10 @@ public class Room : MonoBehaviour
             player.currentRoom = this;
             CheckIfThereIsKey();
             ToggleDoorsAvailability(true);
+            if(exitRoomIsEnabled)
+            {
+                GameManager.GM.KIM.exitButtonInstace.GetComponent<ExitButtonController>().UnableButton();
+            }
         }
         else if (collision.gameObject.tag == "Enemy")
         {
@@ -46,6 +60,11 @@ public class Room : MonoBehaviour
             if (keyItem != null & unlockKey == true)
             {
                 keyItem.ToggleAvailability(false);
+            }
+
+            if (exitRoomIsEnabled)
+            {
+                GameManager.GM.KIM.exitButtonInstace.GetComponent<ExitButtonController>().DisableButton();
             }
         }
     }
@@ -82,6 +101,12 @@ public class Room : MonoBehaviour
                 keyItem.ToggleAvailability(true);
             }
         }
+    }
+
+    public void  UnableExitRoom()
+    {
+        exitRoomIsEnabled = true;
+        GetComponentInChildren<SpriteRenderer>().color = Color.green;
     }
 
     private void OnDrawGizmosSelected()
