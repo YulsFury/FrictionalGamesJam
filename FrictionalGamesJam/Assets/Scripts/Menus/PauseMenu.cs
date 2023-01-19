@@ -7,16 +7,14 @@ public class PauseMenu : MonoBehaviour
 {
     private bool isGamePaused;
 
-    public GameObject MenuButton;
-    public GameObject QuitButton;
+    public GameObject pauseButton;
 
     public string mainMenuName;
 
     void Start()
     {
         isGamePaused = false;
-        MenuButton.SetActive(false);
-        QuitButton.SetActive(false);
+        pauseButton.SetActive(false);
     }
 
     void Update()
@@ -36,16 +34,14 @@ public class PauseMenu : MonoBehaviour
 
     private void Resume()
     {
-        MenuButton.SetActive(false);
-        QuitButton.SetActive(false);
+        pauseButton.SetActive(false);
         Time.timeScale = 1f;
         isGamePaused = false;
     }
 
     private void Pause()
     {
-        MenuButton.SetActive(true);
-        QuitButton.SetActive(true);
+        pauseButton.SetActive(true);
         Time.timeScale = 0f;
         isGamePaused = true;
     }
