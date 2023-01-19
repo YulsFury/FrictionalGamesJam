@@ -22,6 +22,12 @@ public class Sonar : MonoBehaviour
         activeSonar = UseSonar();
     }
 
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, radius);
+    }
+
     public void SonarInteraction()
     {
         if (!active)
