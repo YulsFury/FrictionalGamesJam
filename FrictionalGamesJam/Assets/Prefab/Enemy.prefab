@@ -109,13 +109,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentRoom: {fileID: 0}
   startingRoom: {fileID: 0}
-  probabilityGoingBack: 15
-  timeBeforeGoingAfterPlayer: 20
-  durationAutomaticFollowingPlayer: 2
-  minTimeWhenFindingClosedDoor: 1
-  maxTimeWhenFindingClosedDoor: 5
-  resetLevel: 0
-  hideEnemy: 1
 --- !u!1 &6425390449200870508
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,5 +191,5 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 1
   m_SpriteSortPoint: 0

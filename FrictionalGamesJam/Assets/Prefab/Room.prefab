@@ -83,7 +83,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!114 &9175383739263847705
 MonoBehaviour:
@@ -235,3 +235,6 @@ MonoBehaviour:
   roomDoors: []
   node: {fileID: 0}
   highlightColor: {r: 1, g: 0, b: 0, a: 1}
+  isExit: 0
+  keyItem: {fileID: 0}
+  unlockKey: 0

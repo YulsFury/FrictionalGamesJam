@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Sonar : MonoBehaviour
 {
-    public float radius;
+    public float maxRadius;
+    public int numberOfWaves = 4;
+
+    private float currentRadius = 0;
     [Header ("Timers")]
     public float cooldownTimer = 1;
     public float blurTimer;
@@ -13,6 +16,8 @@ public class Sonar : MonoBehaviour
     private List<EnemyController> enemies = new List<EnemyController>();
     private List<GameObject> enemyTrails = new List<GameObject>();
     public GameObject enemyTrail;
+    public SpriteMask sonarMask;
+    public SpriteRenderer sonarWaves;
 
     private IEnumerator activeSonar;
 
@@ -25,7 +30,21 @@ public class Sonar : MonoBehaviour
     public void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, radius);
+        Gizmos.DrawWireSphere(transform.position, maxRadius);
+    }
+
+    public void ToggleSonarMode(bool activateSonar)
+    {
+        if (activateSonar)
+        {
+            sonarMask.transform.localScale = Vector3.zero;
+            GameManager.GM.PC.sprite.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
+        }
+        else
+        {
+            sonarMask.transform.localScale = new Vector3(400, 400, 400);
+            GameManager.GM.PC.sprite.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
+        }
     }
 
     public void SonarInteraction()
@@ -45,6 +64,7 @@ public class Sonar : MonoBehaviour
         StartCoroutine(activeSonar);
         GameManager.GM.ReduceBatteryOvertime();
         active = true;
+        GameManager.GM.PC.sprite.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
     }
 
     private void DeactivateSonar()
@@ -53,27 +73,55 @@ public class Sonar : MonoBehaviour
         StartCoroutine(BlurSonar());
         GameManager.GM.StopReducingBatteryOvertime();
         active = false;
+        GameManager.GM.PC.sprite.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
+        currentRadius = 0;
+        sonarMask.transform.localScale = Vector3.zero;
+        sonarWaves.transform.localScale = Vector3.zero;
     }
 
     private IEnumerator UseSonar()
     {
         GameObject trail;
+
+        numberOfWaves = numberOfWaves > 0 ? numberOfWaves : 1;
+        float radiusPerWave = maxRadius / numberOfWaves;
+        bool firstIteration = true;
+
+
         while (true)
         {
+            if(currentRadius < maxRadius)
+            {
+                currentRadius = currentRadius + radiusPerWave;
+                GameManager.GM.PC.sprite.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
+            }
+            else
+            {
+                currentRadius = 0;
+                GameManager.GM.PC.sprite.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
+                firstIteration = false;
+            }
+
+            if (firstIteration)
+            {
+                sonarMask.transform.localScale = new Vector3(11, 11, 11) * currentRadius;
+            }
+
+            sonarWaves.transform.localScale = new Vector3(11, 11, 11) * currentRadius;
+
             for (int i = 0; i < enemies.Count; i++)
             {
-                if(Vector2.Distance(enemies[i].transform.position, this.transform.position) <= radius)
+                if(Vector2.Distance(enemies[i].transform.position, this.transform.position) <=  currentRadius)
                 {
                     trail = Instantiate(enemyTrail, enemies[i].transform.position, enemies[i].transform.rotation);
                     enemyTrails.Add(trail);
-                }
-
-                StartCoroutine(BlurSonar());
-
-                yield return new WaitForSeconds(cooldownTimer);
+                } 
             }
-        }
 
+            StartCoroutine(BlurSonar());
+
+            yield return new WaitForSeconds(cooldownTimer);
+        }
     }
 
     private IEnumerator BlurSonar()

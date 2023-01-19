@@ -51,6 +51,11 @@ public class GameManager : MonoBehaviour
         PC.GetComponent<Sonar>().SonarInteraction();
     }
 
+    public void ToggleSonarMode(bool activateSonar)
+    {
+        PC.GetComponent<Sonar>().ToggleSonarMode(activateSonar);
+    }
+
     public void GameOver()
     {
         Debug.LogWarning("GameOver");

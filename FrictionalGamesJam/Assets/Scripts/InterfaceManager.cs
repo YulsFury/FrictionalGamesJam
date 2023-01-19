@@ -127,7 +127,8 @@ public class InterfaceManager : MonoBehaviour
     public void SwitchToMovementScreen()
     {
         movementScreen.SetActive(true);
-        sonarScreen.SetActive(false);        
+        sonarScreen.SetActive(false);
+        GameManager.GM.ToggleSonarMode(false);
     }
 
     /// <summary>
@@ -137,6 +138,7 @@ public class InterfaceManager : MonoBehaviour
     {
         sonarScreen.SetActive(true);
         movementScreen.SetActive(false);
+        GameManager.GM.ToggleSonarMode(true);
     }
 
     public void ScannerPressed()

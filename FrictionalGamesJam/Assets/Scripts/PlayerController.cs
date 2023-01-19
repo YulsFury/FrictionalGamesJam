@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     NavMeshPath path;
     Animator playerAnimator;
 
+    public SpriteRenderer sprite;
+
     [Header("Destination sprite")]
     public GameObject playerDestination;
     GameObject Destination;
