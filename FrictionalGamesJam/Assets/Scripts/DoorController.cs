@@ -42,7 +42,7 @@ public class DoorController : MonoBehaviour
     private void OnMouseDown()
     {
         //Close door
-        if (doorOpen == true)
+        if (doorOpen == true & isAvailable == true)
         {
             doorOpen = false;
             UnableCollisions();
@@ -56,11 +56,19 @@ public class DoorController : MonoBehaviour
         }
 
         //Open door
-        else if(doorOpen == false)
+        else if(doorOpen == false & isAvailable == true)
         {
             doorOpen = true;
             DisableCollisions();
-            GetComponentInChildren<SpriteRenderer>().color = Color.white;
+
+            if(isAvailable)
+            {
+                GetComponentInChildren<SpriteRenderer>().color = Color.green;
+            }
+            else
+            {
+                GetComponentInChildren<SpriteRenderer>().color = Color.white;
+            }
 
             GameManager.GM.StopReducingBatteryOvertime();
 
@@ -91,8 +99,28 @@ public class DoorController : MonoBehaviour
         Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), GameManager.GM.PC.GetComponent<Collider2D>(), false);
     }
 
-    public void ToggleAvailability()
+    public void ToggleAvailability(bool availability)
     {
-        isAvailable = true;
+        if(availability)
+        {
+            isAvailable = true;
+            if (doorOpen)
+            {
+                GetComponentInChildren<SpriteRenderer>().color = Color.green;
+            }
+                
+        }
+
+        else
+        {
+            if (!GameManager.GM.PC.currentRoom.roomDoors.Contains(this))
+            {
+                isAvailable = false;
+                if(doorOpen)
+                {
+                    GetComponentInChildren<SpriteRenderer>().color = Color.white;
+                }           
+            }            
+        }
     }
 }

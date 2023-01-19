@@ -21,12 +21,20 @@ public class Room : MonoBehaviour
         {
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
             player.currentRoom = this;
-            ToggleDoorsAvailability();
+            ToggleDoorsAvailability(true);
         }
         else if (collision.gameObject.tag == "Enemy")
         {
             EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
             enemy.currentRoom = this;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            ToggleDoorsAvailability(false);
         }
     }
 
@@ -39,11 +47,11 @@ public class Room : MonoBehaviour
         }
     }
 
-    private void ToggleDoorsAvailability()
+    private void ToggleDoorsAvailability(bool availability)
     {
         foreach(DoorController door in roomDoors)
-        {
-            door.ToggleAvailability();
+        {    
+            door.ToggleAvailability(availability);
         }
     }
 
