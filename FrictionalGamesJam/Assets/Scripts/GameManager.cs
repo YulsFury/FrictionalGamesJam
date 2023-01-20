@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
     public void ToggleSonarMode(bool activateSonar)
     {
         PC.GetComponent<Sonar>().ToggleSonarMode(activateSonar);
+        PC.isUsingSonar = activateSonar;
     }
 
     public void GameOver()

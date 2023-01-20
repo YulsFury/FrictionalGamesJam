@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
 
     public SpriteRenderer sprite;
 
+    [HideInInspector] public bool isUsingSonar;
+
     [Header("Destination sprite")]
     public GameObject playerDestination;
     GameObject Destination;
@@ -38,8 +40,12 @@ public class PlayerController : MonoBehaviour
     }
     public void MovePlayer(Vector3 mousePosition)
     {
-        target = new Vector3(Camera.main.ScreenToWorldPoint(mousePosition).x, Camera.main.ScreenToWorldPoint(mousePosition).y);
-        SetAgentPosition(target);
+        if (!isUsingSonar)
+        {
+            target = new Vector3(Camera.main.ScreenToWorldPoint(mousePosition).x, Camera.main.ScreenToWorldPoint(mousePosition).y);
+            PaintDestinationSprite();
+            SetAgentPosition(target);
+        }
     }
     void SetAgentPosition(Vector3 target)
     {
@@ -57,7 +63,7 @@ public class PlayerController : MonoBehaviour
         SetAgentPosition(this.transform.position);
     }
 
-    public void PaintDestinationSprite(Vector3 clickPosition)
+    public void PaintDestinationSprite()
     {
 
         if(Destination)
@@ -65,6 +71,6 @@ public class PlayerController : MonoBehaviour
             Destroy(Destination);
         }
         
-        Destination = Instantiate(playerDestination, new Vector3(clickPosition.x, clickPosition.y, 0), Quaternion.identity);
+        Destination = Instantiate(playerDestination, new Vector3(target.x, target.y, 0), Quaternion.identity);
     }
 }
