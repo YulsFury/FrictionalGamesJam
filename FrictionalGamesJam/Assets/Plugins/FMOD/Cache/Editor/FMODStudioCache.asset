@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-3396469653006000001
+--- !u!114 &-1231447559324496105
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,34 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
+  m_Name: bank:/Master.strings.bank
   m_EditorClassIdentifier: 
-  Path: ../../../Trabajos/FNAF Amnesia/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 638098126487692318
-  FileSizes:
-  - Name: 
-    Value: 1036
-  Exists: 1
---- !u!114 &-1778295181138327557
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Desktop/Master.strings.bank
-  m_EditorClassIdentifier: 
-  Path: ../../../Trabajos/FNAF Amnesia/Build/Desktop/Master.strings.bank
-  Name: Desktop/Master.strings
+  Path: Assets/FMOD/bleh/Build/Desktop/Master.strings.bank
+  Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638098126487702324
+  lastModified: 638098134285477734
   FileSizes:
-  - Name: 
+  - Name: Desktop
     Value: 712
   Exists: 1
 --- !u!114 &11400000
@@ -53,13 +33,33 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: -1778295181138327557}
-  - {fileID: -3396469653006000001}
+  - {fileID: -1231447559324496105}
+  - {fileID: 853585618210662528}
   EditorEvents: []
   EditorParameters: []
   MasterBanks:
-  - {fileID: -3396469653006000001}
+  - {fileID: 853585618210662528}
   StringsBanks:
-  - {fileID: -1778295181138327557}
-  cacheTime: 638098126487702324
+  - {fileID: -1231447559324496105}
+  cacheTime: 638098134285477734
   cacheVersion: 131601
+--- !u!114 &853585618210662528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/bleh/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638098134285467734
+  FileSizes:
+  - Name: Desktop
+    Value: 1036
+  Exists: 1
