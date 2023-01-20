@@ -13,6 +13,7 @@ public class Sonar : MonoBehaviour
     public float blurTimer;
     private bool bluring = false;
     private bool active = false;
+    private bool isFirstIteration = true;
     private List<EnemyController> enemies = new List<EnemyController>();
     private List<GameObject> enemyTrails = new List<GameObject>();
     public GameObject enemyTrail;
@@ -77,6 +78,7 @@ public class Sonar : MonoBehaviour
         currentRadius = 0;
         sonarMask.transform.localScale = Vector3.zero;
         sonarWaves.transform.localScale = Vector3.zero;
+        isFirstIteration = true;
     }
 
     private IEnumerator UseSonar()
@@ -85,7 +87,6 @@ public class Sonar : MonoBehaviour
 
         numberOfWaves = numberOfWaves > 0 ? numberOfWaves : 1;
         float radiusPerWave = maxRadius / numberOfWaves;
-        bool firstIteration = true;
 
 
         while (true)
@@ -99,10 +100,10 @@ public class Sonar : MonoBehaviour
             {
                 currentRadius = 0;
                 GameManager.GM.PC.sprite.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
-                firstIteration = false;
+                isFirstIteration = false;
             }
 
-            if (firstIteration)
+            if (isFirstIteration)
             {
                 sonarMask.transform.localScale = new Vector3(11, 11, 11) * currentRadius;
             }
