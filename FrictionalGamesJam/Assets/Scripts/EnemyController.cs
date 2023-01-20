@@ -184,7 +184,7 @@ public class EnemyController : MonoBehaviour
         {
             if (resetLevel)
             {
-                SceneManager.LoadScene("GameOverMenu");
+                GameManager.GM.GameOver();
             }
         }
         else if (collision.gameObject.tag == "Door")
