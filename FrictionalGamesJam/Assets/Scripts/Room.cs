@@ -75,7 +75,6 @@ public class Room : MonoBehaviour
         if (player)
         {
             player.MovePlayer(Input.mousePosition);
-            player.PaintDestinationSprite(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         }
     }
 

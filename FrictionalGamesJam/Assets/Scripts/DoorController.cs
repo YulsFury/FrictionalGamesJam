@@ -29,12 +29,6 @@ public class DoorController : MonoBehaviour
             GameManager.GM.PC.GetComponent<PlayerController>().RepositionPlayer(this.transform.position);
             //Animación abrirse puerta
         }
-
-        else if (collision.transform.tag == "Enemy")
-        {
-            //Animación abrirse puerta
-            //Añadir en lo que sea que afecte la puerta en la patrulla del enemigo
-        }
     }
 
     //Close or open door
@@ -42,7 +36,7 @@ public class DoorController : MonoBehaviour
     private void OnMouseDown()
     {
         //Close door
-        if (doorOpen == true & isAvailable == true)
+        if (doorOpen == true & isAvailable == true && !GameManager.GM.PC.isUsingSonar)
         {
             doorOpen = false;
             UnableCollisions();
@@ -56,7 +50,7 @@ public class DoorController : MonoBehaviour
         }
 
         //Open door
-        else if(doorOpen == false & isAvailable == true)
+        else if(doorOpen == false & isAvailable == true && !GameManager.GM.PC.isUsingSonar)
         {
             doorOpen = true;
             DisableCollisions();

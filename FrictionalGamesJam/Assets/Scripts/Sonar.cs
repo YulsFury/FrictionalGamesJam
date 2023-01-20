@@ -13,6 +13,7 @@ public class Sonar : MonoBehaviour
     public float blurTimer;
     private bool bluring = false;
     private bool active = false;
+    private bool isSonarScreenActivate = false;
     private bool isFirstIteration = true;
     private List<EnemyController> enemies = new List<EnemyController>();
     private List<GameObject> enemyTrails = new List<GameObject>();
@@ -34,9 +35,11 @@ public class Sonar : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, maxRadius);
     }
 
-    public void ToggleSonarMode(bool activateSonar)
+    public void ToggleSonarMode(bool activateSonarScreen)
     {
-        if (activateSonar)
+        isSonarScreenActivate = activateSonarScreen;
+
+        if (activateSonarScreen)
         {
             sonarMask.transform.localScale = Vector3.zero;
             GameManager.GM.PC.sprite.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
@@ -103,7 +106,7 @@ public class Sonar : MonoBehaviour
                 isFirstIteration = false;
             }
 
-            if (isFirstIteration)
+            if (isFirstIteration && isSonarScreenActivate)
             {
                 sonarMask.transform.localScale = new Vector3(11, 11, 11) * currentRadius;
             }
