@@ -2037,7 +2037,7 @@ MonoBehaviour:
   durationAutomaticFollowingPlayer: 3
   minTimeWhenFindingClosedDoor: 1
   maxTimeWhenFindingClosedDoor: 3
-  resetLevel: 0
+  resetLevel: 1
   hideEnemy: 1
 --- !u!1001 &514161429
 PrefabInstance:

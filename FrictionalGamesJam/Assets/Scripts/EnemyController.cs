@@ -182,10 +182,9 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            print("Game Over!");
             if (resetLevel)
             {
-                SceneManager.LoadScene("MainLevel");
+                SceneManager.LoadScene("GameOverMenu");
             }
         }
         else if (collision.gameObject.tag == "Door")
