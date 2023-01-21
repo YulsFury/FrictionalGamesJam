@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
     }
     public void MovePlayer(Vector3 mousePosition)
     {
-        if (!isUsingSonar)
+        if (!isUsingSonar && !GameManager.GM.IM.isInMenus)
         {
             target = new Vector3(Camera.main.ScreenToWorldPoint(mousePosition).x, Camera.main.ScreenToWorldPoint(mousePosition).y);
             PaintDestinationSprite();

@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class InterfaceManager : MonoBehaviour
 {
+    [HideInInspector] public bool isInMenus;
+
     [Header ("Battery")]
     public Slider batteryLevelSlider;
     public GameObject[] batteryUsageTiles;
@@ -12,6 +15,24 @@ public class InterfaceManager : MonoBehaviour
     [Header("Screens")]
     public GameObject movementScreen;
     public GameObject sonarScreen;
+
+    [Header("Menus")]
+    public GameObject mainMenu;
+    public GameObject codeMenu;
+    public GameObject emailMenu;
+
+    [Header("Password")]
+    public string password;
+
+    private void Start()
+    {
+        if (!CrossSceneInfo.restart)
+        {
+            isInMenus = true;
+            Time.timeScale = 0f;
+            mainMenu.SetActive(true); 
+        }
+    }
 
     /// <summary>
     /// Updates the battery interface in fixed ranges.
@@ -149,5 +170,46 @@ public class InterfaceManager : MonoBehaviour
     public void SonarPressed()
     {
         GameManager.GM.SonarUsed();
+    }
+
+    public void StartMission ()
+    {
+        mainMenu.SetActive(false);
+
+        codeMenu.SetActive(true);
+    }
+
+    public void Restart()
+    {
+        CrossSceneInfo.restart = true;
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainLevel");
+    }
+
+    public void Emails()
+    {
+        mainMenu.SetActive(false);
+
+        emailMenu.SetActive(true);
+    }
+
+    public void LogOut()
+    {
+        Application.Quit();
+    }
+
+    public void BackMainMenu()
+    {
+        codeMenu.SetActive(false);
+        emailMenu.SetActive(false);
+
+        mainMenu.SetActive(true);
+    }
+
+    public void CodeOk()
+    {
+        isInMenus = false;
+        Time.timeScale = 1f;
+        codeMenu.SetActive(false);
     }
 }
