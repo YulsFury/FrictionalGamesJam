@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class EmailMenu : MonoBehaviour
 {
-    [HideInInspector] public bool isComingFromMainMenu;
-
     public bool victoryEmails = false;
 
     public GameObject creditsEmail;
@@ -31,17 +29,5 @@ public class EmailMenu : MonoBehaviour
     public void ChangeEmail(Sprite sprite)
     {
         emailShown.sprite = sprite;
-    }
-
-    public void Back()
-    {
-        if (isComingFromMainMenu)
-        {
-            GameManager.GM.IM.BackMainMenu();
-        }
-        else
-        {
-            GameManager.GM.IM.BackPauseMenu();
-        }
     }
 }

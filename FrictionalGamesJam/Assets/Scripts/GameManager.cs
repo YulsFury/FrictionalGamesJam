@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
             GM = this;
         }
 
-        DontDestroyOnLoad(GM);
+        //DontDestroyOnLoad(GM);
     }
 
     public void ReduceBatteryLevel()

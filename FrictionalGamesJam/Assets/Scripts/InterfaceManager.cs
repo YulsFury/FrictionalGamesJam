@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class InterfaceManager : MonoBehaviour
 {
     [HideInInspector] public bool isInMenus;
+    [HideInInspector] public bool isGamePlaying;
 
     [Header ("Battery")]
     public Slider batteryLevelSlider;
@@ -23,25 +24,34 @@ public class InterfaceManager : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject gameOverMenu;
     public GameObject victoryMenu;
+    public GameObject backButton;
 
     [Header("Password")]
     public string password;
 
     private void Start()
     {
-
         if (CrossSceneInfo.victoryEmails)
         {
             isInMenus = true;
+            isGamePlaying = false;
             Time.timeScale = 0f;
-            emailMenu.GetComponent<EmailMenu>().isComingFromMainMenu = true;
             emailMenu.SetActive(true);
+            backButton.SetActive(true);
         } 
         else if (!CrossSceneInfo.restart)
         {
             isInMenus = true;
+            isGamePlaying = false;
             Time.timeScale = 0f;
             mainMenu.SetActive(true);
+        }
+        else
+        {
+            isInMenus = false;
+            isGamePlaying = true;
+            Time.timeScale = 1f;
+            backButton.SetActive(true);
         }
     }
 
@@ -187,22 +197,21 @@ public class InterfaceManager : MonoBehaviour
     {
         mainMenu.SetActive(false);
 
+        backButton.SetActive(true);
         codeMenu.SetActive(true);
     }
 
     public void Restart()
     {
         CrossSceneInfo.restart = true;
-        Time.timeScale = 1f;
         SceneManager.LoadScene("MainLevel");
     }
 
-    public void Emails(bool isComingFromMainMenu)
+    public void Emails()
     {
         mainMenu.SetActive(false);
-        pauseMenu.SetActive(false); ;
 
-        emailMenu.GetComponent<EmailMenu>().isComingFromMainMenu = isComingFromMainMenu;
+        backButton.SetActive(true);
         emailMenu.SetActive(true);
     }
 
@@ -211,35 +220,20 @@ public class InterfaceManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void BackMainMenu()
-    {
-        codeMenu.SetActive(false);
-        emailMenu.SetActive(false);
-
-        mainMenu.SetActive(true);
-    }
-
     public void CodeOk()
     {
         isInMenus = false;
+        isGamePlaying = true;
         Time.timeScale = 1f;
         codeMenu.SetActive(false);
-    }
-
-    public void BackPauseMenu()
-    {
-        emailMenu.SetActive(false);
-
-        isInMenus = true;
-        Time.timeScale = 0f;
-        pauseMenu.SetActive(true);
+        backButton.SetActive(true);
     }
 
     public void Continue()
     {
         isInMenus = false;
         Time.timeScale = 1f;
-        pauseMenu.SetActive(false);
+        mainMenu.SetActive(false);
     }
 
     public void GameOver()
@@ -247,6 +241,7 @@ public class InterfaceManager : MonoBehaviour
         isInMenus = true;
         Time.timeScale = 0f;
         gameOverMenu.SetActive(true);
+        backButton.SetActive(false);
     }
 
     public void MainMenuButton()
@@ -260,6 +255,7 @@ public class InterfaceManager : MonoBehaviour
         isInMenus = true;
         Time.timeScale = 0f;
         victoryMenu.SetActive(true);
+        backButton.SetActive(false);
     }
 
     public void VictoryEmail()
@@ -267,5 +263,15 @@ public class InterfaceManager : MonoBehaviour
         CrossSceneInfo.restart = false;
         CrossSceneInfo.victoryEmails = true;
         SceneManager.LoadScene("MainLevel");
+    }
+
+    public void Back()
+    {
+        codeMenu.SetActive(false);
+        emailMenu.SetActive(false);
+
+        isInMenus = true;
+        Time.timeScale = 0f;
+        mainMenu.SetActive(true);
     }
 }
