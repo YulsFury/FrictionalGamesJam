@@ -20,17 +20,28 @@ public class InterfaceManager : MonoBehaviour
     public GameObject mainMenu;
     public GameObject codeMenu;
     public GameObject emailMenu;
+    public GameObject pauseMenu;
+    public GameObject gameOverMenu;
+    public GameObject victoryMenu;
 
     [Header("Password")]
     public string password;
 
     private void Start()
     {
-        if (!CrossSceneInfo.restart)
+
+        if (CrossSceneInfo.victoryEmails)
         {
             isInMenus = true;
             Time.timeScale = 0f;
-            mainMenu.SetActive(true); 
+            emailMenu.GetComponent<EmailMenu>().isComingFromMainMenu = true;
+            emailMenu.SetActive(true);
+        } 
+        else if (!CrossSceneInfo.restart)
+        {
+            isInMenus = true;
+            Time.timeScale = 0f;
+            mainMenu.SetActive(true);
         }
     }
 
@@ -186,10 +197,12 @@ public class InterfaceManager : MonoBehaviour
         SceneManager.LoadScene("MainLevel");
     }
 
-    public void Emails()
+    public void Emails(bool isComingFromMainMenu)
     {
         mainMenu.SetActive(false);
+        pauseMenu.SetActive(false); ;
 
+        emailMenu.GetComponent<EmailMenu>().isComingFromMainMenu = isComingFromMainMenu;
         emailMenu.SetActive(true);
     }
 
@@ -211,5 +224,48 @@ public class InterfaceManager : MonoBehaviour
         isInMenus = false;
         Time.timeScale = 1f;
         codeMenu.SetActive(false);
+    }
+
+    public void BackPauseMenu()
+    {
+        emailMenu.SetActive(false);
+
+        isInMenus = true;
+        Time.timeScale = 0f;
+        pauseMenu.SetActive(true);
+    }
+
+    public void Continue()
+    {
+        isInMenus = false;
+        Time.timeScale = 1f;
+        pauseMenu.SetActive(false);
+    }
+
+    public void GameOver()
+    {
+        isInMenus = true;
+        Time.timeScale = 0f;
+        gameOverMenu.SetActive(true);
+    }
+
+    public void MainMenuButton()
+    {
+        CrossSceneInfo.restart = false;
+        SceneManager.LoadScene("MainLevel");
+    }
+
+    public void Victory()
+    {
+        isInMenus = true;
+        Time.timeScale = 0f;
+        victoryMenu.SetActive(true);
+    }
+
+    public void VictoryEmail()
+    {
+        CrossSceneInfo.restart = false;
+        CrossSceneInfo.victoryEmails = true;
+        SceneManager.LoadScene("MainLevel");
     }
 }

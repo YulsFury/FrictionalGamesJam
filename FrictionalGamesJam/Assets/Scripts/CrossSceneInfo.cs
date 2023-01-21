@@ -5,4 +5,5 @@ using UnityEngine;
 public static class CrossSceneInfo
 {
     public static bool restart = false;
+    public static bool victoryEmails = false;
 }
