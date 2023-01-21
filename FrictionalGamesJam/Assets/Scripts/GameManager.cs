@@ -60,11 +60,11 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        SceneManager.LoadScene("GameOverMenu");
+        IM.GameOver();
     }
 
     public void Victory()
     {
-        Debug.LogWarning("VICTORY!");
+        IM.Victory();
     }
 }
