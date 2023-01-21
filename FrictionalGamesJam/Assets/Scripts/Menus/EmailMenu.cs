@@ -7,10 +7,12 @@ public class EmailMenu : MonoBehaviour
 {
     public bool victoryEmails = false;
 
+    public GameObject scrollView;
+
     public GameObject creditsEmail;
     public GameObject loreEmail;
 
-    public Image emailShown;
+    public List<GameObject> emails;
 
     private void OnEnable()
     {
@@ -24,10 +26,24 @@ public class EmailMenu : MonoBehaviour
             creditsEmail.SetActive(true);
             loreEmail.SetActive(true);
         }
+
+        scrollView.SetActive(false);
     }
 
-    public void ChangeEmail(Sprite sprite)
+    public void ChangeEmail(GameObject email)
     {
-        emailShown.sprite = sprite;
+        scrollView.SetActive(true);
+
+        foreach(GameObject e in emails)
+        {
+            if (e.Equals(email))
+            {
+                e.SetActive(true);
+            }
+            else
+            {
+                e.SetActive(false);
+            }
+        }
     }
 }
