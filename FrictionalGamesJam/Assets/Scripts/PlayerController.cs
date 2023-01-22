@@ -9,9 +9,9 @@ public class PlayerController : MonoBehaviour
     NavMeshPath path;
     Animator playerAnimator;
 
-    public SpriteRenderer sprite;
-
     [HideInInspector] public bool isUsingSonar;
+
+    public SpriteRenderer sprite;
 
     [Header("Destination sprite")]
     public GameObject playerDestination;

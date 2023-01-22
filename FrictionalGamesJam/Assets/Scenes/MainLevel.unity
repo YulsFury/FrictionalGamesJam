@@ -2740,17 +2740,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &693052173 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5589927324602471264, guid: 40d342e22aa349343b0da4791252b3d1, type: 3}
-  m_PrefabInstance: {fileID: 1095168628}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4618e0e27be3e2d4c968213b18d4b0e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &722262299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4450,7 +4439,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &986566846
 Transform:
   m_ObjectHideFlags: 0
@@ -4692,7 +4681,7 @@ MonoBehaviour:
   IM: {fileID: 1714909505}
   BC: {fileID: 1809917721}
   NMC: {fileID: 465008246}
-  PC: {fileID: 693052173}
+  PC: {fileID: 0}
   EM: {fileID: 496640999}
   KIM: {fileID: 1236118016}
 --- !u!1001 &1158885715
