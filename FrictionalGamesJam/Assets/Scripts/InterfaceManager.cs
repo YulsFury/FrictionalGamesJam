@@ -234,6 +234,7 @@ public class InterfaceManager : MonoBehaviour
         isInMenus = false;
         Time.timeScale = 1f;
         mainMenu.SetActive(false);
+        backButton.SetActive(true);
     }
 
     public void GameOver()
@@ -269,6 +270,7 @@ public class InterfaceManager : MonoBehaviour
     {
         codeMenu.SetActive(false);
         emailMenu.SetActive(false);
+        backButton.SetActive(false);
 
         isInMenus = true;
         Time.timeScale = 0f;
