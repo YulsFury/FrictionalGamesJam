@@ -21,7 +21,6 @@ public class InterfaceManager : MonoBehaviour
     public GameObject mainMenu;
     public GameObject codeMenu;
     public GameObject emailMenu;
-    public GameObject pauseMenu;
     public GameObject gameOverMenu;
     public GameObject victoryMenu;
     public GameObject backButton;
