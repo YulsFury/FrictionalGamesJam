@@ -7,12 +7,29 @@ public class EmailMenu : MonoBehaviour
 {
     public bool victoryEmails = false;
 
-    public GameObject scrollView;
+    [Header ("Buttons")]
+    public List<GameObject> victoryEmailsButtonList;
 
-    public GameObject creditsEmail;
-    public GameObject loreEmail;
+    [Header ("Emails")]
+    public List<GameObject> allEmails;
 
-    public List<GameObject> emails;
+    [Header ("Subjects")]
+    public List<GameObject> allSubjects;
+
+    [Header("Inbox")]
+    public TMPro.TMP_Text inboxNum;
+    public int inboxNumDefault;
+    public int inboxNumVictory;
+
+    [Header("Draft")]
+    public TMPro.TMP_Text draftNum;
+    public int draftNumDefault;
+    public int draftNumVictory;
+
+    [Header("Sent")]
+    public TMPro.TMP_Text sentNum;
+    public int sentNumDefault;
+    public int sentNumVictory;
 
     private void OnEnable()
     {
@@ -23,26 +40,42 @@ public class EmailMenu : MonoBehaviour
 
         if (victoryEmails)
         {
-            creditsEmail.SetActive(true);
-            loreEmail.SetActive(true);
+            foreach(GameObject button in victoryEmailsButtonList)
+            {
+                button.SetActive(true);
+            }
+
+            inboxNum.text = "(" + inboxNumVictory + ")";
+            draftNum.text = "(" + draftNumVictory + ")";
+            sentNum.text = "(" + sentNumVictory + ")";
+        }
+        else
+        {
+            inboxNum.text = "(" + inboxNumDefault + ")";
+            draftNum.text = "(" + draftNumDefault + ")";
+            sentNum.text = "(" + sentNumDefault + ")";
         }
 
-        scrollView.SetActive(false);
+        for (int i = 0; i < allEmails.Count; i++)
+        {
+            allEmails[i].SetActive(false);
+            allSubjects[i].SetActive(false);
+        }
     }
 
-    public void ChangeEmail(GameObject email)
+    public void ChangeEmail(int index)
     {
-        scrollView.SetActive(true);
-
-        foreach(GameObject e in emails)
+        for(int i = 0; i < allEmails.Count; i++)
         {
-            if (e.Equals(email))
+            if(i == index)
             {
-                e.SetActive(true);
+                allEmails[i].SetActive(true);
+                allSubjects[i].SetActive(true);
             }
             else
             {
-                e.SetActive(false);
+                allEmails[i].SetActive(false);
+                allSubjects[i].SetActive(false);
             }
         }
     }
