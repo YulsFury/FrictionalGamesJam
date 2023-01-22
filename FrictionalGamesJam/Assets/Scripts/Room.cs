@@ -12,7 +12,8 @@ public class Room : MonoBehaviour
     public Color highlightColor = Color.red;
 
     [Header("Exit related")]
-    public bool isExit;
+    bool isUploadRoom;
+    public UploadKeyItem uploadKeyItem;
     public KeyItemController keyItem;
     bool unlockKey;
     bool exitRoomIsEnabled;
@@ -21,10 +22,19 @@ public class Room : MonoBehaviour
 
     private void Awake()
     {
-        if(isExit)
+        //if(isExit)
+        //{
+        //    GetComponentInChildren<SpriteRenderer>().color = Color.magenta;
+        //}
+        if(uploadKeyItem != null)
         {
-            GetComponentInChildren<SpriteRenderer>().color = Color.magenta;
+            isUploadRoom = true;
         }
+        else
+        {
+            isUploadRoom = false;
+        }
+      
     }
     private void Start()
     {
@@ -39,6 +49,12 @@ public class Room : MonoBehaviour
             player.currentRoom = this;
             RoomExplored();
             CheckIfThereIsKey();
+
+            if(uploadKeyItem != null)
+            {
+                uploadKeyItem.ToggleAvailability(true);
+            }
+
             ToggleDoorsAvailability(true);
             if(exitRoomIsEnabled)
             {
@@ -61,6 +77,11 @@ public class Room : MonoBehaviour
             if (keyItem != null & unlockKey == true)
             {
                 keyItem.ToggleAvailability(false);
+            }
+
+            if (uploadKeyItem != null)
+            {
+                uploadKeyItem.ToggleAvailability(false);
             }
 
             if (exitRoomIsEnabled)
@@ -103,15 +124,15 @@ public class Room : MonoBehaviour
         }
     }
 
-    public void  UnableExitRoom()
-    {
-        exitRoomIsEnabled = true;
-        GetComponentInChildren<SpriteRenderer>().color = Color.green;
-    }
+    //public void  UnableExitRoom()
+    //{
+    //    exitRoomIsEnabled = true;
+    //    GetComponentInChildren<SpriteRenderer>().color = Color.green;
+    //}
 
     private void RoomExplored()
     {
-        if (!isExit)
+        if (!isUploadRoom)
         {
             GetComponentInChildren<SpriteRenderer>().color = new Color(1, 0.9f, 0.6f, 1);
         }   

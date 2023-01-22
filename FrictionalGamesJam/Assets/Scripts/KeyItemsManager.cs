@@ -12,6 +12,7 @@ public class KeyItemsManager : MonoBehaviour
     int keyItemsActivated;
 
     public Room exitRoom;
+    public UploadKeyItem uploadKeyItem;
 
     public GameObject ExitButtom;
     [HideInInspector] public GameObject exitButtonInstace;
@@ -40,13 +41,14 @@ public class KeyItemsManager : MonoBehaviour
     {
         if (keyItemsActivated == keyItemsList.Count)
         {
-            exitRoom.UnableExitRoom();
-            EnableExitButton();
+            uploadKeyItem.UnableUploadKeyItem();
+            //exitRoom.UnableExitRoom();
+            //EnableExitButton();
         }
     }
 
-    public void EnableExitButton()
-    {
-        exitButtonInstace = Instantiate(ExitButtom, exitRoom.transform.position, Quaternion.identity);
-    }
+    //public void EnableExitButton()
+    //{
+    //    exitButtonInstace = Instantiate(ExitButtom, exitRoom.transform.position, Quaternion.identity);
+    //}
 }
