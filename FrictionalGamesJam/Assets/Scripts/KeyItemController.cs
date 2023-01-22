@@ -10,7 +10,7 @@ public class KeyItemController : MonoBehaviour
     bool isAvailable;
     void Start()
     {
-        sprite = GetComponent<SpriteRenderer>();
+        sprite = GetComponentInChildren<SpriteRenderer>();
         this.gameObject.SetActive(false);
         activated = false;
         isAvailable = false;
