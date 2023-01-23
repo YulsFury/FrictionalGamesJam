@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class UploadKeyItem : MonoBehaviour
 {
+    public float scaleFactor = 1.4f;
     bool canUpload;
     bool isAvailable;
     SpriteRenderer sprite;
+    Vector3 spriteScale;
 
     private void Start()
     {
@@ -15,6 +17,7 @@ public class UploadKeyItem : MonoBehaviour
         sprite = transform.Find("SpriteRenderer").GetComponent<SpriteRenderer>();
         DisableCollisions();
         sprite.color = Color.gray;
+        spriteScale = GetComponentInChildren<SpriteRenderer>().transform.localScale;
     }
     public void UnableUploadKeyItem()
     {
@@ -32,6 +35,22 @@ public class UploadKeyItem : MonoBehaviour
             GameManager.GM.Victory();
         }
 
+    }
+
+    private void OnMouseOver()
+    {
+        if(isAvailable)
+        {
+            GetComponentInChildren<SpriteRenderer>().transform.localScale = spriteScale * scaleFactor;
+        }   
+    }
+
+    private void OnMouseExit()
+    {
+        if (isAvailable)
+        {
+            GetComponentInChildren<SpriteRenderer>().transform.localScale = spriteScale;
+        }
     }
 
     public void ToggleAvailability(bool availability)

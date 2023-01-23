@@ -36,8 +36,10 @@ public class DoorController : MonoBehaviour
     private void OnMouseDown()
     {
         //Close door
+        Debug.Log("onmopusedown");
         if (doorOpen == true & isAvailable == true && GameManager.GM.PC.isInMovementScreen && !GameManager.GM.IM.isInMenus)
         {
+            Debug.Log("cerrar");
             doorOpen = false;
             UnableCollisions();
             GetComponentInChildren<SpriteRenderer>().color = Color.red;
