@@ -33,7 +33,7 @@ public class Scanner : MonoBehaviour
 
             for (int i = 0; i < enemies.Count; i++)
             {
-                enemyRoom = enemies[0].GetComponent<EnemyController>().currentRoom;
+                enemyRoom = enemies[i].GetComponent<EnemyController>().currentRoom;
                 enemyScanRooms.Add(enemyRoom);
                 roomSprite = enemyRoom.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
                 roomSprite.color = Color.red;

@@ -25,7 +25,7 @@ public class KeyItemController : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if(isAvailable && !activated && !GameManager.GM.PC.isUsingSonar)
+        if(isAvailable && !activated && GameManager.GM.PC.isInMovementScreen)
         {
             activated = true;
             sprite.color = Color.green;

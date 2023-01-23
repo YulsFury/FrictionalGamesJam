@@ -515,8 +515,8 @@ MonoBehaviour:
   - {fileID: 5756633265895444101}
   - {fileID: 605603389568586405}
   - {fileID: 8991784831529103005}
-  movementScreen: {fileID: 8172562757956363199}
-  sonarScreen: {fileID: 327813268756465891}
+  scannerScreen: {fileID: 8172562757956363199}
+  radarScreen: {fileID: 327813268756465891}
   mainMenu: {fileID: 1080942423}
   codeMenu: {fileID: 1117317881}
   emailMenu: {fileID: 1496885749}
@@ -624,6 +624,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8185778773719097646, guid: d41d2117aeef55942a1ee9875f0dfcd9, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9098102815390232623, guid: d41d2117aeef55942a1ee9875f0dfcd9, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9098102815390232623, guid: d41d2117aeef55942a1ee9875f0dfcd9, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
@@ -895,10 +903,42 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3257158386296075051}
+    - target: {fileID: 3739141617366542712, guid: dd6a10b9e28e51747ab9a6fe8a126258, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739141617366542712, guid: dd6a10b9e28e51747ab9a6fe8a126258, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739141617366542712, guid: dd6a10b9e28e51747ab9a6fe8a126258, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3257158386296075051}
+    - target: {fileID: 3739141617366542712, guid: dd6a10b9e28e51747ab9a6fe8a126258, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739141617366542712, guid: dd6a10b9e28e51747ab9a6fe8a126258, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwitchToScannerScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739141617366542712, guid: dd6a10b9e28e51747ab9a6fe8a126258, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: InterfaceManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739141617366542712, guid: dd6a10b9e28e51747ab9a6fe8a126258, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5710300984085610518, guid: dd6a10b9e28e51747ab9a6fe8a126258, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3257158386296075051}
+    - target: {fileID: 5710300984085610518, guid: dd6a10b9e28e51747ab9a6fe8a126258, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwitchToRadarScreen
+      objectReference: {fileID: 0}
     - target: {fileID: 5926284556245437919, guid: dd6a10b9e28e51747ab9a6fe8a126258, type: 3}
       propertyPath: m_Name
       value: ScreenButtons
@@ -1091,7 +1131,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7376349419572213741, guid: 8bca65c2e0c69aa40a4f1cd7512166d6, type: 3}
       propertyPath: m_Name
-      value: MovementScreen
+      value: ScannerScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 7376349419572213741, guid: 8bca65c2e0c69aa40a4f1cd7512166d6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bca65c2e0c69aa40a4f1cd7512166d6, type: 3}
@@ -1227,10 +1271,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: RadarScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 3597565760923639190, guid: 964cb3d2933dde247924f56d634faaa9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7103635708306428480, guid: 964cb3d2933dde247924f56d634faaa9, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3257158386296075051}
+    - target: {fileID: 7103635708306428480, guid: 964cb3d2933dde247924f56d634faaa9, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RadarPressed
+      objectReference: {fileID: 0}
     - target: {fileID: 7154538751112500710, guid: 964cb3d2933dde247924f56d634faaa9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
