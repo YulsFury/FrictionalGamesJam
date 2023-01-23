@@ -142,8 +142,8 @@ public class EnemyController : MonoBehaviour
             currentNode = startingRoom.node;
         }
 
-        int numOfAdjacentsNodes = currentNode.adjacentsNodes.Count;
-        float probabilityGoingForward = (100 - probabilityGoingBack) / (numOfAdjacentsNodes - 1);
+        int numOfAdjacentsNodes = currentNode.adjacentsNodes.Count; 
+        float probabilityGoingForward = numOfAdjacentsNodes > 1 ? (100 - probabilityGoingBack) / (numOfAdjacentsNodes - 1) : (100 - probabilityGoingBack);
         float acumulatedProbability = 0;
         float randomProbability = Random.Range(0, 100);
 
@@ -249,5 +249,6 @@ public class EnemyController : MonoBehaviour
         probabilityGoingBack = 0;
         SetTarget();
         probabilityGoingBack = temp;
+        isWaitingBecauseOfDoor = false;
     }
 }
