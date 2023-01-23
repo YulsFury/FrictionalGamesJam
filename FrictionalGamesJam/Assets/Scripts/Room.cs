@@ -56,10 +56,10 @@ public class Room : MonoBehaviour
             }
 
             ToggleDoorsAvailability(true);
-            if(exitRoomIsEnabled)
-            {
-                GameManager.GM.KIM.exitButtonInstace.GetComponent<ExitButtonController>().UnableButton();
-            }
+            //if(exitRoomIsEnabled)
+            //{
+            //    GameManager.GM.KIM.exitButtonInstace.GetComponent<ExitButtonController>().UnableButton();
+            //}
         }
         else if (collision.gameObject.tag == "Enemy")
         {

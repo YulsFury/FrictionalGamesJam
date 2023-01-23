@@ -29,6 +29,7 @@ public class UploadKeyItem : MonoBehaviour
             sprite.color = Color.magenta;
             AudioManager.instance.PlayUIDeviceConect();
             //feedback de que estás subiendo archivos
+            GameManager.GM.Victory();
         }
 
     }
