@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sonar : MonoBehaviour
+public class Radar : MonoBehaviour
 {
     public float maxRadius;
     public int numberOfWaves = 4;
@@ -13,20 +13,20 @@ public class Sonar : MonoBehaviour
     public float blurTimer;
     private bool bluring = false;
     private bool active = false;
-    private bool isSonarScreenActivate = false;
+    private bool isRadarScreenActivate = false;
     private bool isFirstIteration = true;
     private List<EnemyController> enemies = new List<EnemyController>();
     private List<GameObject> enemyTrails = new List<GameObject>();
     public GameObject enemyTrail;
-    public SpriteMask sonarMask;
-    public SpriteRenderer sonarWaves;
+    public SpriteMask radarMask;
+    public SpriteRenderer radarWaves;
 
-    private IEnumerator activeSonar;
+    private IEnumerator activeRadar;
 
     private void Start()
     {
         enemies = GameManager.GM.EM.enemiesList;
-        activeSonar = UseSonar();
+        activeRadar = UseRadar();
     }
 
     public void OnDrawGizmos()
@@ -35,56 +35,56 @@ public class Sonar : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, maxRadius);
     }
 
-    public void ToggleSonarMode(bool activateSonarScreen)
+    public void ToggleRadarMode(bool activateRadarScreen)
     {
-        isSonarScreenActivate = activateSonarScreen;
+        isRadarScreenActivate = activateRadarScreen;
 
-        if (activateSonarScreen)
+        if (activateRadarScreen)
         {
-            sonarMask.transform.localScale = Vector3.zero;
+            radarMask.transform.localScale = Vector3.zero;
             GameManager.GM.PC.sprite.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
         }
         else
         {
-            sonarMask.transform.localScale = new Vector3(400, 400, 400);
+            radarMask.transform.localScale = new Vector3(400, 400, 400);
             GameManager.GM.PC.sprite.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
         }
     }
 
-    public void SonarInteraction()
+    public void RadarInteraction()
     {
         if (!active)
         {
-            ActivateSonar();
+            ActivateRadar();
         }
         else
         {
-            DeactivateSonar();
+            DeactivateRadar();
         }
     }
 
-    private void ActivateSonar()
+    private void ActivateRadar()
     {
-        StartCoroutine(activeSonar);
+        StartCoroutine(activeRadar);
         GameManager.GM.ReduceBatteryOvertime();
         active = true;
         GameManager.GM.PC.sprite.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
     }
 
-    private void DeactivateSonar()
+    private void DeactivateRadar()
     {
-        StopCoroutine(activeSonar);
-        StartCoroutine(BlurSonar());
+        StopCoroutine(activeRadar);
+        StartCoroutine(BlurRadar());
         GameManager.GM.StopReducingBatteryOvertime();
         active = false;
         GameManager.GM.PC.sprite.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
         currentRadius = 0;
-        sonarMask.transform.localScale = Vector3.zero;
-        sonarWaves.transform.localScale = Vector3.zero;
+        radarMask.transform.localScale = Vector3.zero;
+        radarWaves.transform.localScale = Vector3.zero;
         isFirstIteration = true;
     }
 
-    private IEnumerator UseSonar()
+    private IEnumerator UseRadar()
     {
         GameObject trail;
 
@@ -106,12 +106,12 @@ public class Sonar : MonoBehaviour
                 isFirstIteration = false;
             }
 
-            if (isFirstIteration && isSonarScreenActivate)
+            if (isFirstIteration && isRadarScreenActivate)
             {
-                sonarMask.transform.localScale = new Vector3(11, 11, 11) * currentRadius;
+                radarMask.transform.localScale = new Vector3(11, 11, 11) * currentRadius;
             }
 
-            sonarWaves.transform.localScale = new Vector3(11, 11, 11) * currentRadius;
+            radarWaves.transform.localScale = new Vector3(11, 11, 11) * currentRadius;
 
             for (int i = 0; i < enemies.Count; i++)
             {
@@ -122,13 +122,13 @@ public class Sonar : MonoBehaviour
                 } 
             }
 
-            StartCoroutine(BlurSonar());
+            StartCoroutine(BlurRadar());
 
             yield return new WaitForSeconds(cooldownTimer);
         }
     }
 
-    private IEnumerator BlurSonar()
+    private IEnumerator BlurRadar()
     {
         float timeLeft = blurTimer;
 

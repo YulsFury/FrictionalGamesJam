@@ -36,7 +36,7 @@ public class DoorController : MonoBehaviour
     private void OnMouseDown()
     {
         //Close door
-        if (doorOpen == true & isAvailable == true && !GameManager.GM.PC.isUsingSonar && !GameManager.GM.IM.isInMenus)
+        if (doorOpen == true & isAvailable == true && GameManager.GM.PC.isInMovementScreen && !GameManager.GM.IM.isInMenus)
         {
             doorOpen = false;
             UnableCollisions();
@@ -50,7 +50,7 @@ public class DoorController : MonoBehaviour
         }
 
         //Open door
-        else if(doorOpen == false & isAvailable == true && !GameManager.GM.PC.isUsingSonar && !GameManager.GM.IM.isInMenus)
+        else if(doorOpen == false & isAvailable == true && GameManager.GM.PC.isInMovementScreen && !GameManager.GM.IM.isInMenus)
         {
             doorOpen = true;
             DisableCollisions();

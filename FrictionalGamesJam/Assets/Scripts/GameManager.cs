@@ -47,15 +47,14 @@ public class GameManager : MonoBehaviour
         StartCoroutine(PC.GetComponent<Scanner>().ActiveScanner());
     }
 
-    public void SonarUsed()
+    public void SonarRadar()
     {
-        PC.GetComponent<Sonar>().SonarInteraction();
+        PC.GetComponent<Radar>().RadarInteraction();
     }
 
-    public void ToggleSonarMode(bool activateSonar)
+    public void ToggleRadarMode(bool activateRadar)
     {
-        PC.GetComponent<Sonar>().ToggleSonarMode(activateSonar);
-        PC.isUsingSonar = activateSonar;
+        PC.GetComponent<Radar>().ToggleRadarMode(activateRadar);
     }
 
     public void GameOver()

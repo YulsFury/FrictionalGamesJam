@@ -24,7 +24,7 @@ public class UploadKeyItem : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (isAvailable && canUpload && !GameManager.GM.PC.isUsingSonar)
+        if (isAvailable && canUpload && GameManager.GM.PC.isInMovementScreen)
         {
             sprite.color = Color.magenta;
             //feedback de que estás subiendo archivos

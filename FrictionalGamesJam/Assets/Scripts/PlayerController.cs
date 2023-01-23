@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     NavMeshPath path;
     Animator playerAnimator;
 
-    [HideInInspector] public bool isUsingSonar;
+    [HideInInspector] public bool isInMovementScreen;
 
     public SpriteRenderer sprite;
 
@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
         agent.updateUpAxis = false;
         Destination = null;
         playerAnimator = GetComponent<Animator>();
+        isInMovementScreen = true;
     }
 
     private void Update()
@@ -40,7 +41,7 @@ public class PlayerController : MonoBehaviour
     }
     public void MovePlayer(Vector3 mousePosition)
     {
-        if (!isUsingSonar && !GameManager.GM.IM.isInMenus)
+        if (isInMovementScreen && !GameManager.GM.IM.isInMenus)
         {
             target = new Vector3(Camera.main.ScreenToWorldPoint(mousePosition).x, Camera.main.ScreenToWorldPoint(mousePosition).y);
             PaintDestinationSprite();

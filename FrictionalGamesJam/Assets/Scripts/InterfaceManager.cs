@@ -14,8 +14,8 @@ public class InterfaceManager : MonoBehaviour
     public GameObject[] batteryUsageTiles;
 
     [Header("Screens")]
-    public GameObject movementScreen;
-    public GameObject sonarScreen;
+    public GameObject scannerScreen;
+    public GameObject radarScreen;
 
     [Header("Menus")]
     public GameObject mainMenu;
@@ -167,19 +167,32 @@ public class InterfaceManager : MonoBehaviour
     /// </summary>
     public void SwitchToMovementScreen()
     {
-        movementScreen.SetActive(true);
-        sonarScreen.SetActive(false);
-        GameManager.GM.ToggleSonarMode(false);
+        scannerScreen.SetActive(false);
+        radarScreen.SetActive(false);
+        GameManager.GM.ToggleRadarMode(false);
+        GameManager.GM.PC.isInMovementScreen = true;
+    }
+
+    /// <summary>
+    /// Switch the main screen elements to de Scanner Screen.
+    /// </summary>
+    public void SwitchToScannerScreen()
+    {
+        scannerScreen.SetActive(true);
+        radarScreen.SetActive(false);
+        GameManager.GM.ToggleRadarMode(false);
+        GameManager.GM.PC.isInMovementScreen = false;
     }
 
     /// <summary>
     /// Switch the main screen elements to de Sonar Screen.
     /// </summary>
-    public void SwitchToSonarScreen()
+    public void SwitchToRadarScreen()
     {
-        sonarScreen.SetActive(true);
-        movementScreen.SetActive(false);
-        GameManager.GM.ToggleSonarMode(true);
+        radarScreen.SetActive(false);
+        scannerScreen.SetActive(false);
+        GameManager.GM.ToggleRadarMode(true);
+        GameManager.GM.PC.isInMovementScreen = false;
     }
 
     public void ScannerPressed()
@@ -187,9 +200,9 @@ public class InterfaceManager : MonoBehaviour
         GameManager.GM.ScannerUsed();
     }
 
-    public void SonarPressed()
+    public void RadarPressed()
     {
-        GameManager.GM.SonarUsed();
+        GameManager.GM.SonarRadar();
     }
 
     public void StartMission ()
