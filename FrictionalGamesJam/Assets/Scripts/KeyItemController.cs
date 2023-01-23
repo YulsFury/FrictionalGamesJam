@@ -22,7 +22,9 @@ public class KeyItemController : MonoBehaviour
         this.gameObject.SetActive(false);
         activated = false;
         isAvailable = false;
+
         DisableCollisions();
+
         spriteScale = GetComponentInChildren<SpriteRenderer>().transform.localScale;
     }
 

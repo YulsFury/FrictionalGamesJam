@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 2874132755773929126}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 0.1, y: 0.07, z: 0.07}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 152111055418895045}
   m_RootOrder: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 01f6483ccd2cc234d90a03a2511f95fa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -112,7 +112,7 @@ Transform:
   m_GameObject: {fileID: 8095992642596453994}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.0338416, y: -1.3356636, z: -2.5664158}
-  m_LocalScale: {x: 0.1, y: 0.07, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7461106330706605303}
@@ -153,7 +153,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.01211334, y: -0.027569935}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -164,7 +164,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9755343, y: 4.999033}
+  m_Size: {x: 0.24724911, y: 0.7661989}
   m_EdgeRadius: 0
 --- !u!114 &5110767339014574227
 MonoBehaviour:
@@ -178,4 +178,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f76bebc6eff1be47b9fe501c9a4de03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scaleFactor: 1.4
   DecreaseEneryRate: 0
+  NonInteractableClosedcolor:
+    serializedVersion: 2
+    rgba: 4279177015
+  NonInteractableOpenedColor:
+    serializedVersion: 2
+    rgba: 4278988303
+  InteractableClosedColor:
+    serializedVersion: 2
+    rgba: 4278190335
+  InteractableOpenedColor:
+    serializedVersion: 2
+    rgba: 4278255386
+  MouseOverColor:
+    serializedVersion: 2
+    rgba: 4283354060

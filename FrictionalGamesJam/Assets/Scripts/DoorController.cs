@@ -5,17 +5,28 @@ using UnityEngine;
 public class DoorController : MonoBehaviour
 {
 
+    public float scaleFactor = 1.4f;
     bool doorOpen;
     public float DecreaseEneryRate;
     bool isAvailable;
+    Vector3 spriteScale;
+    SpriteRenderer sprite;
 
-
+    [Header("Interactable Colors")]
+    public Color32 NonInteractableClosedcolor;
+    public Color32 NonInteractableOpenedColor;
+    public Color32 InteractableClosedColor;
+    public Color32 InteractableOpenedColor;
+    public Color32 MouseOverColor;
     void Start()
     {
         doorOpen = true;
         isAvailable = false;
 
         DisableCollisions();
+
+        sprite = GetComponentInChildren<SpriteRenderer>();
+        spriteScale = GetComponentInChildren<SpriteRenderer>().transform.localScale;
     }
 
 
@@ -36,13 +47,13 @@ public class DoorController : MonoBehaviour
     private void OnMouseDown()
     {
         //Close door
-        Debug.Log("onmopusedown");
         if (doorOpen == true & isAvailable == true && GameManager.GM.PC.isInMovementScreen && !GameManager.GM.IM.isInMenus)
         {
-            Debug.Log("cerrar");
             doorOpen = false;
             UnableCollisions();
-            GetComponentInChildren<SpriteRenderer>().color = Color.red;
+            sprite.color = InteractableClosedColor;
+
+            GetComponentInChildren<SpriteRenderer>().transform.localScale = spriteScale;
 
             GameManager.GM.ReduceBatteryOvertime();
 
@@ -57,14 +68,7 @@ public class DoorController : MonoBehaviour
             doorOpen = true;
             DisableCollisions();
 
-            if(isAvailable)
-            {
-                GetComponentInChildren<SpriteRenderer>().color = Color.green;
-            }
-            else
-            {
-                GetComponentInChildren<SpriteRenderer>().color = Color.white;
-            }
+            UpdateDoorColor();
 
             GameManager.GM.StopReducingBatteryOvertime();
 
@@ -73,6 +77,24 @@ public class DoorController : MonoBehaviour
             AudioManager.instance.PlayOpenDoor();
         }
 
+    }
+
+    private void OnMouseOver()
+    {
+        if (isAvailable)
+        {
+            GetComponentInChildren<SpriteRenderer>().transform.localScale = spriteScale * scaleFactor;
+            sprite.color = MouseOverColor;
+        }
+    }
+
+    private void OnMouseExit()
+    {
+        if (isAvailable)
+        {
+            GetComponentInChildren<SpriteRenderer>().transform.localScale = spriteScale;
+            UpdateDoorColor();
+        }
     }
 
     void DisableCollisions()
@@ -100,11 +122,9 @@ public class DoorController : MonoBehaviour
         if(availability)
         {
             isAvailable = true;
-            if (doorOpen)
-            {
-                GetComponentInChildren<SpriteRenderer>().color = Color.green;
-            }
-                
+            UpdateDoorColor();
+
+
         }
 
         else
@@ -112,11 +132,34 @@ public class DoorController : MonoBehaviour
             if (!GameManager.GM.PC.currentRoom.roomDoors.Contains(this))
             {
                 isAvailable = false;
-                if(doorOpen)
-                {
-                    GetComponentInChildren<SpriteRenderer>().color = Color.white;
-                }           
+                UpdateDoorColor();
             }            
+        }
+    }
+
+    private void UpdateDoorColor()
+    {
+        if(doorOpen)
+        {
+            if(isAvailable)
+            {
+                sprite.color = InteractableOpenedColor;
+            }
+            else
+            {
+                sprite.color = NonInteractableOpenedColor;
+            }
+        }
+        else if (!doorOpen)
+        {
+            if (isAvailable)
+            {
+                sprite.color = InteractableClosedColor;
+            }
+            else
+            {
+                sprite.color = NonInteractableClosedcolor;
+            }
         }
     }
 }
