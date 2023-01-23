@@ -108,7 +108,7 @@ public class Radar : MonoBehaviour
 
             if (isFirstIteration && isRadarScreenActivate)
             {
-                radarMask.transform.localScale = new Vector3(11, 11, 11) * currentRadius;
+                radarMask.transform.localScale = Vector3.one * currentRadius;
             }
 
             radarWaves.transform.localScale = Vector3.one * currentRadius;

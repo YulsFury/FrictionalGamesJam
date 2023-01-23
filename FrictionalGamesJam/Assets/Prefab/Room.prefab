@@ -235,5 +235,5 @@ MonoBehaviour:
   roomDoors: []
   node: {fileID: 0}
   highlightColor: {r: 1, g: 0, b: 0, a: 1}
-  isExit: 0
+  uploadKeyItem: {fileID: 0}
   keyItem: {fileID: 0}
