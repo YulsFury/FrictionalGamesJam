@@ -37,19 +37,23 @@ public class Radar : MonoBehaviour
 
     public void ToggleRadarMode(bool activateRadarScreen)
     {
-        isRadarScreenActivate = activateRadarScreen;
-
         if (activateRadarScreen)
         {
-            radarMask.transform.localScale = Vector3.zero;
-
-            if (active)
+            if (!isRadarScreenActivate)
             {
-                ActivateRadar();
+                isRadarScreenActivate = activateRadarScreen;
+
+                radarMask.transform.localScale = Vector3.zero;
+
+                if (active)
+                {
+                    ActivateRadar();
+                }
             }
         }
         else
         {
+            isRadarScreenActivate = activateRadarScreen;
             DeactivateRadar();
             radarMask.transform.localScale = new Vector3(400, 400, 400);
         }
@@ -88,6 +92,7 @@ public class Radar : MonoBehaviour
 
     private IEnumerator UseRadar()
     {
+        Debug.Log("Hola");
         GameObject trail;
 
         numberOfWaves = numberOfWaves > 0 ? numberOfWaves : 1;
@@ -108,7 +113,7 @@ public class Radar : MonoBehaviour
 
             if (isFirstIteration && isRadarScreenActivate)
             {
-                radarMask.transform.localScale = Vector3.one * currentRadius;
+                radarMask.transform.localScale = new Vector3(11,11,11) * currentRadius;
             }
 
             radarWaves.transform.localScale = Vector3.one * currentRadius;
