@@ -29,6 +29,7 @@ public class KeyItemController : MonoBehaviour
         {
             activated = true;
             sprite.color = Color.green;
+            AudioManager.instance.PlayUIDeviceDisconect();
             GameManager.GM.KIM.AddActivatedKeyItem();
         }
                     

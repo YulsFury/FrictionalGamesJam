@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
 
-public class UIAudioManager : MonoBehaviour
+public class AudioManager : MonoBehaviour
 {
-    public static UIAudioManager instance;
+    public static AudioManager instance;
 
     [SerializeField]
     public FMODUnity.EventReference uiConfirm;

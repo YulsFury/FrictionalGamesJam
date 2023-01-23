@@ -27,6 +27,7 @@ public class UploadKeyItem : MonoBehaviour
         if (isAvailable && canUpload && GameManager.GM.PC.isInMovementScreen)
         {
             sprite.color = Color.magenta;
+            AudioManager.instance.PlayUIDeviceConect();
             //feedback de que estás subiendo archivos
         }
 

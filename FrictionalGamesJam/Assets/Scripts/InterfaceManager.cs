@@ -171,6 +171,7 @@ public class InterfaceManager : MonoBehaviour
         radarScreen.SetActive(false);
         GameManager.GM.ToggleRadarMode(false);
         GameManager.GM.PC.isInMovementScreen = true;
+        AudioManager.instance.PlayUIForward();
     }
 
     /// <summary>
@@ -182,10 +183,11 @@ public class InterfaceManager : MonoBehaviour
         radarScreen.SetActive(false);
         GameManager.GM.ToggleRadarMode(false);
         GameManager.GM.PC.isInMovementScreen = false;
+        AudioManager.instance.PlayUIForward();
     }
 
     /// <summary>
-    /// Switch the main screen elements to de Sonar Screen.
+    /// Switch the main screen elements to de Radar Screen.
     /// </summary>
     public void SwitchToRadarScreen()
     {
@@ -193,16 +195,19 @@ public class InterfaceManager : MonoBehaviour
         scannerScreen.SetActive(false);
         GameManager.GM.ToggleRadarMode(true);
         GameManager.GM.PC.isInMovementScreen = false;
+        AudioManager.instance.PlayUIForward();
     }
 
     public void ScannerPressed()
     {
         GameManager.GM.ScannerUsed();
+        AudioManager.instance.PlayUIForward();
     }
 
     public void RadarPressed()
     {
         GameManager.GM.SonarRadar();
+        AudioManager.instance.PlayUIForward();
     }
 
     public void StartMission ()
@@ -216,9 +221,8 @@ public class InterfaceManager : MonoBehaviour
     public void Restart()
     {
         CrossSceneInfo.restart = true;
-
-        UIAudioManager.instance.PlayUIForward();
-
+        gameOverMenu.SetActive(false);
+        AudioManager.instance.PlayUIForward();
         SceneManager.LoadScene("MainLevel");
     }
 
@@ -229,12 +233,12 @@ public class InterfaceManager : MonoBehaviour
         backButton.SetActive(true);
         emailMenu.SetActive(true);
 
-        UIAudioManager.instance.PlayUIForward();
+        AudioManager.instance.PlayUIForward();
     }
 
     public void LogOut()
     {
-        UIAudioManager.instance.PlayUIBack();
+        AudioManager.instance.PlayUIBack();
         Application.Quit();
     }
 
@@ -290,7 +294,7 @@ public class InterfaceManager : MonoBehaviour
         emailMenu.SetActive(false);
         backButton.SetActive(false);
 
-        UIAudioManager.instance.PlayUIBack();
+        AudioManager.instance.PlayUIBack();
 
         isInMenus = true;
         Time.timeScale = 0f;

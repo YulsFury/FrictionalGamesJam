@@ -34,7 +34,7 @@ public class CodeMenu : MonoBehaviour
                 okButton.interactable = true;
             }
         }
-        UIAudioManager.instance.PlayUIForward();
+        AudioManager.instance.PlayUIForward();
     }
 
     public void C()
@@ -45,7 +45,7 @@ public class CodeMenu : MonoBehaviour
         {
             okButton.interactable = false;
         }
-        UIAudioManager.instance.PlayUIError();
+        AudioManager.instance.PlayUIError();
     }
 
     public void OK()
@@ -53,14 +53,14 @@ public class CodeMenu : MonoBehaviour
         if(password.text == validPassword)
         {
             GameManager.GM.IM.CodeOk();
-            UIAudioManager.instance.PlayUIGranted();
+            AudioManager.instance.PlayUIConfirm();
         }
         else
         {
             image.color = wrongColor;
             password.text = "";
             okButton.interactable = false;
-            UIAudioManager.instance.PlayUINegative();
+            AudioManager.instance.PlayUINegative();
         }
     }
 }

@@ -79,6 +79,6 @@ public class EmailMenu : MonoBehaviour
             }
         }
 
-        UIAudioManager.instance.PlayUIForward();
+        AudioManager.instance.PlayUIForward();
     }
 }

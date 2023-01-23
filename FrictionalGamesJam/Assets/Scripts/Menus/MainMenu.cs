@@ -29,12 +29,12 @@ public class MainMenu : MonoBehaviour
         if (IM.isGamePlaying)
         {
             IM.Continue();
-            UIAudioManager.instance.PlayUIForward();
+            AudioManager.instance.PlayUIForward();
         }
         else
         {
             IM.StartMission();
-            UIAudioManager.instance.PlayUIForward();
+            AudioManager.instance.PlayUIForward();
         }
     }
 }
