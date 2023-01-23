@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 29489780}
   - component: {fileID: 29489781}
   m_Layer: 0
-  m_Name: SonarWaves
+  m_Name: RadarWaves
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 29489779}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 914699412}
   m_RootOrder: 1
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0, g: 1, b: 0.027679205, a: 0.5803922}
   m_FlipX: 0
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 914699412}
   m_Layer: 0
-  m_Name: SonarSprites
+  m_Name: RadarSprites
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 1681532383}
   - component: {fileID: 1681532384}
   m_Layer: 0
-  m_Name: SonarMask
+  m_Name: RadarMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -415,8 +415,8 @@ MonoBehaviour:
   cooldownTimer: 1
   blurTimer: 2
   enemyTrail: {fileID: 6233763113570792147, guid: 77369b0171770f54ca7ecec17fc6f71c, type: 3}
-  sonarMask: {fileID: 1681532384}
-  sonarWaves: {fileID: 29489781}
+  radarMask: {fileID: 1681532384}
+  radarWaves: {fileID: 29489781}
 --- !u!114 &6860699110903029660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,7 +430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentRoom: {fileID: 0}
-  isUsingSonar: 0
+  isInMovementScreen: 0
   sprite: {fileID: 7040009398087194517}
   playerDestination: {fileID: 3981243849827471533, guid: 4152cb6fea2869a47bc4cdd8e76779a4, type: 3}
 --- !u!95 &1830317057

@@ -4334,26 +4334,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 29489779, guid: 40d342e22aa349343b0da4791252b3d1, type: 3}
-      propertyPath: m_Name
-      value: RadarWaves
-      objectReference: {fileID: 0}
-    - target: {fileID: 914699411, guid: 40d342e22aa349343b0da4791252b3d1, type: 3}
-      propertyPath: m_Name
-      value: RadarSprites
-      objectReference: {fileID: 0}
-    - target: {fileID: 1681532382, guid: 40d342e22aa349343b0da4791252b3d1, type: 3}
-      propertyPath: m_Name
-      value: RadarMask
-      objectReference: {fileID: 0}
-    - target: {fileID: 1252290144907779449, guid: 40d342e22aa349343b0da4791252b3d1, type: 3}
-      propertyPath: radarMask
-      value: 
-      objectReference: {fileID: 1448910905}
-    - target: {fileID: 1252290144907779449, guid: 40d342e22aa349343b0da4791252b3d1, type: 3}
-      propertyPath: radarWaves
-      value: 
-      objectReference: {fileID: 1521073628}
     - target: {fileID: 5589927324602471199, guid: 40d342e22aa349343b0da4791252b3d1, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -5480,11 +5460,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e40ef09666adb4945a814c38a34a891e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!331 &1448910905 stripped
-SpriteMask:
-  m_CorrespondingSourceObject: {fileID: 1681532384, guid: 40d342e22aa349343b0da4791252b3d1, type: 3}
-  m_PrefabInstance: {fileID: 1095168628}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1463434124
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5662,11 +5637,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2809149507337804929, guid: 8603a9b94f9158044b913819075c420a, type: 3}
   m_PrefabInstance: {fileID: 1463434124}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &1521073628 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 29489781, guid: 40d342e22aa349343b0da4791252b3d1, type: 3}
-  m_PrefabInstance: {fileID: 1095168628}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1556814064
 PrefabInstance:

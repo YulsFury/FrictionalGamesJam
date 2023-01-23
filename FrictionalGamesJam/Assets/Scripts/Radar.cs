@@ -43,9 +43,15 @@ public class Radar : MonoBehaviour
         {
             radarMask.transform.localScale = Vector3.zero;
             GameManager.GM.PC.sprite.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
+
+            if (active)
+            {
+                ActivateRadar();
+            }
         }
         else
         {
+            DeactivateRadar();
             radarMask.transform.localScale = new Vector3(400, 400, 400);
             GameManager.GM.PC.sprite.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
         }
@@ -56,18 +62,20 @@ public class Radar : MonoBehaviour
         if (!active)
         {
             ActivateRadar();
+            GameManager.GM.ReduceBatteryOvertime();
+            active = true;
         }
         else
         {
             DeactivateRadar();
+            GameManager.GM.StopReducingBatteryOvertime();
+            active = false;
         }
     }
 
     private void ActivateRadar()
     {
         StartCoroutine(activeRadar);
-        GameManager.GM.ReduceBatteryOvertime();
-        active = true;
         GameManager.GM.PC.sprite.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
     }
 
@@ -75,8 +83,6 @@ public class Radar : MonoBehaviour
     {
         StopCoroutine(activeRadar);
         StartCoroutine(BlurRadar());
-        GameManager.GM.StopReducingBatteryOvertime();
-        active = false;
         GameManager.GM.PC.sprite.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
         currentRadius = 0;
         radarMask.transform.localScale = Vector3.zero;
