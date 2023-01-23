@@ -92,7 +92,6 @@ public class Radar : MonoBehaviour
 
     private IEnumerator UseRadar()
     {
-        Debug.Log("Hola");
         GameObject trail;
 
         numberOfWaves = numberOfWaves > 0 ? numberOfWaves : 1;
