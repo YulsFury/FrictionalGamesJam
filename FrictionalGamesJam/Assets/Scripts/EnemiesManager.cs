@@ -7,6 +7,10 @@ public class EnemiesManager : MonoBehaviour
     public GameObject enemiesGameObject;
     [HideInInspector] public List<EnemyController> enemiesList;
 
+    [Header("Speed")]
+    public float dafaultSpeed;
+    public float chaseSpeed;
+
     [Header("Path finding")]
     public float probabilityGoingBack;
 

@@ -22,20 +22,28 @@ public class CodeMenu : MonoBehaviour
         defaultColor = image.color;
     }
 
-    private void Update()
-    {
-        okButton.interactable = password.text.Length >= validPassword.Length;
-    }
-
     public void Number(int i)
     {
-        image.color = defaultColor;
-        password.text += i;
+        if(password.text.Length < validPassword.Length)
+        {
+            image.color = defaultColor;
+            password.text += i;
+
+            if(password.text.Length == validPassword.Length)
+            {
+                okButton.interactable = true;
+            }
+        }
     }
 
     public void C()
     {
         password.text = password.text.Length > 0 ? password.text.Remove(password.text.Length - 1) : password.text;
+
+        if(okButton.interactable == true)
+        {
+            okButton.interactable = false;
+        }
     }
 
     public void OK()

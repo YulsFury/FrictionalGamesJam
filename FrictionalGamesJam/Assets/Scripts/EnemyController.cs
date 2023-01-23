@@ -21,6 +21,9 @@ public class EnemyController : MonoBehaviour
 
     [HideInInspector] public Room currentRoom;
 
+
+    private float defaultSpeed;
+    private float chaseSpeed;
     private float probabilityGoingBack;
     private float minTimeBeforeGoingAfterPlayer;
     private float maxTimeBeforeGoingAfterPlayer;
@@ -42,6 +45,7 @@ public class EnemyController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        agent.speed = defaultSpeed;
 
         currentRoom = startingRoom;
 
@@ -53,8 +57,12 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
+        agent.speed = isChasing ? chaseSpeed : defaultSpeed;
+
         if (isChasing)
         {
+            agent.speed = chaseSpeed;
+
             if (hideEnemy)
             {
                 sprite.enabled = IsInSameFloorAsPlayer();
@@ -161,6 +169,8 @@ public class EnemyController : MonoBehaviour
 
     public void InitializeValues(EnemiesManager manager)
     {
+        defaultSpeed = manager.dafaultSpeed;
+        chaseSpeed = manager.chaseSpeed;
         probabilityGoingBack = manager.probabilityGoingBack;
         minTimeBeforeGoingAfterPlayer = manager.minTimeBeforeGoingAfterPlayer;
         maxTimeBeforeGoingAfterPlayer = manager.maxTimeBeforeGoingAfterPlayer;
