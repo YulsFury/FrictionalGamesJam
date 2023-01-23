@@ -189,7 +189,7 @@ public class InterfaceManager : MonoBehaviour
     /// </summary>
     public void SwitchToRadarScreen()
     {
-        radarScreen.SetActive(false);
+        radarScreen.SetActive(true);
         scannerScreen.SetActive(false);
         GameManager.GM.ToggleRadarMode(true);
         GameManager.GM.PC.isInMovementScreen = false;
