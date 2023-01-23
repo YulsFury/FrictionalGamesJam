@@ -12,7 +12,6 @@ public class AudioManager : MonoBehaviour
     public FMODUnity.EventReference uiDeviceConect;
     public FMODUnity.EventReference uiDeviceDisconect;
     public FMODUnity.EventReference uiError;
-    public FMODUnity.EventReference uiFolderClick;
     public FMODUnity.EventReference uiForward;
     public FMODUnity.EventReference uiGranted;
     public FMODUnity.EventReference uiNegative;
@@ -20,6 +19,13 @@ public class AudioManager : MonoBehaviour
     public FMODUnity.EventReference uiShutdown;
     public FMODUnity.EventReference uiStartUp;
     public FMODUnity.EventReference uiBack;
+    public FMODUnity.EventReference openDoor;
+    public FMODUnity.EventReference closeDoor;
+    public FMODUnity.EventReference radar;
+    public FMODUnity.EventReference playerDestination;
+
+    public FMODUnity.EventReference batteryOvertime;
+    private FMOD.Studio.EventInstance batteryOvertimeInst;
 
     void Awake()
     {
@@ -55,9 +61,9 @@ public class AudioManager : MonoBehaviour
     {
         RuntimeManager.PlayOneShot(uiError);
     }
-    public void PlayUIFolderClick()
+    public void PlayPlayerDestination()
     {
-        RuntimeManager.PlayOneShot(uiFolderClick);
+        RuntimeManager.PlayOneShot(playerDestination);
     }
     public void PlayUIGranted()
     {
@@ -82,5 +88,30 @@ public class AudioManager : MonoBehaviour
     public void PlayUIBack()
     {
         RuntimeManager.PlayOneShot(uiBack);
+    }
+    public void PlayOpenDoor()
+    {
+        RuntimeManager.PlayOneShot(openDoor);
+    }
+    public void PlayCloseDoor()
+    {
+        RuntimeManager.PlayOneShot(closeDoor);
+    }
+
+    public void PlayRadar()
+    {
+        RuntimeManager.PlayOneShot(radar);
+    }
+
+    public void PlayBatteryOvertime()
+    {
+        batteryOvertimeInst = FMODUnity.RuntimeManager.CreateInstance(batteryOvertime);
+        batteryOvertimeInst.setParameterByNameWithLabel("Loop", "Play");
+        batteryOvertimeInst.start();
+    }
+
+    public void StopBatteryOvertime()
+    {
+        batteryOvertimeInst.setParameterByNameWithLabel("Loop", "Silence");
     }
 }

@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
             target = new Vector3(Camera.main.ScreenToWorldPoint(mousePosition).x, Camera.main.ScreenToWorldPoint(mousePosition).y);
             PaintDestinationSprite();
             SetAgentPosition(target);
-            AudioManager.instance.PlayUIFolderClick();
+            AudioManager.instance.PlayPlayerDestination();
         }
     }
     void SetAgentPosition(Vector3 target)

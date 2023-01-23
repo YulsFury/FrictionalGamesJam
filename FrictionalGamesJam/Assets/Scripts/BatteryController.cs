@@ -52,6 +52,7 @@ public class BatteryController : MonoBehaviour
         if (elementsUsingBattery == 1)
         {
             StartCoroutine(decreaseOverTimeCoroutine);
+            AudioManager.instance.PlayBatteryOvertime();
         }
     }
 
@@ -67,6 +68,7 @@ public class BatteryController : MonoBehaviour
         if (elementsUsingBattery == 0)
         {
             StopCoroutine(decreaseOverTimeCoroutine);
+            AudioManager.instance.StopBatteryOvertime();
         }
     }
 

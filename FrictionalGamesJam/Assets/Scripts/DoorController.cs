@@ -48,7 +48,7 @@ public class DoorController : MonoBehaviour
 
             //Animación sellar puerta
 
-            //Sonido sellar puerta
+            AudioManager.instance.PlayCloseDoor();
         }
 
         //Open door
@@ -70,7 +70,7 @@ public class DoorController : MonoBehaviour
 
             //Animación dejar de sella puerta
 
-            //Sonido dejar de sellar puerta
+            AudioManager.instance.PlayOpenDoor();
         }
 
     }
