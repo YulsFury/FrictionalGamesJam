@@ -97,6 +97,7 @@ public class Radar : MonoBehaviour
         numberOfWaves = numberOfWaves > 0 ? numberOfWaves : 1;
         float radiusPerWave = maxRadius / numberOfWaves;
 
+        AudioManager.instance.PlayRadar();
 
         while (true)
         {
@@ -108,6 +109,8 @@ public class Radar : MonoBehaviour
             {
                 currentRadius = 0;
                 isFirstIteration = false;
+
+                AudioManager.instance.PlayRadar();
             }
 
             if (isFirstIteration && isRadarScreenActivate)
