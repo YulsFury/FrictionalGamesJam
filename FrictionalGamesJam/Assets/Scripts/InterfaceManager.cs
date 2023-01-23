@@ -172,6 +172,7 @@ public class InterfaceManager : MonoBehaviour
         GameManager.GM.ToggleRadarMode(false);
         GameManager.GM.PC.isInMovementScreen = true;
         AudioManager.instance.PlayUIForward();
+        GameManager.GM.RM.UpdateRoomColorOfRooms();
     }
 
     /// <summary>
@@ -184,6 +185,7 @@ public class InterfaceManager : MonoBehaviour
         GameManager.GM.ToggleRadarMode(false);
         GameManager.GM.PC.isInMovementScreen = false;
         AudioManager.instance.PlayUIForward();
+        GameManager.GM.RM.ScannerRadarChangeRoomColorOfRooms();
     }
 
     /// <summary>
@@ -196,6 +198,7 @@ public class InterfaceManager : MonoBehaviour
         GameManager.GM.ToggleRadarMode(true);
         GameManager.GM.PC.isInMovementScreen = false;
         AudioManager.instance.PlayUIForward();
+        GameManager.GM.RM.ScannerRadarChangeRoomColorOfRooms();
     }
 
     public void ScannerPressed()

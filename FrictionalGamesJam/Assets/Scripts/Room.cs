@@ -7,18 +7,21 @@ public class Room : MonoBehaviour
     PlayerController player;
     public List<DoorController> roomDoors;
     public NavMeshNode node;
+    private bool isExplored;
 
     [Header("Debbug")]
     public Color highlightColor = Color.red;
 
-    [Header("Exit related")]
     bool isUploadRoom;
     public UploadKeyItem uploadKeyItem;
     public KeyItemController keyItem;
     bool unlockKey;
     //bool exitRoomIsEnabled;
-   
 
+    [Header("Interactable Colors")]
+    public Color32 ExploredRoomColor;
+    public Color32 UnexploredRoomColor;
+    public Color32 RadarScannerRoomColor;
 
     private void Awake()
     {
@@ -40,6 +43,10 @@ public class Room : MonoBehaviour
     {
         player = FindObjectOfType<PlayerController>();
         //exitRoomIsEnabled = false;
+
+        isExplored = false;
+
+        GetComponentInChildren<SpriteRenderer>().color = UnexploredRoomColor;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -135,8 +142,26 @@ public class Room : MonoBehaviour
     {
         if (!isUploadRoom)
         {
-            GetComponentInChildren<SpriteRenderer>().color = new Color(1, 0.9f, 0.6f, 1);
+            isExplored = true;
+            GetComponentInChildren<SpriteRenderer>().color = ExploredRoomColor;
         }   
+    }
+
+    public void ScannerRadarChangeRoomColor()
+    {
+        GetComponentInChildren<SpriteRenderer>().color = RadarScannerRoomColor;
+    }
+
+    public void UpdateRoomColor()
+    {
+        if(isExplored)
+        {
+            GetComponentInChildren<SpriteRenderer>().color = ExploredRoomColor;
+        }
+        else
+        {
+            GetComponentInChildren<SpriteRenderer>().color = UnexploredRoomColor;
+        }
     }
 
     private void OnDrawGizmosSelected()
