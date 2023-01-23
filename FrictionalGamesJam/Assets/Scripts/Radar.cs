@@ -42,7 +42,6 @@ public class Radar : MonoBehaviour
         if (activateRadarScreen)
         {
             radarMask.transform.localScale = Vector3.zero;
-            GameManager.GM.PC.sprite.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
 
             if (active)
             {
@@ -53,7 +52,6 @@ public class Radar : MonoBehaviour
         {
             DeactivateRadar();
             radarMask.transform.localScale = new Vector3(400, 400, 400);
-            GameManager.GM.PC.sprite.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
         }
     }
 
@@ -76,14 +74,12 @@ public class Radar : MonoBehaviour
     private void ActivateRadar()
     {
         StartCoroutine(activeRadar);
-        GameManager.GM.PC.sprite.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
     }
 
     private void DeactivateRadar()
     {
         StopCoroutine(activeRadar);
         StartCoroutine(BlurRadar());
-        GameManager.GM.PC.sprite.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
         currentRadius = 0;
         radarMask.transform.localScale = Vector3.zero;
         radarWaves.transform.localScale = Vector3.zero;
@@ -103,12 +99,10 @@ public class Radar : MonoBehaviour
             if(currentRadius < maxRadius)
             {
                 currentRadius = currentRadius + radiusPerWave;
-                GameManager.GM.PC.sprite.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
             }
             else
             {
                 currentRadius = 0;
-                GameManager.GM.PC.sprite.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
                 isFirstIteration = false;
             }
 
@@ -117,7 +111,7 @@ public class Radar : MonoBehaviour
                 radarMask.transform.localScale = new Vector3(11, 11, 11) * currentRadius;
             }
 
-            radarWaves.transform.localScale = new Vector3(11, 11, 11) * currentRadius;
+            radarWaves.transform.localScale = Vector3.one * currentRadius;
 
             for (int i = 0; i < enemies.Count; i++)
             {

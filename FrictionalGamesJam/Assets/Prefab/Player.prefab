@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 7618a883d6021a24d8153d620266f7a2, type: 3}
   m_Color: {r: 0, g: 1, b: 0.027679205, a: 0.5803922}
   m_FlipX: 0
   m_FlipY: 0
@@ -282,7 +282,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 1
+  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &5589927324602471267
 GameObject:
@@ -411,8 +411,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxRadius: 3
-  numberOfWaves: 4
-  cooldownTimer: 1
+  numberOfWaves: 15
+  cooldownTimer: 0.1
   blurTimer: 2
   enemyTrail: {fileID: 6233763113570792147, guid: 77369b0171770f54ca7ecec17fc6f71c, type: 3}
   radarMask: {fileID: 1681532384}
