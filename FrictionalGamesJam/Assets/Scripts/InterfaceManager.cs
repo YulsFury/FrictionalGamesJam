@@ -226,6 +226,7 @@ public class InterfaceManager : MonoBehaviour
         CrossSceneInfo.restart = true;
         gameOverMenu.SetActive(false);
         AudioManager.instance.PlayUIForward();
+        Time.timeScale = 1f;
         SceneManager.LoadScene("MainLevel");
     }
 
