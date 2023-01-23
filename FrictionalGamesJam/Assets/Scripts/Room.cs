@@ -16,7 +16,7 @@ public class Room : MonoBehaviour
     public UploadKeyItem uploadKeyItem;
     public KeyItemController keyItem;
     bool unlockKey;
-    bool exitRoomIsEnabled;
+    //bool exitRoomIsEnabled;
    
 
 
@@ -39,7 +39,7 @@ public class Room : MonoBehaviour
     private void Start()
     {
         player = FindObjectOfType<PlayerController>();
-        exitRoomIsEnabled = false;
+        //exitRoomIsEnabled = false;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -84,10 +84,10 @@ public class Room : MonoBehaviour
                 uploadKeyItem.ToggleAvailability(false);
             }
 
-            if (exitRoomIsEnabled)
-            {
-                GameManager.GM.KIM.exitButtonInstace.GetComponent<ExitButtonController>().DisableButton();
-            }
+            //if (exitRoomIsEnabled)
+            //{
+            //    GameManager.GM.KIM.exitButtonInstace.GetComponent<ExitButtonController>().DisableButton();
+            //}
         }
     }
 
@@ -104,6 +104,7 @@ public class Room : MonoBehaviour
         foreach(DoorController door in roomDoors)
         {    
             door.ToggleAvailability(availability);
+            door.UpdateDoorColor();
         }
     }
 

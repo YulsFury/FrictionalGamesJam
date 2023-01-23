@@ -27,6 +27,8 @@ public class DoorController : MonoBehaviour
 
         sprite = GetComponentInChildren<SpriteRenderer>();
         spriteScale = GetComponentInChildren<SpriteRenderer>().transform.localScale;
+
+        UpdateDoorColor();
     }
 
 
@@ -41,6 +43,8 @@ public class DoorController : MonoBehaviour
             //Animación abrirse puerta
         }
     }
+
+
 
     //Close or open door
 
@@ -137,7 +141,7 @@ public class DoorController : MonoBehaviour
         }
     }
 
-    private void UpdateDoorColor()
+    public void UpdateDoorColor()
     {
         if(doorOpen)
         {
