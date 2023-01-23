@@ -34,6 +34,7 @@ public class CodeMenu : MonoBehaviour
                 okButton.interactable = true;
             }
         }
+        UIAudioManager.instance.PlayUIForward();
     }
 
     public void C()
@@ -44,6 +45,7 @@ public class CodeMenu : MonoBehaviour
         {
             okButton.interactable = false;
         }
+        UIAudioManager.instance.PlayUIError();
     }
 
     public void OK()
@@ -51,11 +53,14 @@ public class CodeMenu : MonoBehaviour
         if(password.text == validPassword)
         {
             GameManager.GM.IM.CodeOk();
+            UIAudioManager.instance.PlayUIGranted();
         }
         else
         {
             image.color = wrongColor;
             password.text = "";
+            okButton.interactable = false;
+            UIAudioManager.instance.PlayUINegative();
         }
     }
 }

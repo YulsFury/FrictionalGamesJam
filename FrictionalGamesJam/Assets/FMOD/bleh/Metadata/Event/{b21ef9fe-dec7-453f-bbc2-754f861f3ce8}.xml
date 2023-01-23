@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{b21ef9fe-dec7-453f-bbc2-754f861f3ce8}">
 		<property name="name">
-			<value>pathOS_ omnitulconfigured</value>
+			<value>pathOS_ omnitool_configured</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
@@ -90,7 +90,10 @@
 	<object class="MixerBusPanner" id="{b4d66946-16a2-4131-842a-2ef142155044}" />
 	<object class="SingleSound" id="{6a2bb848-5d58-488c-b64e-9cf7f2a95587}">
 		<property name="length">
-			<value>1.1808125</value>
+			<value>1.0600000000000001</value>
+		</property>
+		<property name="timelockedOffset">
+			<value>0.059999999999999998</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{e0e8b589-f356-48ff-bf4c-011a6bd7d2b3}</destination>

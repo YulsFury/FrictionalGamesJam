@@ -78,5 +78,7 @@ public class EmailMenu : MonoBehaviour
                 allSubjects[i].SetActive(false);
             }
         }
+
+        UIAudioManager.instance.PlayUIForward();
     }
 }

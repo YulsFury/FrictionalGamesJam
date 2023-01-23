@@ -216,6 +216,9 @@ public class InterfaceManager : MonoBehaviour
     public void Restart()
     {
         CrossSceneInfo.restart = true;
+
+        UIAudioManager.instance.PlayUIForward();
+
         SceneManager.LoadScene("MainLevel");
     }
 
@@ -225,10 +228,13 @@ public class InterfaceManager : MonoBehaviour
 
         backButton.SetActive(true);
         emailMenu.SetActive(true);
+
+        UIAudioManager.instance.PlayUIForward();
     }
 
     public void LogOut()
     {
+        UIAudioManager.instance.PlayUIBack();
         Application.Quit();
     }
 
@@ -283,6 +289,8 @@ public class InterfaceManager : MonoBehaviour
         codeMenu.SetActive(false);
         emailMenu.SetActive(false);
         backButton.SetActive(false);
+
+        UIAudioManager.instance.PlayUIBack();
 
         isInMenus = true;
         Time.timeScale = 0f;
