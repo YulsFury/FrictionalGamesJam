@@ -105,8 +105,6 @@ public class InterfaceManager : MonoBehaviour
     /// <param name="usage">Current usage of the battery. (0 - 5)</param>
     public void UpdateBatteryUsage(int usage)
     {
-        print(usage);
-
         if (usage == 0)
         {
             if (batteryUsageTiles[0].activeInHierarchy)

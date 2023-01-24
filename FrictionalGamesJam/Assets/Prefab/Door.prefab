@@ -182,7 +182,7 @@ MonoBehaviour:
   DecreaseEneryRate: 0
   NonInteractableClosedcolor:
     serializedVersion: 2
-    rgba: 4279505971
+    rgba: 4279900763
   NonInteractableOpenedColor:
     serializedVersion: 2
     rgba: 4279121681

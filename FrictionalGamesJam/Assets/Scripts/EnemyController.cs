@@ -282,8 +282,6 @@ public class EnemyController : MonoBehaviour
         isWaitingBeforeChasing = true;
         target = transform.position;
 
-        Debug.Log("Espera");
-
         yield return new WaitForSeconds(waitBeforeChaseTimer);
 
         isWaitingBeforeChasing = false;
