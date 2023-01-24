@@ -1599,6 +1599,162 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 152111055418895045, guid: f20086818a5998f46807ebea6a879163, type: 3}
   m_PrefabInstance: {fileID: 138415648}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &155456151
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 155456152}
+  - component: {fileID: 155456153}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &155456152
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155456151}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1786007892}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &155456153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155456151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 136edc522d997b74691bc64d90c798e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiConfirm:
+    Guid:
+      Data1: -1417103071
+      Data2: 1165506907
+      Data3: -751213422
+      Data4: 1661933800
+    Path: event:/pathOS/pathOS_ confirm
+  uiDeviceConect:
+    Guid:
+      Data1: 1947783889
+      Data2: 1302466972
+      Data3: -828400458
+      Data4: -365694303
+    Path: event:/pathOS/pathOS_ device_conect
+  uiDeviceDisconect:
+    Guid:
+      Data1: -2103844124
+      Data2: 1191847627
+      Data3: -1496633450
+      Data4: 22743084
+    Path: event:/pathOS/pathOS_ device_disconect
+  uiError:
+    Guid:
+      Data1: 1490810097
+      Data2: 1170507715
+      Data3: -1966509169
+      Data4: -1173869024
+    Path: event:/pathOS/pathOS_ error
+  uiForward:
+    Guid:
+      Data1: -975686856
+      Data2: 1322060863
+      Data3: 327664038
+      Data4: 1122245634
+    Path: event:/pathOS/pathOS_ forward
+  uiGranted:
+    Guid:
+      Data1: 1534117996
+      Data2: 1245139080
+      Data3: -1546008659
+      Data4: -2042372591
+    Path: event:/pathOS/pathOS_ granted
+  uiNegative:
+    Guid:
+      Data1: -238711662
+      Data2: 1126213243
+      Data3: 548374667
+      Data4: 1980463883
+    Path: event:/pathOS/pathOS_ negative
+  uiOmnitoolConfigured:
+    Guid:
+      Data1: -1306592770
+      Data2: 1161813703
+      Data3: 1333117627
+      Data4: -398712954
+    Path: event:/pathOS/pathOS_ omnitool_configured
+  uiShutdown:
+    Guid:
+      Data1: -348726155
+      Data2: 1229629259
+      Data3: 1961699738
+      Data4: -569502197
+    Path: event:/pathOS/pathOS_ shutdown
+  uiStartUp:
+    Guid:
+      Data1: -473672375
+      Data2: 1108219798
+      Data3: 2040778644
+      Data4: 1897050740
+    Path: event:/pathOS/pathOS_ startup
+  uiBack:
+    Guid:
+      Data1: -112702577
+      Data2: 1260092217
+      Data3: -1631216251
+      Data4: 1971229087
+    Path: event:/pathOS/pathOS_back
+  openDoor:
+    Guid:
+      Data1: 1817586686
+      Data2: 1166973878
+      Data3: 1366196637
+      Data4: 885441908
+    Path: event:/Door/Door_Open
+  closeDoor:
+    Guid:
+      Data1: -1819922664
+      Data2: 1122278482
+      Data3: 215077298
+      Data4: -1680691062
+    Path: event:/Door/Door_Close
+  radar:
+    Guid:
+      Data1: 1454881603
+      Data2: 1182250987
+      Data3: 313761158
+      Data4: -149171930
+    Path: event:/Radar
+  playerDestination:
+    Guid:
+      Data1: -1659469623
+      Data2: 1265244652
+      Data3: 481649282
+      Data4: -1905229883
+    Path: event:/pathOS/pathOS_ folder_click
+  batteryOvertime:
+    Guid:
+      Data1: -929013142
+      Data2: 1141462559
+      Data3: 1117298584
+      Data4: -1106019717
+    Path: event:/Battery/Battery_02
 --- !u!114 &173419705 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2540358583983690089, guid: 1a79d544093b55a4180dfebdb2c80a40, type: 3}
@@ -23049,6 +23205,7 @@ Transform:
   - {fileID: 496640998}
   - {fileID: 1236118015}
   - {fileID: 1249637668}
+  - {fileID: 155456152}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
