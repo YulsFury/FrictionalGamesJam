@@ -24,6 +24,9 @@ public class AudioManager : MonoBehaviour
     public FMODUnity.EventReference radar;
     public FMODUnity.EventReference playerDestination;
 
+    public FMODUnity.EventReference enemyAlert;
+    private FMOD.Studio.EventInstance enemyAlertInst;
+
     public FMODUnity.EventReference batteryOvertime;
     private FMOD.Studio.EventInstance batteryOvertimeInst;
 
@@ -113,5 +116,12 @@ public class AudioManager : MonoBehaviour
     public void StopBatteryOvertime()
     {
         batteryOvertimeInst.setParameterByNameWithLabel("Loop", "Silence");
+    }
+
+    public void PlayEnemyAlert()
+    {
+        enemyAlertInst = FMODUnity.RuntimeManager.CreateInstance(enemyAlert);
+        enemyAlertInst.setParameterByName("Test", 0);
+        enemyAlertInst.start();
     }
 }

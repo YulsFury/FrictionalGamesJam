@@ -94,6 +94,8 @@ public class EnemyController : MonoBehaviour
                     isWithoutFindingCouroutineRunning = false;
                 }
 
+                AudioManager.instance.PlayEnemyAlert();
+
                 isChasing = true;
             }
             else
