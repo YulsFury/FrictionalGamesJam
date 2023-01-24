@@ -14,16 +14,19 @@ public class EnemyController : MonoBehaviour
     private Coroutine coroutineWithoutFinding;
     private Coroutine coroutineAutomaticFollowing;
     private Coroutine coroutineFindNewPath;
+    private Coroutine coroutineWaitBeforeChasing;
     private bool isWithoutFindingCouroutineRunning;
     private bool automaticFollowPlayer;
     private bool isWaitingBecauseOfDoor;
     private bool isChasing;
+    private bool hasWaitedBeforeChasing;
+    private bool isWaitingBeforeChasing;
 
     [HideInInspector] public Room currentRoom;
 
-
     private float defaultSpeed;
     private float chaseSpeed;
+    private float waitBeforeChaseTimer;
     private float probabilityGoingBack;
     private float minTimeBeforeGoingAfterPlayer;
     private float maxTimeBeforeGoingAfterPlayer;
@@ -53,6 +56,8 @@ public class EnemyController : MonoBehaviour
         automaticFollowPlayer = false;
 
         isChasing = false;
+        hasWaitedBeforeChasing = false;
+        isWaitingBeforeChasing = false;
     }
 
     void Update()
@@ -61,14 +66,25 @@ public class EnemyController : MonoBehaviour
 
         if (isChasing)
         {
-            agent.speed = chaseSpeed;
-
-            if (hideEnemy)
+            if (!hasWaitedBeforeChasing)
             {
-                sprite.enabled = IsInSameFloorAsPlayer();
+                if (!isWaitingBeforeChasing)
+                {
+                    AudioManager.instance.PlayEnemyAlert();
+                    coroutineWaitBeforeChasing = StartCoroutine(WaitBeforeChasing());
+                } 
             }
+            else
+            {
+                agent.speed = chaseSpeed;
 
-            GetPlayerPosition();
+                if (hideEnemy)
+                {
+                    sprite.enabled = IsInSameFloorAsPlayer();
+                }
+
+                GetPlayerPosition();
+            }
         }
         else if (automaticFollowPlayer)
         {
@@ -93,8 +109,6 @@ public class EnemyController : MonoBehaviour
                     StopCoroutine(coroutineWithoutFinding);
                     isWithoutFindingCouroutineRunning = false;
                 }
-
-                AudioManager.instance.PlayEnemyAlert();
 
                 isChasing = true;
             }
@@ -173,6 +187,7 @@ public class EnemyController : MonoBehaviour
     {
         defaultSpeed = manager.dafaultSpeed;
         chaseSpeed = manager.chaseSpeed;
+        waitBeforeChaseTimer = manager.waitBeforeChaseTimer;
         probabilityGoingBack = manager.probabilityGoingBack;
         minTimeBeforeGoingAfterPlayer = manager.minTimeBeforeGoingAfterPlayer;
         maxTimeBeforeGoingAfterPlayer = manager.maxTimeBeforeGoingAfterPlayer;
@@ -206,10 +221,18 @@ public class EnemyController : MonoBehaviour
             target = this.transform.position + vectorDoorEnemy;
 
             isChasing = false;
+            hasWaitedBeforeChasing = false;
 
-            StopCoroutine(coroutineWithoutFinding);
+            if (coroutineWithoutFinding != null)
+            {
+                StopCoroutine(coroutineWithoutFinding);
+            }
             isWithoutFindingCouroutineRunning = false;
-            StopCoroutine(coroutineAutomaticFollowing);
+
+            if(coroutineAutomaticFollowing != null)
+            {
+                StopCoroutine(coroutineAutomaticFollowing);
+            }
             automaticFollowPlayer = false;
 
             isWaitingBecauseOfDoor = true;
@@ -252,5 +275,19 @@ public class EnemyController : MonoBehaviour
         SetTarget();
         probabilityGoingBack = temp;
         isWaitingBecauseOfDoor = false;
+    }
+
+    IEnumerator WaitBeforeChasing()
+    {
+        isWaitingBeforeChasing = true;
+        target = transform.position;
+
+        Debug.Log("Espera");
+
+        yield return new WaitForSeconds(waitBeforeChaseTimer);
+
+        isWaitingBeforeChasing = false;
+        hasWaitedBeforeChasing = true;
+        StopCoroutine(coroutineWaitBeforeChasing);
     }
 }

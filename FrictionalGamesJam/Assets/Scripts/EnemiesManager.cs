@@ -11,6 +11,9 @@ public class EnemiesManager : MonoBehaviour
     public float dafaultSpeed;
     public float chaseSpeed;
 
+    [Header("Chase")]
+    public float waitBeforeChaseTimer;
+
     [Header("Path finding")]
     public float probabilityGoingBack;
 
