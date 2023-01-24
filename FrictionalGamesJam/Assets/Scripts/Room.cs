@@ -176,7 +176,7 @@ public class Room : MonoBehaviour
                 {
                     SpriteRenderer spriteDoor = door.GetComponentInChildren<SpriteRenderer>();
                     Vector3 doorScale = spriteDoor.size * door.transform.localScale * spriteDoor.transform.localScale;
-                    Gizmos.DrawWireCube(door.transform.position, door.transform.rotation * (doorScale * 1.5f));
+                    Gizmos.DrawWireCube(door.transform.position, door.transform.rotation * (doorScale * 0.5f));
                 }
             }
         }
