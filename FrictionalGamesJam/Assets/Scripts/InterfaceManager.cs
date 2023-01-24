@@ -17,6 +17,11 @@ public class InterfaceManager : MonoBehaviour
     public GameObject scannerScreen;
     public GameObject radarScreen;
 
+    [Header("Screens Toggles")]
+    public Toggle mapToggle;
+    public Toggle scannerToggle;
+    public Toggle radarToggle;
+
     [Header("Menus")]
     public GameObject mainMenu;
     public GameObject codeMenu;
@@ -167,12 +172,23 @@ public class InterfaceManager : MonoBehaviour
     /// </summary>
     public void SwitchToMovementScreen()
     {
-        scannerScreen.SetActive(false);
-        radarScreen.SetActive(false);
-        GameManager.GM.ToggleRadarMode(false);
-        GameManager.GM.PC.isInMovementScreen = true;
-        AudioManager.instance.PlayUIForward();
-        GameManager.GM.RM.UpdateRoomColorOfRooms();
+        if (mapToggle.isOn)
+        {
+            scannerScreen.SetActive(false);
+            radarScreen.SetActive(false);
+            GameManager.GM.ToggleRadarMode(false);
+            GameManager.GM.PC.isInMovementScreen = true;
+            AudioManager.instance.PlayUIForward();
+            GameManager.GM.RM.UpdateRoomColorOfRooms();
+
+            mapToggle.interactable = false;
+
+            scannerToggle.interactable = true;
+            scannerToggle.isOn = false;
+
+            radarToggle.interactable = true;
+            radarToggle.isOn = false;
+        }
     }
 
     /// <summary>
@@ -180,12 +196,23 @@ public class InterfaceManager : MonoBehaviour
     /// </summary>
     public void SwitchToScannerScreen()
     {
-        scannerScreen.SetActive(true);
-        radarScreen.SetActive(false);
-        GameManager.GM.ToggleRadarMode(false);
-        GameManager.GM.PC.isInMovementScreen = false;
-        AudioManager.instance.PlayUIForward();
-        GameManager.GM.RM.ScannerRadarChangeRoomColorOfRooms();
+        if (scannerToggle.isOn)
+        {
+            scannerScreen.SetActive(true);
+            radarScreen.SetActive(false);
+            GameManager.GM.ToggleRadarMode(false);
+            GameManager.GM.PC.isInMovementScreen = false;
+            AudioManager.instance.PlayUIForward();
+            GameManager.GM.RM.ScannerRadarChangeRoomColorOfRooms();
+
+            mapToggle.interactable = true;
+            mapToggle.isOn = false;
+
+            scannerToggle.interactable = false;
+
+            radarToggle.interactable = true;
+            radarToggle.isOn = false;
+        }
     }
 
     /// <summary>
@@ -193,12 +220,23 @@ public class InterfaceManager : MonoBehaviour
     /// </summary>
     public void SwitchToRadarScreen()
     {
-        radarScreen.SetActive(true);
-        scannerScreen.SetActive(false);
-        GameManager.GM.ToggleRadarMode(true);
-        GameManager.GM.PC.isInMovementScreen = false;
-        AudioManager.instance.PlayUIForward();
-        GameManager.GM.RM.ScannerRadarChangeRoomColorOfRooms();
+        if (radarToggle.isOn)
+        {
+            radarScreen.SetActive(true);
+            scannerScreen.SetActive(false);
+            GameManager.GM.ToggleRadarMode(true);
+            GameManager.GM.PC.isInMovementScreen = false;
+            AudioManager.instance.PlayUIForward();
+            GameManager.GM.RM.ScannerRadarChangeRoomColorOfRooms();
+
+            mapToggle.interactable = true;
+            mapToggle.isOn = false;
+
+            scannerToggle.interactable = true;
+            scannerToggle.isOn = false;
+
+            radarToggle.interactable = false;
+        }
     }
 
     public void ScannerPressed()
