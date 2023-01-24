@@ -12,7 +12,7 @@ public class Room : MonoBehaviour
     [Header("Debbug")]
     public Color highlightColor = Color.red;
 
-    bool isUploadRoom;
+    //bool isUploadRoom;
     public UploadKeyItem uploadKeyItem;
     public KeyItemController keyItem;
     bool unlockKey;
@@ -23,7 +23,7 @@ public class Room : MonoBehaviour
     public Color32 UnexploredRoomColor;
     public Color32 RadarScannerRoomColor;
 
-    private void Awake()
+    /*private void Awake()
     {
         //if(isExit)
         //{
@@ -38,7 +38,8 @@ public class Room : MonoBehaviour
             isUploadRoom = false;
         }
       
-    }
+    }*/
+
     private void Start()
     {
         player = FindObjectOfType<PlayerController>();
@@ -140,11 +141,8 @@ public class Room : MonoBehaviour
 
     private void RoomExplored()
     {
-        if (!isUploadRoom)
-        {
-            isExplored = true;
-            GetComponentInChildren<SpriteRenderer>().color = ExploredRoomColor;
-        }   
+        isExplored = true;
+        GetComponentInChildren<SpriteRenderer>().color = ExploredRoomColor;
     }
 
     public void ScannerRadarChangeRoomColor()

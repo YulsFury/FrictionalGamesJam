@@ -10,31 +10,35 @@ public class UploadKeyItem : MonoBehaviour
     SpriteRenderer sprite;
     Vector3 spriteScale;
 
+    [Header("Interactable Colors")]
+    public Color32 nonInteractableColor;
+    public Color32 interactableColor;
+    public Color32 readyNonInteractableColor;
+    public Color32 readyInteractableColor;
+
     private void Start()
     {
         canUpload = false;
         isAvailable = false;
         sprite = transform.Find("SpriteRenderer").GetComponent<SpriteRenderer>();
         DisableCollisions();
-        sprite.color = Color.gray;
+        sprite.color = nonInteractableColor;
         spriteScale = GetComponentInChildren<SpriteRenderer>().transform.localScale;
     }
-    public void UnableUploadKeyItem()
+    public void EnableUploadKeyItem()
     {
         canUpload = true;
-        sprite.color = Color.green;
+        sprite.color = readyNonInteractableColor;
     }
 
     private void OnMouseDown()
     {
         if (isAvailable && canUpload && GameManager.GM.PC.isInMovementScreen)
         {
-            sprite.color = Color.magenta;
             AudioManager.instance.PlayUIDeviceConect();
             //feedback de que estás subiendo archivos
             GameManager.GM.Victory();
         }
-
     }
 
     private void OnMouseOver()
@@ -58,19 +62,12 @@ public class UploadKeyItem : MonoBehaviour
         if (availability)
         {
             isAvailable = true;
-            if (!canUpload)
-            {
-                sprite.color = Color.white;
-            }
+            sprite.color = canUpload ? readyInteractableColor : interactableColor;
         }
         else
         {
             isAvailable = false;
-            if (!canUpload)
-            {
-                sprite.color = Color.gray;
-            }
-
+            sprite.color = canUpload ? readyNonInteractableColor : nonInteractableColor;
         }
     }
 

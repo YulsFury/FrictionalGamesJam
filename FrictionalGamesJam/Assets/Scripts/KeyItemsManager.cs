@@ -9,13 +9,11 @@ public class KeyItemsManager : MonoBehaviour
 
     [HideInInspector] public List<KeyItemController> keyItemsList;
 
-    int keyItemsActivated;
+    private int keyItemsActivated;
 
-    public Room exitRoom;
     public UploadKeyItem uploadKeyItem;
-
-    public GameObject ExitButtom;
-    [HideInInspector] public GameObject exitButtonInstace;
+    public GameObject progress;
+    public Color progressColor = Color.green;
 
     private void Awake()
     {
@@ -26,29 +24,33 @@ public class KeyItemsManager : MonoBehaviour
         {
             KeyItemController keyItem = keyItemsGameObject.transform.GetChild(i).gameObject.GetComponent<KeyItemController>();
             keyItemsList.Add(keyItem);
-        }
-        
+        }  
     }
 
     public void AddActivatedKeyItem()
     {
         keyItemsActivated++;
+        UpdateProgress();
         CountActivatedKeyItems();
+    }
 
+    private void UpdateProgress()
+    {
+        for(int i = 0; i < progress.transform.childCount; i++)
+        {
+            if(i < keyItemsActivated)
+            {
+                SpriteRenderer sprite = progress.transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>();
+                sprite.color = progressColor;
+            }
+        }
     }
 
     private void CountActivatedKeyItems()
     {
         if (keyItemsActivated == keyItemsList.Count)
         {
-            uploadKeyItem.UnableUploadKeyItem();
-            //exitRoom.UnableExitRoom();
-            //EnableExitButton();
+            uploadKeyItem.EnableUploadKeyItem();
         }
     }
-
-    //public void EnableExitButton()
-    //{
-    //    exitButtonInstace = Instantiate(ExitButtom, exitRoom.transform.position, Quaternion.identity);
-    //}
 }
