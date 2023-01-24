@@ -74,8 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e47722257ef09f940ab9d97a604b6566, type: 3}
-  m_Color: {r: 0.95686275, g: 1, b: 0.18431373, a: 1}
+  m_Sprite: {fileID: 21300000, guid: b12778966548507499e46b77815e8ca0, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -131,7 +131,7 @@ Transform:
   m_GameObject: {fileID: 2809149507337804934}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2070643189898903364}
@@ -177,32 +177,36 @@ CompositeCollider2D:
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
-  - m_Collider: {fileID: 1613994760}
-    m_ColliderPaths:
-    - - X: 18000000
-        Y: 11250000
-      - X: 2000000
-        Y: 11250000
-      - X: 2000000
-        Y: 1250000
-      - X: 18000000
-        Y: 1250000
   - m_Collider: {fileID: 1600016156}
     m_ColliderPaths:
-    - - X: 18000000
-        Y: 11250000
-      - X: 2000000
-        Y: 11250000
-      - X: 2000000
-        Y: 1250000
-      - X: 18000000
-        Y: 1250000
+    - - X: 9718714
+        Y: 2853549
+      - X: 5220794
+        Y: 2853549
+      - X: 5220794
+        Y: -6062833
+      - X: 9718714
+        Y: -6062833
+  - m_Collider: {fileID: 1613994760}
+    m_ColliderPaths:
+    - - X: 9798410
+        Y: 7165240
+      - X: -8413711
+        Y: 7165240
+      - X: -8413711
+        Y: 2668320
+      - X: 9798410
+        Y: 2668320
   m_CompositePaths:
     m_Paths:
-    - - {x: 1.8000001, y: 1.125}
-      - {x: 0.2, y: 1.125}
-      - {x: 0.2, y: 0.125}
-      - {x: 1.8000001, y: 0.125}
+    - - {x: 0.97187144, y: 0.266832}
+      - {x: 0.979841, y: 0.266832}
+      - {x: 0.979841, y: 0.716524}
+      - {x: -0.8413711, y: 0.716524}
+      - {x: -0.8413711, y: 0.266832}
+      - {x: 0.5220794, y: 0.266832}
+      - {x: 0.5220794, y: -0.6062833}
+      - {x: 0.97187144, y: -0.6062833}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0
 --- !u!114 &8024610952615143837
@@ -220,19 +224,20 @@ MonoBehaviour:
   roomDoors:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   node: {fileID: 0}
   highlightColor: {r: 1, g: 0, b: 0, a: 1}
   uploadKeyItem: {fileID: 0}
   keyItem: {fileID: 0}
   ExploredRoomColor:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4294043296
   UnexploredRoomColor:
     serializedVersion: 2
-    rgba: 4288651167
+    rgba: 4284505675
   RadarScannerRoomColor:
     serializedVersion: 2
-    rgba: 4282795590
+    rgba: 4281348144
 --- !u!61 &1600016156
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -246,7 +251,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 1
-  m_Offset: {x: 0.625, y: 0.625}
+  m_Offset: {x: 0.7469754, y: -0.16046417}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -257,7 +262,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.4497919, y: 0.8916383}
   m_EdgeRadius: 0
 --- !u!61 &1613994760
 BoxCollider2D:
@@ -272,7 +277,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 1
-  m_Offset: {x: 0.625, y: 0.625}
+  m_Offset: {x: 0.06923497, y: 0.49167803}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -283,5 +288,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.821212, y: 0.44969195}
   m_EdgeRadius: 0
