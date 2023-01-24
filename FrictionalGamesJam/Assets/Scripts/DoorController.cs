@@ -18,6 +18,7 @@ public class DoorController : MonoBehaviour
     public Color32 InteractableClosedColor;
     public Color32 InteractableOpenedColor;
     public Color32 MouseOverColor;
+    public Color32 RadarScannerDoorColor;
     void Start()
     {
         doorOpen = true;
@@ -165,5 +166,10 @@ public class DoorController : MonoBehaviour
                 sprite.color = NonInteractableClosedcolor;
             }
         }
+    }
+
+    public void ScannerRadarChangeDoorColor()
+    {
+        sprite.color = RadarScannerDoorColor;
     }
 }

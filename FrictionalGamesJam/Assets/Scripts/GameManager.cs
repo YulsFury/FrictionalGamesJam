@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public EnemiesManager EM;
     public KeyItemsManager KIM;
     public RoomManager RM;
+    public DoorManager DM;
 
     private void Awake()
     {

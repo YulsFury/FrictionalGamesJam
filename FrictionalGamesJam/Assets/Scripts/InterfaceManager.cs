@@ -187,6 +187,7 @@ public class InterfaceManager : MonoBehaviour
             GameManager.GM.PC.isInMovementScreen = true;
             AudioManager.instance.PlayUIForward();
             GameManager.GM.RM.UpdateRoomColorOfRooms();
+            GameManager.GM.DM.UpdateRoomColorOfDoors();
 
             mapToggle.interactable = false;
 
@@ -213,6 +214,7 @@ public class InterfaceManager : MonoBehaviour
             GameManager.GM.PC.isInMovementScreen = false;
             AudioManager.instance.PlayUIForward();
             GameManager.GM.RM.ScannerRadarChangeRoomColorOfRooms();
+            GameManager.GM.DM.ScannerRadarChangeColorOfDoors();
 
             mapToggle.interactable = true;
             mapToggle.isOn = false;
@@ -239,6 +241,7 @@ public class InterfaceManager : MonoBehaviour
             GameManager.GM.PC.isInMovementScreen = false;
             AudioManager.instance.PlayUIForward();
             GameManager.GM.RM.ScannerRadarChangeRoomColorOfRooms();
+            GameManager.GM.DM.ScannerRadarChangeColorOfDoors();
 
             mapToggle.interactable = true;
             mapToggle.isOn = false;
