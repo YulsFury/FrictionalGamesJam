@@ -195,3 +195,6 @@ MonoBehaviour:
   MouseOverColor:
     serializedVersion: 2
     rgba: 4283354060
+  RadarScannerDoorColor:
+    serializedVersion: 2
+    rgba: 4285756275
