@@ -50,7 +50,7 @@ public class KeyItemController : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (!activated & isAvailable)
+        if (!activated & isAvailable & GameManager.GM.PC.isInMovementScreen)
         {
             GetComponentInChildren<SpriteRenderer>().transform.localScale = spriteScale * scaleFactor;
             sprite.color = MouseOverColor;

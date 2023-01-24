@@ -56,6 +56,7 @@ public class DoorController : MonoBehaviour
         {
             doorOpen = false;
             UnableCollisions();
+
             sprite.color = InteractableClosedColor;
 
             GetComponentInChildren<SpriteRenderer>().transform.localScale = spriteScale;
@@ -144,28 +145,31 @@ public class DoorController : MonoBehaviour
 
     public void UpdateDoorColor()
     {
-        if(doorOpen)
+        if(GameManager.GM.PC.isInMovementScreen)
         {
-            if(isAvailable)
+            if (doorOpen)
             {
-                sprite.color = InteractableOpenedColor;
+                if (isAvailable)
+                {
+                    sprite.color = InteractableOpenedColor;
+                }
+                else
+                {
+                    sprite.color = NonInteractableOpenedColor;
+                }
             }
-            else
+            else if (!doorOpen)
             {
-                sprite.color = NonInteractableOpenedColor;
+                if (isAvailable)
+                {
+                    sprite.color = InteractableClosedColor;
+                }
+                else
+                {
+                    sprite.color = NonInteractableClosedcolor;
+                }
             }
-        }
-        else if (!doorOpen)
-        {
-            if (isAvailable)
-            {
-                sprite.color = InteractableClosedColor;
-            }
-            else
-            {
-                sprite.color = NonInteractableClosedcolor;
-            }
-        }
+        }   
     }
 
     public void ScannerRadarChangeDoorColor()
