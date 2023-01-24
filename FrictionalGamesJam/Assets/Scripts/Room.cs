@@ -55,19 +55,16 @@ public class Room : MonoBehaviour
         {
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
             player.currentRoom = this;
+
             RoomExplored();
             CheckIfThereIsKey();
 
-            if(uploadKeyItem != null)
+            if (uploadKeyItem != null)
             {
                 uploadKeyItem.ToggleAvailability(true);
             }
 
             ToggleDoorsAvailability(true);
-            //if(exitRoomIsEnabled)
-            //{
-            //    GameManager.GM.KIM.exitButtonInstace.GetComponent<ExitButtonController>().UnableButton();
-            //}
         }
         else if (collision.gameObject.tag == "Enemy")
         {
@@ -91,11 +88,6 @@ public class Room : MonoBehaviour
             {
                 uploadKeyItem.ToggleAvailability(false);
             }
-
-            //if (exitRoomIsEnabled)
-            //{
-            //    GameManager.GM.KIM.exitButtonInstace.GetComponent<ExitButtonController>().DisableButton();
-            //}
         }
     }
 
@@ -142,7 +134,11 @@ public class Room : MonoBehaviour
     private void RoomExplored()
     {
         isExplored = true;
-        GetComponentInChildren<SpriteRenderer>().color = ExploredRoomColor;
+
+        if (GameManager.GM.PC.isInMovementScreen)
+        {
+            GetComponentInChildren<SpriteRenderer>().color = ExploredRoomColor;
+        }
     }
 
     public void ScannerRadarChangeRoomColor()

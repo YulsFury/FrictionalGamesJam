@@ -62,12 +62,18 @@ public class UploadKeyItem : MonoBehaviour
         if (availability)
         {
             isAvailable = true;
-            sprite.color = canUpload ? readyInteractableColor : interactableColor;
+            if (GameManager.GM.PC.isInMovementScreen)
+            {
+                sprite.color = canUpload ? readyInteractableColor : interactableColor;
+            }
         }
         else
         {
             isAvailable = false;
-            sprite.color = canUpload ? readyNonInteractableColor : nonInteractableColor;
+            if (GameManager.GM.PC.isInMovementScreen)
+            {
+                sprite.color = canUpload ? readyNonInteractableColor : nonInteractableColor;
+            }   
         }
     }
 

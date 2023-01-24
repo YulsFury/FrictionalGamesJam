@@ -86,7 +86,7 @@ public class DoorController : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (isAvailable)
+        if (isAvailable && GameManager.GM.PC.isInMovementScreen)
         {
             GetComponentInChildren<SpriteRenderer>().transform.localScale = spriteScale * scaleFactor;
             sprite.color = MouseOverColor;
@@ -95,7 +95,7 @@ public class DoorController : MonoBehaviour
 
     private void OnMouseExit()
     {
-        if (isAvailable)
+        if (isAvailable && GameManager.GM.PC.isInMovementScreen)
         {
             GetComponentInChildren<SpriteRenderer>().transform.localScale = spriteScale;
             UpdateDoorColor();

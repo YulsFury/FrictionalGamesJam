@@ -73,7 +73,10 @@ public class KeyItemController : MonoBehaviour
             isAvailable = true;
             if(!activated)
             {
-                sprite.color = InteractableColor;
+                if (GameManager.GM.PC.isInMovementScreen)
+                {
+                    sprite.color = InteractableColor;
+                } 
             }         
         }
         else
@@ -81,7 +84,10 @@ public class KeyItemController : MonoBehaviour
             isAvailable = false;
             if(!activated)
             {
-                sprite.color = NonInteractablecolor;
+                if (GameManager.GM.PC.isInMovementScreen)
+                {
+                    sprite.color = NonInteractablecolor;
+                }  
             }
             
         }
