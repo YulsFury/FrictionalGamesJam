@@ -1762,6 +1762,13 @@ MonoBehaviour:
       Data3: 1117298584
       Data4: -1106019717
     Path: event:/Battery/Battery_02
+  music:
+    Guid:
+      Data1: -679245950
+      Data2: 1164344628
+      Data3: -1445670239
+      Data4: -391973567
+    Path: event:/Music
 --- !u!114 &173419705 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2540358583983690089, guid: 1a79d544093b55a4180dfebdb2c80a40, type: 3}

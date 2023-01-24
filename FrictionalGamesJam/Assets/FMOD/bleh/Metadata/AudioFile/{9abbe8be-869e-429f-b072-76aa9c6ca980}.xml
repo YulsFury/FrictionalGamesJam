@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{9abbe8be-869e-429f-b072-76aa9c6ca980}">
+		<property name="assetPath">
+			<value>Music/Soma_Soundtrack_OST_08_Subway_02.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>84.384</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{53eec1ea-9bef-449a-8b45-0f6b4a8cde93}</destination>
+		</relationship>
+	</object>
+</objects>

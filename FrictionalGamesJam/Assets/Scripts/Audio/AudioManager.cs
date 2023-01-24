@@ -30,6 +30,9 @@ public class AudioManager : MonoBehaviour
     public FMODUnity.EventReference batteryOvertime;
     private FMOD.Studio.EventInstance batteryOvertimeInst;
 
+    public FMODUnity.EventReference music;
+    private FMOD.Studio.EventInstance musicInst;
+
     void Awake()
     {
         if (instance != null)
@@ -42,7 +45,12 @@ public class AudioManager : MonoBehaviour
             //DontDestroyOnLoad(this.gameObject);
         }
     }
-    
+
+    private void Start()
+    {
+        PlayMusic();
+    }
+
     public void PlayUIForward()
     {
         RuntimeManager.PlayOneShot(uiForward);
@@ -123,5 +131,27 @@ public class AudioManager : MonoBehaviour
         enemyAlertInst = FMODUnity.RuntimeManager.CreateInstance(enemyAlert);
         enemyAlertInst.setParameterByName("Test", 0);
         enemyAlertInst.start();
+    }
+    public void PlayMusic()
+    {
+        musicInst = FMODUnity.RuntimeManager.CreateInstance(music);
+        musicInst.setParameterByNameWithLabel("Music", "MainMenu");
+        musicInst.start();
+    }
+    public void ChangeToMainMenuMusic()
+    {
+        musicInst.setParameterByNameWithLabel("Music", "MainMenu");
+    }
+    public void ChangeToMapMusic()
+    {
+        musicInst.setParameterByNameWithLabel("Music", "Map");
+    }
+    public void ChangeToGameOverMusic()
+    {
+        musicInst.setParameterByNameWithLabel("Music", "GameOver");
+    }
+    public void ChangeToVictoryMusic()
+    {
+        musicInst.setParameterByNameWithLabel("Music", "Victory");
     }
 }
