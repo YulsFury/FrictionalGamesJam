@@ -31,7 +31,7 @@ public class AudioManager : MonoBehaviour
     private FMOD.Studio.EventInstance batteryOvertimeInst;
 
     public FMODUnity.EventReference music;
-    private FMOD.Studio.EventInstance musicInst;
+    //private FMOD.Studio.EventInstance musicInst;
 
     void Awake()
     {
@@ -42,13 +42,13 @@ public class AudioManager : MonoBehaviour
         else
         {
             instance = this;
-            //DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(this.gameObject);
+            if (!CrossSceneInfo.playingMusic)
+            {
+                AudioManager.instance.PlayMusic();
+                CrossSceneInfo.playingMusic = true;
+            }
         }
-    }
-
-    private void Start()
-    {
-        PlayMusic();
     }
 
     public void PlayUIForward()
@@ -134,24 +134,25 @@ public class AudioManager : MonoBehaviour
     }
     public void PlayMusic()
     {
-        musicInst = FMODUnity.RuntimeManager.CreateInstance(music);
-        musicInst.setParameterByNameWithLabel("Music", "MainMenu");
-        musicInst.start();
+        CrossSceneInfo.musicInst = FMODUnity.RuntimeManager.CreateInstance(music);
+        CrossSceneInfo.musicInst.setParameterByNameWithLabel("Music", "Main Menu");
+        CrossSceneInfo.musicInst.start();
     }
     public void ChangeToMainMenuMusic()
     {
-        musicInst.setParameterByNameWithLabel("Music", "MainMenu");
+        CrossSceneInfo.musicInst.setParameterByNameWithLabel("Music", "Main Menu");
     }
     public void ChangeToMapMusic()
     {
-        musicInst.setParameterByNameWithLabel("Music", "Map");
+        print("Map");
+        CrossSceneInfo.musicInst.setParameterByNameWithLabel("Music", "Map");
     }
     public void ChangeToGameOverMusic()
     {
-        musicInst.setParameterByNameWithLabel("Music", "GameOver");
+        CrossSceneInfo.musicInst.setParameterByNameWithLabel("Music", "Game Over");
     }
     public void ChangeToVictoryMusic()
     {
-        musicInst.setParameterByNameWithLabel("Music", "Victory");
+        CrossSceneInfo.musicInst.setParameterByNameWithLabel("Music", "Victory");
     }
 }

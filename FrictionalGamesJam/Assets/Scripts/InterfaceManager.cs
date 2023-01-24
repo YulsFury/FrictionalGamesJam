@@ -46,7 +46,6 @@ public class InterfaceManager : MonoBehaviour
             Time.timeScale = 0f;
             emailMenu.SetActive(true);
             backButton.SetActive(true);
-            AudioManager.instance.ChangeToMainMenuMusic();
         } 
         else if (!CrossSceneInfo.restart)
         {
@@ -280,6 +279,7 @@ public class InterfaceManager : MonoBehaviour
         CrossSceneInfo.restart = true;
         gameOverMenu.SetActive(false);
         AudioManager.instance.PlayUIForward();
+        AudioManager.instance.ChangeToMapMusic();
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainLevel");
     }
@@ -297,11 +297,13 @@ public class InterfaceManager : MonoBehaviour
     public void LogOut()
     {
         AudioManager.instance.PlayUIBack();
+        CrossSceneInfo.playingMusic = false;
         Application.Quit();
     }
 
     public void CodeOk()
     {
+        print("CodeOK");
         isInMenus = false;
         isGamePlaying = true;
         Time.timeScale = 1f;
@@ -316,6 +318,7 @@ public class InterfaceManager : MonoBehaviour
         Time.timeScale = 1f;
         mainMenu.SetActive(false);
         backButton.SetActive(true);
+        AudioManager.instance.PlayUIForward();
     }
 
     public void GameOver()
@@ -330,6 +333,8 @@ public class InterfaceManager : MonoBehaviour
     public void MainMenuButton()
     {
         CrossSceneInfo.restart = false;
+        AudioManager.instance.PlayUIBack();
+        AudioManager.instance.ChangeToMainMenuMusic();
         SceneManager.LoadScene("MainLevel");
     }
 
