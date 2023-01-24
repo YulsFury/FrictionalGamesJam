@@ -727,8 +727,8 @@ MonoBehaviour:
   victoryMenu: {fileID: 301385966}
   backButton: {fileID: 13556323}
   password: 2103
-  gameOverByEnemyText: {fileID: 0}
-  gameOverByEnergyText: {fileID: 0}
+  gameOverByEnemyText: {fileID: 29437476}
+  gameOverByEnergyText: {fileID: 7611400587559360682}
 --- !u!1001 &996553750134705993
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3327,6 +3327,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 400639fdd23abca48b1124ea8cb62ca6, type: 3}
+--- !u!1 &29437476 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7897931590824631693, guid: 400639fdd23abca48b1124ea8cb62ca6, type: 3}
+  m_PrefabInstance: {fileID: 7897931590812119977}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2003629351 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7897931590060066446, guid: 400639fdd23abca48b1124ea8cb62ca6, type: 3}
@@ -3335,6 +3340,11 @@ GameObject:
 --- !u!224 &2003629352 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7897931590060066433, guid: 400639fdd23abca48b1124ea8cb62ca6, type: 3}
+  m_PrefabInstance: {fileID: 7897931590812119977}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7611400587559360682 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 304615771850271491, guid: 400639fdd23abca48b1124ea8cb62ca6, type: 3}
   m_PrefabInstance: {fileID: 7897931590812119977}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9091173237856134472
