@@ -66,6 +66,13 @@ public class EnemyController : MonoBehaviour
 
         if (isChasing)
         {
+            agent.speed = chaseSpeed;
+
+            if (hideEnemy)
+            {
+                sprite.enabled = IsInSameFloorAsPlayer();
+            }
+
             if (!hasWaitedBeforeChasing)
             {
                 if (!isWaitingBeforeChasing)
@@ -76,13 +83,6 @@ public class EnemyController : MonoBehaviour
             }
             else
             {
-                agent.speed = chaseSpeed;
-
-                if (hideEnemy)
-                {
-                    sprite.enabled = IsInSameFloorAsPlayer();
-                }
-
                 GetPlayerPosition();
             }
         }

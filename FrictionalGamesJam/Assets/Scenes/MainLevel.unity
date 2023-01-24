@@ -6371,7 +6371,7 @@ MonoBehaviour:
   minTimeWhenFindingClosedDoor: 1
   maxTimeWhenFindingClosedDoor: 3
   resetLevel: 1
-  hideEnemy: 0
+  hideEnemy: 1
 --- !u!1001 &520559380
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8914,54 +8914,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 859837892665210547, guid: d44d28cac8275774d8c3e600e6735d08, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 859837892665210547, guid: d44d28cac8275774d8c3e600e6735d08, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 859837892665210547, guid: d44d28cac8275774d8c3e600e6735d08, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 859837892665210547, guid: d44d28cac8275774d8c3e600e6735d08, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3613718624601861314, guid: d44d28cac8275774d8c3e600e6735d08, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3613718624601861314, guid: d44d28cac8275774d8c3e600e6735d08, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3613718624601861314, guid: d44d28cac8275774d8c3e600e6735d08, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3613718624601861314, guid: d44d28cac8275774d8c3e600e6735d08, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7053451564588395834, guid: d44d28cac8275774d8c3e600e6735d08, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7053451564588395834, guid: d44d28cac8275774d8c3e600e6735d08, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7053451564588395834, guid: d44d28cac8275774d8c3e600e6735d08, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7053451564588395834, guid: d44d28cac8275774d8c3e600e6735d08, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8957028778159730279, guid: d44d28cac8275774d8c3e600e6735d08, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

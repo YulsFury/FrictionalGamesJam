@@ -22,6 +22,10 @@ public class InterfaceManager : MonoBehaviour
     public Toggle scannerToggle;
     public Toggle radarToggle;
 
+    [Header("Radar Warning")]
+    public GameObject warningRadarImage;
+    private bool isWarningRadarShown;
+
     [Header("Menus")]
     public GameObject mainMenu;
     public GameObject codeMenu;
@@ -57,6 +61,8 @@ public class InterfaceManager : MonoBehaviour
             Time.timeScale = 1f;
             backButton.SetActive(true);
         }
+
+        ShowRadarWarning(false);
     }
 
     /// <summary>
@@ -186,6 +192,8 @@ public class InterfaceManager : MonoBehaviour
 
             radarToggle.interactable = true;
             radarToggle.isOn = false;
+
+            ActivateRadarWarning(true);
         }
     }
 
@@ -210,6 +218,8 @@ public class InterfaceManager : MonoBehaviour
 
             radarToggle.interactable = true;
             radarToggle.isOn = false;
+
+            ActivateRadarWarning(true);
         }
     }
 
@@ -234,6 +244,8 @@ public class InterfaceManager : MonoBehaviour
             scannerToggle.isOn = false;
 
             radarToggle.interactable = false;
+
+            ActivateRadarWarning(false);
         }
     }
 
@@ -339,5 +351,18 @@ public class InterfaceManager : MonoBehaviour
         isInMenus = true;
         Time.timeScale = 0f;
         mainMenu.SetActive(true);
+    }
+
+    public void ShowRadarWarning(bool activate)
+    {
+        isWarningRadarShown = activate;
+    }
+
+    public void ActivateRadarWarning(bool activate)
+    {
+        if (isWarningRadarShown)
+        {
+            warningRadarImage.SetActive(activate);
+        }
     }
 }

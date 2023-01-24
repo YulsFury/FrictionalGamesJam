@@ -66,12 +66,14 @@ public class Radar : MonoBehaviour
             ActivateRadar();
             GameManager.GM.ReduceBatteryOvertime();
             active = true;
+            GameManager.GM.IM.ShowRadarWarning(true);
         }
         else
         {
             DeactivateRadar();
             GameManager.GM.StopReducingBatteryOvertime();
             active = false;
+            GameManager.GM.IM.ShowRadarWarning(false);
         }
     }
 
