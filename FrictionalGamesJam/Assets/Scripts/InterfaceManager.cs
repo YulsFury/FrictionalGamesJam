@@ -37,6 +37,10 @@ public class InterfaceManager : MonoBehaviour
     [Header("Password")]
     public string password;
 
+    [Header("Game Over")]
+    public GameObject gameOverByEnemyText;
+    public GameObject gameOverByEnergyText;
+
     private void Start()
     {
         if (CrossSceneInfo.victoryEmails)
@@ -321,11 +325,23 @@ public class InterfaceManager : MonoBehaviour
         AudioManager.instance.PlayUIForward();
     }
 
-    public void GameOver()
+    public void GameOver(bool byEnemy)
     {
         isInMenus = true;
         Time.timeScale = 0f;
         gameOverMenu.SetActive(true);
+
+        if (byEnemy)
+        {
+            gameOverByEnemyText.SetActive(true);
+            gameOverByEnergyText.SetActive(false);
+        }
+        else
+        {
+            gameOverByEnemyText.SetActive(false);
+            gameOverByEnergyText.SetActive(true);
+        }
+
         backButton.SetActive(false);
         AudioManager.instance.ChangeToGameOverMusic();
     }

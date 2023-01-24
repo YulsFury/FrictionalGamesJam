@@ -84,7 +84,7 @@ public class BatteryController : MonoBehaviour
             {
                 currentBatteryLvl = 0;
 
-                GameManager.GM.GameOver();
+                GameManager.GM.GameOver(false);
                 
                 StopCoroutine(decreaseOverTimeCoroutine);
             }

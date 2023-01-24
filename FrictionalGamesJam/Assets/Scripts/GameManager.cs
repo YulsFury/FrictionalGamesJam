@@ -59,9 +59,9 @@ public class GameManager : MonoBehaviour
         PC.GetComponent<Radar>().ToggleRadarMode(activateRadar);
     }
 
-    public void GameOver()
+    public void GameOver(bool byEnemy)
     {
-        IM.GameOver();
+        IM.GameOver(byEnemy);
     }
 
     public void Victory()
