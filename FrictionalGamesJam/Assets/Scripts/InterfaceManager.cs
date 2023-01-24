@@ -46,6 +46,7 @@ public class InterfaceManager : MonoBehaviour
             Time.timeScale = 0f;
             emailMenu.SetActive(true);
             backButton.SetActive(true);
+            AudioManager.instance.ChangeToMainMenuMusic();
         } 
         else if (!CrossSceneInfo.restart)
         {
@@ -53,6 +54,7 @@ public class InterfaceManager : MonoBehaviour
             isGamePlaying = false;
             Time.timeScale = 0f;
             mainMenu.SetActive(true);
+            AudioManager.instance.ChangeToMainMenuMusic();
         }
         else
         {
@@ -60,6 +62,7 @@ public class InterfaceManager : MonoBehaviour
             isGamePlaying = true;
             Time.timeScale = 1f;
             backButton.SetActive(true);
+            AudioManager.instance.ChangeToMapMusic();
         }
 
         ShowRadarWarning(false);
@@ -301,6 +304,7 @@ public class InterfaceManager : MonoBehaviour
         Time.timeScale = 1f;
         codeMenu.SetActive(false);
         backButton.SetActive(true);
+        AudioManager.instance.ChangeToMapMusic();
     }
 
     public void Continue()
@@ -317,6 +321,7 @@ public class InterfaceManager : MonoBehaviour
         Time.timeScale = 0f;
         gameOverMenu.SetActive(true);
         backButton.SetActive(false);
+        AudioManager.instance.ChangeToGameOverMusic();
     }
 
     public void MainMenuButton()
@@ -331,6 +336,7 @@ public class InterfaceManager : MonoBehaviour
         Time.timeScale = 0f;
         victoryMenu.SetActive(true);
         backButton.SetActive(false);
+        AudioManager.instance.ChangeToVictoryMusic();
     }
 
     public void VictoryEmail()
