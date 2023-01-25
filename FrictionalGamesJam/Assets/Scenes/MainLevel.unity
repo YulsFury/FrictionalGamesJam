@@ -3125,10 +3125,10 @@ MonoBehaviour:
   dafaultSpeed: 0.3
   chaseSpeed: 1.1
   waitBeforeChaseTimer: 3.5
-  probabilityGoingBack: 10
-  minTimeBeforeGoingAfterPlayer: 5
-  maxTimeBeforeGoingAfterPlayer: 10
-  durationAutomaticFollowingPlayer: 3
+  probabilityGoingBack: 5
+  minTimeBeforeGoingAfterPlayer: 10
+  maxTimeBeforeGoingAfterPlayer: 15
+  durationAutomaticFollowingPlayer: 7
   minTimeWhenFindingClosedDoor: 0.5
   maxTimeWhenFindingClosedDoor: 1
   resetLevel: 1

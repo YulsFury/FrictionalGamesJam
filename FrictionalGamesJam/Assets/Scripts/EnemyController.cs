@@ -206,9 +206,12 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            if (resetLevel)
+            if (sprite.enabled)
             {
-                GameManager.GM.GameOver(true);
+                if (resetLevel)
+                {
+                    GameManager.GM.GameOver(true);
+                }
             }
         }
         else if (collision.gameObject.tag == "Door")
