@@ -65,15 +65,13 @@ public class EnemyController : MonoBehaviour
     {
         agent.speed = isChasing ? chaseSpeed : defaultSpeed;
 
+        if (hideEnemy)
+        {
+            sprite.enabled = IsInSameFloorAsPlayer();
+        }
+
         if (isChasing)
         {
-            agent.speed = chaseSpeed;
-
-            if (hideEnemy)
-            {
-                sprite.enabled = IsInSameFloorAsPlayer();
-            }
-
             if (!hasWaitedBeforeChasing)
             {
                 if (!isWaitingBeforeChasing)
@@ -220,7 +218,13 @@ public class EnemyController : MonoBehaviour
             target = this.transform.position + vectorDoorEnemy;
 
             isChasing = false;
+            
+            if (coroutineWaitBeforeChasing != null)
+            {
+                StopCoroutine(coroutineWaitBeforeChasing);
+            }
             hasWaitedBeforeChasing = false;
+            isWaitingBeforeChasing = false;
 
             if (coroutineWithoutFinding != null)
             {
