@@ -23,6 +23,7 @@ public class EnemyController : MonoBehaviour
     private bool isWaitingBeforeChasing;
 
     [HideInInspector] public Room currentRoom;
+    [HideInInspector] public Room previousRoom;
 
     private float defaultSpeed;
     private float chaseSpeed;
@@ -169,13 +170,15 @@ public class EnemyController : MonoBehaviour
 
             if(randomProbability < acumulatedProbability)
             {
-                lastNode = currentNode;
-                currentNode = node;
+                //lastNode = currentNode;
+                //currentNode = node;
+                target = node.transform.position;
+                Debug.Log(node);
                 break;
             }
         }
 
-        target = currentNode.transform.position;
+        //target = currentNode.transform.position;
     }
 
     private void MoveToTarget()
@@ -200,6 +203,7 @@ public class EnemyController : MonoBehaviour
 
     public void UpdateNodes(Room room)
     {
+        previousRoom = currentRoom;
         currentRoom = room;
         lastNode = currentNode;
         currentNode = room.node;
@@ -264,16 +268,20 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator FindNewPath()
     {
+        UpdateNodes(previousRoom);
+
         float timer = Random.Range(minTimeWhenFindingClosedDoor, maxTimeWhenFindingClosedDoor);
 
         yield return new WaitForSeconds(timer);
 
+        /*NavMeshNode tempNode = currentNode;
         currentNode = lastNode;
-        lastNode = currentNode;
-        float temp = probabilityGoingBack;
+        lastNode = tempNode;*/
+
+        float tempProb = probabilityGoingBack;
         probabilityGoingBack = 0;
         SetTarget();
-        probabilityGoingBack = temp;
+        probabilityGoingBack = tempProb;
         isWaitingBecauseOfDoor = false;
     }
 
