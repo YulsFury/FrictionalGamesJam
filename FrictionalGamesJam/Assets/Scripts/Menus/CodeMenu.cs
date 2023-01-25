@@ -52,7 +52,6 @@ public class CodeMenu : MonoBehaviour
     {
         if(password.text == validPassword)
         {
-            print("OK");
             GameManager.GM.IM.CodeOk();
             AudioManager.instance.PlayUIConfirm();
         }

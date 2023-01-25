@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 target;
     NavMeshAgent agent;
     [HideInInspector] public Room currentRoom;
+    [HideInInspector] public Room previousRoom;
     NavMeshPath path;
     Animator playerAnimator;
 

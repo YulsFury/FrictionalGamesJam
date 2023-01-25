@@ -54,6 +54,7 @@ public class Room : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+            player.previousRoom = player.currentRoom;
             player.currentRoom = this;
 
             RoomExplored();
@@ -74,9 +75,15 @@ public class Room : MonoBehaviour
     }
 
     private void OnTriggerExit2D(Collider2D collision)
-    {
+    { 
+
         if (collision.gameObject.tag == "Player")
-        {
+        { 
+            if(this == player.currentRoom) //Caso aislado
+            {
+                player.currentRoom = player.previousRoom;
+            }
+
             ToggleDoorsAvailability(false);
 
             if (keyItem != null & unlockKey == true)

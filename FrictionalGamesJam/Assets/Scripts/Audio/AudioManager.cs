@@ -144,7 +144,6 @@ public class AudioManager : MonoBehaviour
     }
     public void ChangeToMapMusic()
     {
-        print("Map");
         CrossSceneInfo.musicInst.setParameterByNameWithLabel("Music", "Map");
     }
     public void ChangeToGameOverMusic()

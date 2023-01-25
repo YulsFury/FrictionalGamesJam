@@ -307,7 +307,6 @@ public class InterfaceManager : MonoBehaviour
 
     public void CodeOk()
     {
-        print("CodeOK");
         isInMenus = false;
         isGamePlaying = true;
         Time.timeScale = 1f;
