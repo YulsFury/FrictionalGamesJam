@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2904447807401594476}
-  - component: {fileID: 2904447807401594477}
-  - component: {fileID: 2904447807401594482}
   - component: {fileID: 6680324838631014531}
+  - component: {fileID: 6624901240413844516}
+  - component: {fileID: 5036951262203144522}
   m_Layer: 0
   m_Name: NavMesh
   m_TagString: Untagged
@@ -62,7 +62,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!114 &2904447807401594477
+--- !u!114 &6680324838631014531
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71,7 +71,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 2904447807401594483}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd13858f12b09ec4d834678e66e7b2b0, type: 3}
+  m_Script: {fileID: 11500000, guid: cb5c68e25d927834fb993e2ba44dd86e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: []
+  showGraph: 0
+  connectionsColor: {r: 0.00030612946, g: 0, b: 1, a: 1}
+  higlihgtColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &6624901240413844516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2904447807401594483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e04976799df50f54ba128eff723155a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_AgentTypeID: 0
@@ -91,8 +107,8 @@ MonoBehaviour:
   m_VoxelSize: 0.023333333
   m_BuildHeightMesh: 0
   m_HideEditorLogs: 0
-  m_NavMeshData: {fileID: 23800000, guid: 6647d0a093c5ad845afef2dade1c5477, type: 2}
---- !u!114 &2904447807401594482
+  m_NavMeshData: {fileID: 23800000, guid: eecafb3a72d259f4b853ebe7a7126891, type: 2}
+--- !u!114 &5036951262203144522
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,29 +117,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2904447807401594483}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aafafa36138907e40b11dc55965ba7dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 70bd44a44cd62c64fbfc1eea95b24880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_OverrideByGrid: 0
   m_UseMeshPrefab: {fileID: 0}
   m_CompressBounds: 0
   m_OverrideVector: {x: 1, y: 1, z: 1}
---- !u!114 &6680324838631014531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2904447807401594483}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb5c68e25d927834fb993e2ba44dd86e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  graph: []
-  showGraph: 0
-  connectionsColor: {r: 0.00030612946, g: 0, b: 1, a: 1}
-  higlihgtColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1001 &11484152
 PrefabInstance:
   m_ObjectHideFlags: 0
