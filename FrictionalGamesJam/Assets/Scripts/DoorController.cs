@@ -61,7 +61,7 @@ public class DoorController : MonoBehaviour
 
             GetComponentInChildren<SpriteRenderer>().transform.localScale = spriteScale;
 
-            GameManager.GM.ReduceBatteryOvertime();
+            GameManager.GM.ReduceBatteryOvertime(BatteryController.overtimeSources.Door);
 
             //Animación sellar puerta
 
@@ -76,7 +76,7 @@ public class DoorController : MonoBehaviour
 
             UpdateDoorColor();
 
-            GameManager.GM.StopReducingBatteryOvertime();
+            GameManager.GM.StopReduceBatteryOvertime(BatteryController.overtimeSources.Door);
 
             //Animación dejar de sella puerta
 

@@ -5,11 +5,21 @@ using UnityEngine;
 public class BatteryController : MonoBehaviour
 {
     [Header("Battery Usage")]
-    public float standarSingleUseDecrease;
-    public float standarOvertimeUseDecrease;
     public float timerUseDecrease;
+    [Header("Single Time Usage Amounts")]
+    public float standardSingleUseDecrease;
+    public float scannerSingleUseDecrease;
+    [Header("Overtime Usage Amounts")]
+    public float standardOvertimeUseDecrease;
+    public float doorOvertimeUseDecrease;
+    public float radarOvertimeUseDecrease;
+
+    public enum singleTimeSources { Standard, Scanner }
+    public enum overtimeSources { Standard, Radar, Door}
 
     private int elementsUsingBattery = 0;
+    private float batterySpent = 0;
+
 
     private float maxBatteryLvl = 100;
     private float currentBatteryLvl;
@@ -20,21 +30,39 @@ public class BatteryController : MonoBehaviour
     void Start()
     {
         currentBatteryLvl = maxBatteryLvl;
-        decreaseOverTimeCoroutine = DecreaseOverTimeCoroutine(); //This is made so we know the exact coroutine that was started when we want to stop it.
+        decreaseOverTimeCoroutine = DecreaseOverTimeCoroutine(batterySpent); //This is made so we know the exact coroutine that was started when we want to stop it.
     }
 
     /// <summary>
     /// Reduces de battery ammount a single time.
     /// </summary>
-    public void DecreaseSingleTimeBattery()
+    public void DecreaseSingleTimeBattery(singleTimeSources singleTimeSouceUsed)
     {
-        if(currentBatteryLvl - standarSingleUseDecrease < 0)
+        float amount = 0;
+
+        switch (singleTimeSouceUsed)    
+        {
+            case singleTimeSources.Standard:
+                amount = amount + standardSingleUseDecrease;
+                break;
+            case singleTimeSources.Scanner:
+                amount = amount + scannerSingleUseDecrease;
+                break;
+            default:
+                break;
+        }
+
+        if(currentBatteryLvl - amount < 0)
         {
             currentBatteryLvl = 0;
+
+            GameManager.GM.GameOver(false);
+
+            StopCoroutine(decreaseOverTimeCoroutine);
         }
         else
         {
-            currentBatteryLvl = currentBatteryLvl - standarSingleUseDecrease;
+            currentBatteryLvl = currentBatteryLvl - amount;
         }
 
         GameManager.GM.IM.UpdateBatteryLevelContinuous(currentBatteryLvl);
@@ -43,8 +71,23 @@ public class BatteryController : MonoBehaviour
     /// <summary>
     /// Tells the battery that one element has starte using electricity.
     /// </summary>
-    public void DecreaseOvertimeBattery()
+    public void DecreaseOvertimeBattery(overtimeSources overtimeSourceUsed)
     {
+        switch (overtimeSourceUsed)
+        {
+            case overtimeSources.Standard:
+                batterySpent = batterySpent + standardOvertimeUseDecrease;
+                break;
+            case overtimeSources.Radar:
+                batterySpent = batterySpent + radarOvertimeUseDecrease;
+                break;
+            case overtimeSources.Door:
+                batterySpent = batterySpent + doorOvertimeUseDecrease;
+                break;
+            default:
+                break;
+        }
+
         elementsUsingBattery++;
 
         GameManager.GM.IM.UpdateBatteryUsage(elementsUsingBattery);
@@ -52,15 +95,29 @@ public class BatteryController : MonoBehaviour
         if (elementsUsingBattery == 1)
         {
             StartCoroutine(decreaseOverTimeCoroutine);
-            AudioManager.instance.PlayBatteryOvertime();
+            AudioManager.instance.PlayBatteryOvertime();         
         }
     }
 
     /// <summary>
     /// Tells the battery that one element has stoped using electricity.
     /// </summary>
-    public void StopUseOverTimeBattery()
+    public void StopUseOverTimeBattery(overtimeSources overtimeSourceUsed)
     {
+        switch (overtimeSourceUsed)
+        {
+            case overtimeSources.Standard:
+                batterySpent = batterySpent - standardOvertimeUseDecrease;
+                break;
+            case overtimeSources.Radar:
+                batterySpent = batterySpent - radarOvertimeUseDecrease;
+                break;
+            case overtimeSources.Door:
+                batterySpent = batterySpent - doorOvertimeUseDecrease;
+                break;
+            default:
+                break;
+        }
         elementsUsingBattery--;
 
         GameManager.GM.IM.UpdateBatteryUsage(elementsUsingBattery);
@@ -76,17 +133,19 @@ public class BatteryController : MonoBehaviour
     {
         elementsUsingBattery = 0;
         AudioManager.instance.StopBatteryOvertime();
+        batterySpent = 0;
+        StopCoroutine(decreaseOverTimeCoroutine);
     }
 
     /// <summary>
     /// Reduces the battery ammount depending on how many elements are using electricity.
     /// </summary>
     /// <returns></returns>
-    private IEnumerator DecreaseOverTimeCoroutine()
+    private IEnumerator DecreaseOverTimeCoroutine(float batterySpent)
     {
         while (true)
         {
-            if (currentBatteryLvl - (standarOvertimeUseDecrease * elementsUsingBattery) < 0)
+            if ((currentBatteryLvl - batterySpent) < 0)
             {
                 currentBatteryLvl = 0;
 
@@ -96,7 +155,7 @@ public class BatteryController : MonoBehaviour
             }
             else
             {
-                currentBatteryLvl = currentBatteryLvl - (standarOvertimeUseDecrease * elementsUsingBattery);
+                currentBatteryLvl = currentBatteryLvl - batterySpent;
             }
 
             GameManager.GM.IM.UpdateBatteryLevelContinuous(currentBatteryLvl);

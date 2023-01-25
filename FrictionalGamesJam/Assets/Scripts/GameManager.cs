@@ -29,21 +29,19 @@ public class GameManager : MonoBehaviour
         //DontDestroyOnLoad(GM);
     }
 
-    public void ReduceBatteryLevel()
+    public void ReduceBatteryLevelSingleTime(BatteryController.singleTimeSources source)
     {
-        BC.DecreaseSingleTimeBattery();
+        BC.DecreaseSingleTimeBattery(source);
     }
 
-    public void ReduceBatteryOvertime()
+    public void ReduceBatteryOvertime(BatteryController.overtimeSources source)
     {
-        BC.DecreaseOvertimeBattery();
+        BC.DecreaseOvertimeBattery(source);
     }
-
-    public void StopReducingBatteryOvertime()
+    public void StopReduceBatteryOvertime(BatteryController.overtimeSources source)
     {
-        BC.StopUseOverTimeBattery();
+        BC.StopUseOverTimeBattery(source);
     }
-
     public void ScannerUsed()
     {
         StartCoroutine(PC.GetComponent<Scanner>().ActiveScanner());

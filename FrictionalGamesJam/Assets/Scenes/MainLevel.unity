@@ -12120,9 +12120,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3754c592acbae641a70856fe0032aff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  standarSingleUseDecrease: 4
-  standarOvertimeUseDecrease: 0.5
   timerUseDecrease: 2
+  standardSingleUseDecrease: 4
+  scannerSingleUseDecrease: 4
+  standardOvertimeUseDecrease: 0.5
+  doorOvertimeUseDecrease: 1
+  radarOvertimeUseDecrease: 0.5
 --- !u!1001 &1819240035
 PrefabInstance:
   m_ObjectHideFlags: 0

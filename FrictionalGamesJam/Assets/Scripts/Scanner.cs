@@ -28,7 +28,7 @@ public class Scanner : MonoBehaviour
         {
             Debug.Log("coold won");
             StartCoroutine(CooldownTimer());
-            GameManager.GM.ReduceBatteryLevel();
+            GameManager.GM.ReduceBatteryLevelSingleTime(BatteryController.singleTimeSources.Scanner);
 
             Room enemyRoom;
             SpriteRenderer roomSprite;
