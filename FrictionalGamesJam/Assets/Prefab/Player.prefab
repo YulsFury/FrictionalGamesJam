@@ -382,7 +382,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.25
+  m_Radius: 0.15
 --- !u!114 &7480193637313223717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,6 +430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentRoom: {fileID: 0}
+  previousRoom: {fileID: 0}
   isInMovementScreen: 0
   sprite: {fileID: 7040009398087194517}
   playerDestination: {fileID: 3981243849827471533, guid: 4152cb6fea2869a47bc4cdd8e76779a4, type: 3}
