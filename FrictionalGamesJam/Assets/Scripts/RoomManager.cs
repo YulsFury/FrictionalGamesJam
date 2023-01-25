@@ -32,6 +32,4 @@ public class RoomManager : MonoBehaviour
             room.UpdateRoomColor();
         }
     }
-
-
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Room : MonoBehaviour
 {
-    PlayerController player;
+    public PlayerController player;
     public List<DoorController> roomDoors;
     public NavMeshNode node;
     private bool isExplored;
@@ -43,7 +43,7 @@ public class Room : MonoBehaviour
 
     private void Start()
     {
-        player = FindObjectOfType<PlayerController>();
+        player = GameManager.GM.PC;
         //exitRoomIsEnabled = false;
 
         isExplored = false;
@@ -201,5 +201,4 @@ public class Room : MonoBehaviour
             }
         }
     }
-
 }

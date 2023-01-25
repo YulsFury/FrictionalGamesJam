@@ -170,15 +170,10 @@ public class EnemyController : MonoBehaviour
 
             if(randomProbability < acumulatedProbability)
             {
-                //lastNode = currentNode;
-                //currentNode = node;
                 target = node.transform.position;
-                Debug.Log(node);
                 break;
             }
         }
-
-        //target = currentNode.transform.position;
     }
 
     private void MoveToTarget()
