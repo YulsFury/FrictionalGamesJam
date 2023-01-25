@@ -22,6 +22,7 @@ public class Room : MonoBehaviour
     public Color32 ExploredRoomColor;
     public Color32 UnexploredRoomColor;
     public Color32 RadarScannerRoomColor;
+    public Color32 playerRoomColor;
 
     /*private void Awake()
     {
@@ -95,6 +96,8 @@ public class Room : MonoBehaviour
             {
                 uploadKeyItem.ToggleAvailability(false);
             }
+
+            UpdateRoomColor();
         }
     }
 
@@ -142,10 +145,7 @@ public class Room : MonoBehaviour
     {
         isExplored = true;
 
-        if (GameManager.GM.PC.isInMovementScreen)
-        {
-            GetComponentInChildren<SpriteRenderer>().color = ExploredRoomColor;
-        }
+        UpdateRoomColor();
     }
 
     public void ScannerRadarChangeRoomColor()
@@ -155,13 +155,22 @@ public class Room : MonoBehaviour
 
     public void UpdateRoomColor()
     {
-        if(isExplored)
+        if (GameManager.GM.PC.isInMovementScreen)
         {
-            GetComponentInChildren<SpriteRenderer>().color = ExploredRoomColor;
-        }
-        else
-        {
-            GetComponentInChildren<SpriteRenderer>().color = UnexploredRoomColor;
+            if (player.currentRoom.Equals(this))
+            {
+                GetComponentInChildren<SpriteRenderer>().color = playerRoomColor;
+            }
+
+            else if (!player.currentRoom.Equals(this) && isExplored)
+            {
+                GetComponentInChildren<SpriteRenderer>().color = ExploredRoomColor;
+            }
+
+            else
+            {
+                GetComponentInChildren<SpriteRenderer>().color = UnexploredRoomColor;
+            }
         }
     }
 
