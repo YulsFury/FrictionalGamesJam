@@ -3132,7 +3132,7 @@ MonoBehaviour:
   minTimeWhenFindingClosedDoor: 0.5
   maxTimeWhenFindingClosedDoor: 1
   resetLevel: 1
-  hideEnemy: 0
+  hideEnemy: 1
 --- !u!114 &528250640 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5110767339014574227, guid: f20086818a5998f46807ebea6a879163, type: 3}
@@ -9915,7 +9915,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6233763113570792147, guid: ac4387234a460a444b87b9bbecd5a078, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6233763113570792149, guid: ac4387234a460a444b87b9bbecd5a078, type: 3}
       propertyPath: m_Speed
