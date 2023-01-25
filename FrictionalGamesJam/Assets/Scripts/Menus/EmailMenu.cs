@@ -6,9 +6,14 @@ using UnityEngine.UI;
 public class EmailMenu : MonoBehaviour
 {
     public bool victoryEmails = false;
+    
+    public Color readEmailColor;
 
-    [Header ("Buttons")]
+    [Header ("Victory Buttons")]
     public List<GameObject> victoryEmailsButtonList;
+
+    [Header("Buttons")]
+    public List<GameObject> EmailsButtonList;
 
     [Header ("Emails")]
     public List<GameObject> allEmails;
@@ -33,6 +38,24 @@ public class EmailMenu : MonoBehaviour
 
     private void OnEnable()
     {
+        if(CrossSceneInfo.readEmails.Count  == 0)
+        {
+            for (int i = 0; i < EmailsButtonList.Count; i++)
+            {
+                CrossSceneInfo.readEmails.Add(false);
+            }
+        }
+        
+        for (int i = 0; i < CrossSceneInfo.readEmails.Count; i++)
+        {
+            if(CrossSceneInfo.readEmails[i])
+            {
+                var colors = EmailsButtonList[i].GetComponent<Button>().colors;
+                colors.normalColor = readEmailColor;
+                EmailsButtonList[i].GetComponent<Button>().colors = colors;
+            }
+        }
+
         if (!victoryEmails)
         {
             victoryEmails = CrossSceneInfo.victoryEmails;
@@ -67,10 +90,16 @@ public class EmailMenu : MonoBehaviour
     {
         for(int i = 0; i < allEmails.Count; i++)
         {
-            if(i == index)
+            if (i == index)
             {
                 allEmails[i].SetActive(true);
                 allSubjects[i].SetActive(true);
+
+                var colors = EmailsButtonList[i].GetComponent<Button>().colors;
+                colors.normalColor = readEmailColor;
+                EmailsButtonList[i].GetComponent<Button>().colors = colors;
+
+                CrossSceneInfo.readEmails[i] = true;
             }
             else
             {
