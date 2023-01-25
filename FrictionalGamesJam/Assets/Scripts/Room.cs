@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Room : MonoBehaviour
 {
-    public PlayerController player;
+    private PlayerController player;
     public List<DoorController> roomDoors;
     public NavMeshNode node;
     private bool isExplored;
@@ -98,6 +98,15 @@ public class Room : MonoBehaviour
             }
 
             UpdateRoomColor();
+        }
+        else if (collision.gameObject.tag == "Enemy")
+        {
+            EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
+
+            if (enemy.currentRoom.Equals(this))
+            {
+                enemy.UpdateNodes(enemy.previousRoom);
+            }
         }
     }
 

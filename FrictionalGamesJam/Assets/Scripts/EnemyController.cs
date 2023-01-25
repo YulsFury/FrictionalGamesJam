@@ -206,12 +206,9 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            if (sprite.enabled)
+            if (resetLevel)
             {
-                if (resetLevel)
-                {
-                    GameManager.GM.GameOver(true);
-                }
+                GameManager.GM.GameOver(true);
             }
         }
         else if (collision.gameObject.tag == "Door")
@@ -270,15 +267,13 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator FindNewPath()
     {
-        UpdateNodes(previousRoom);
-
         float timer = Random.Range(minTimeWhenFindingClosedDoor, maxTimeWhenFindingClosedDoor);
 
         yield return new WaitForSeconds(timer);
 
-        /*NavMeshNode tempNode = currentNode;
+        NavMeshNode tempNode = currentNode;
         currentNode = lastNode;
-        lastNode = tempNode;*/
+        lastNode = tempNode;
 
         float tempProb = probabilityGoingBack;
         probabilityGoingBack = 0;
@@ -297,5 +292,12 @@ public class EnemyController : MonoBehaviour
         isWaitingBeforeChasing = false;
         hasWaitedBeforeChasing = true;
         StopCoroutine(coroutineWaitBeforeChasing);
+    }
+
+    private void HideEnemy(bool hide)
+    {
+        sprite.enabled = hide;
+
+        Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), GameManager.GM.PC.GetComponent<Collider2D>(), hide);
     }
 }
