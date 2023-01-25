@@ -72,6 +72,12 @@ public class BatteryController : MonoBehaviour
         }
     }
 
+    public void HardStopOverTimeBattery()
+    {
+        elementsUsingBattery = 0;
+        AudioManager.instance.StopBatteryOvertime();
+    }
+
     /// <summary>
     /// Reduces the battery ammount depending on how many elements are using electricity.
     /// </summary>

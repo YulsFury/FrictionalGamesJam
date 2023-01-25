@@ -8,6 +8,7 @@ public static class CrossSceneInfo
     public static bool victoryEmails = false;
     public static bool playingMusic = false;
     public static FMOD.Studio.EventInstance musicInst;
+    public static FMOD.Studio.EventInstance batteryOvertimeInst;
 
     public static List<bool> readEmails = new List<bool>();
 }

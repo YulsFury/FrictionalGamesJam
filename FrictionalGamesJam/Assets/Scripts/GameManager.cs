@@ -62,10 +62,12 @@ public class GameManager : MonoBehaviour
     public void GameOver(bool byEnemy)
     {
         IM.GameOver(byEnemy);
+        BC.HardStopOverTimeBattery();
     }
 
     public void Victory()
     {
         IM.Victory();
+        BC.HardStopOverTimeBattery();
     }
 }

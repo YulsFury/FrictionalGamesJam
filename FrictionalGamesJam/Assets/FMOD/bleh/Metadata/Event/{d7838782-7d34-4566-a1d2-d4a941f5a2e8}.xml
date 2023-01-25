@@ -356,7 +356,7 @@
 	</object>
 	<object class="TransitionDestinationSound" id="{c5b4e03e-78d2-4568-8051-96d628cd69d6}">
 		<property name="length">
-			<value>4</value>
+			<value>0.5</value>
 		</property>
 		<relationship name="fadeInCurve">
 			<destination>{398d3230-7cfd-48e0-9c8d-d58580611878}</destination>

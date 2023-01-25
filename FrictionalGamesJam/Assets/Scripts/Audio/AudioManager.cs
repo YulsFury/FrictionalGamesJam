@@ -28,7 +28,6 @@ public class AudioManager : MonoBehaviour
     private FMOD.Studio.EventInstance enemyAlertInst;
 
     public FMODUnity.EventReference batteryOvertime;
-    private FMOD.Studio.EventInstance batteryOvertimeInst;
 
     public FMODUnity.EventReference music;
     //private FMOD.Studio.EventInstance musicInst;
@@ -116,14 +115,14 @@ public class AudioManager : MonoBehaviour
 
     public void PlayBatteryOvertime()
     {
-        batteryOvertimeInst = FMODUnity.RuntimeManager.CreateInstance(batteryOvertime);
-        batteryOvertimeInst.setParameterByNameWithLabel("Loop", "Play");
-        batteryOvertimeInst.start();
+        CrossSceneInfo.batteryOvertimeInst = FMODUnity.RuntimeManager.CreateInstance(batteryOvertime);
+        CrossSceneInfo.batteryOvertimeInst.setParameterByNameWithLabel("Loop", "Play");
+        CrossSceneInfo.batteryOvertimeInst.start();
     }
 
     public void StopBatteryOvertime()
     {
-        batteryOvertimeInst.setParameterByNameWithLabel("Loop", "Silence");
+        CrossSceneInfo.batteryOvertimeInst.setParameterByNameWithLabel("Loop", "Silence");
     }
 
     public void PlayEnemyAlert()

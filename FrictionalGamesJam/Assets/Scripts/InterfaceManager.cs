@@ -350,6 +350,7 @@ public class InterfaceManager : MonoBehaviour
         CrossSceneInfo.restart = false;
         AudioManager.instance.PlayUIBack();
         AudioManager.instance.ChangeToMainMenuMusic();
+        GameManager.GM.BC.HardStopOverTimeBattery();
         SceneManager.LoadScene("MainLevel");
     }
 
@@ -376,6 +377,8 @@ public class InterfaceManager : MonoBehaviour
         backButton.SetActive(false);
 
         AudioManager.instance.PlayUIBack();
+        AudioManager.instance.ChangeToMainMenuMusic();
+        GameManager.GM.BC.HardStopOverTimeBattery();
 
         isInMenus = true;
         Time.timeScale = 0f;
