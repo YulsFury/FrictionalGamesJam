@@ -1,25 +1,120 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class CreditsScreen : MonoBehaviour
 {
+    [Header ("Video")]
+    public GameObject videoTurnOff;
+
+    [Header("Background")]
+    public float delayBeforeDarkening;
+    public GameObject darkenBackground;
+    public int numberOfLightFlicks;
+    public float timeBetweenLightFlicks;
+
+    [Header ("Logo")]
+    public float delayBeforeLogo;
+    public Image logo;
+    public float lerpTime;
+
+    [Header ("Command Shell")]
+    public float delayBeforeShell;
     public TMPro.TMP_Text fullText;
     public TMPro.TMP_Text textShown;
     public float delayChunck;
     public float delayLetter;
 
-    private Coroutine coroutine;
-    
     void Start()
     {
         Time.timeScale = 1f;
         textShown.text = "";
-        coroutine = StartCoroutine(PrintText());
+        videoTurnOff.GetComponent<VideoPlayer>().loopPointReached += EndOfVideo;
+        var tempColor = logo.color;
+        tempColor.a = 0f;
+        logo.color = tempColor;
     }
+
+    void EndOfVideo(VideoPlayer vp)
+    {
+        videoTurnOff.SetActive(false);
+        StartCoroutine(TurnOffLights());
+    }
+
+    IEnumerator TurnOffLights()
+    {
+        yield return new WaitForSeconds(delayBeforeDarkening);
+
+        for (int i = 0; i < numberOfLightFlicks; i++)
+        {
+            yield return new WaitForSeconds(timeBetweenLightFlicks);
+
+            darkenBackground.SetActive(true);
+
+            yield return new WaitForSeconds(timeBetweenLightFlicks);
+
+            darkenBackground.SetActive(false);
+        }
+
+        darkenBackground.SetActive(true);
+
+        StartCoroutine(LogoLerp());
+    }
+
+    IEnumerator LogoLerp()
+    {
+        yield return new WaitForSeconds(delayBeforeLogo);
+
+        var alpha0 = logo.color;
+        var alpha1 = logo.color;
+        alpha1.a = 1f;
+
+        float timeLeft = lerpTime;
+
+        while (logo.color != alpha1)
+        {
+            if (timeLeft <= Time.deltaTime)
+            {
+                logo.color = alpha1;
+            }
+            else
+            {
+                logo.color = Color.Lerp(logo.color, alpha1, Time.deltaTime / timeLeft);
+
+                timeLeft -= Time.deltaTime;
+            }
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        timeLeft = lerpTime;
+
+        while (logo.color != alpha0)
+        {
+            if (timeLeft <= Time.deltaTime)
+            {
+                logo.color = alpha0;
+            }
+            else
+            {
+                logo.color = Color.Lerp(logo.color, alpha0, Time.deltaTime / timeLeft);
+
+                timeLeft -= Time.deltaTime;
+            }
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        StartCoroutine(PrintText());
+    }
+
 
     IEnumerator PrintText()
     {
+        yield return new WaitForSeconds(delayBeforeShell);
+
         string realPath = Application.dataPath;
         string[] allPathPieces = realPath.Split("/");
         string path = "";
