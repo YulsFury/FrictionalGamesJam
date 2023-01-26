@@ -183,6 +183,27 @@ public class Room : MonoBehaviour
         }
     }
 
+    public Color GetRoomColor()
+    {
+        Color normalRoomColor;
+        if (player.currentRoom.Equals(this))
+        {
+            normalRoomColor = playerRoomColor;
+        }
+
+        else if (!player.currentRoom.Equals(this) && isExplored)
+        {
+            normalRoomColor = ExploredRoomColor;
+        }
+
+        else
+        {
+            normalRoomColor = UnexploredRoomColor;
+        }
+
+        return normalRoomColor;
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = highlightColor;

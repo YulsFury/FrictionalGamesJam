@@ -19,9 +19,13 @@ public class RoomManager : MonoBehaviour
 
     public void ScannerRadarChangeRoomColorOfRooms()
     {
-        foreach(Room  room  in RoomsList)
+        
+        foreach (Room room in RoomsList)
         {
-            room.ScannerRadarChangeRoomColor();
+            if (!GameManager.GM.PC.GetComponent<Scanner>().enemyScanRooms.Contains(room))
+            {
+                room.ScannerRadarChangeRoomColor();
+            }
         }
     }
 
@@ -29,7 +33,11 @@ public class RoomManager : MonoBehaviour
     {
         foreach (Room room in RoomsList)
         {
-            room.UpdateRoomColor();
-        }
+            if (!GameManager.GM.PC.GetComponent<Scanner>().enemyScanRooms.Contains(room))
+            {
+                room.UpdateRoomColor();
+            }
+
+        }  
     }
 }

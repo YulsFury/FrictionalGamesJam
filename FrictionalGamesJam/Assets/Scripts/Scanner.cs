@@ -5,17 +5,20 @@ using UnityEngine;
 public class Scanner : MonoBehaviour
 {
     private List<EnemyController> enemies = new List<EnemyController>();
-    private List<Room> enemyScanRooms = new List<Room>();
-    private List<Color> enemyRoomColors = new List<Color>();
+    [HideInInspector] public List<Room> enemyScanRooms = new List<Room>();
+    private List<Color> enemyRoomScannedColors = new List<Color>();
+    private List<Color> enemyRoomNormalColors = new List<Color>();
+    private List<Color> enemyRoomFinalColors = new List<Color>();
     [Header("Timers")]
     public float timeToReveal;
     public float blurTimer = 5;
     public float cooldownTimer;
     private float cooldownTimerUpdate;
 
-    private bool bluring = false;
+    [HideInInspector] public bool bluring = false;
 
-    private Color enemyRoomColor;
+    private Color enemyRoomScannedColor;
+    private Color enemyRoomNormalColor;
 
     private void Start()
     {
@@ -35,12 +38,21 @@ public class Scanner : MonoBehaviour
 
         yield return new WaitForSeconds(timeToReveal);
 
+        enemyRoomScannedColors.Clear();
+        enemyRoomNormalColors.Clear();
+        enemyRoomFinalColors.Clear();
+
         for (int i = 0; i < enemies.Count; i++)
         {
             enemyRoom = enemies[i].GetComponent<EnemyController>().currentRoom;
-            enemyRoomColor = enemies[i].GetComponent<EnemyController>().currentRoom.GetComponentInChildren<SpriteRenderer>().color;
+            enemyRoomScannedColor = enemies[i].GetComponent<EnemyController>().currentRoom.GetComponentInChildren<SpriteRenderer>().color;
+            enemyRoomNormalColor = enemies[i].GetComponent<EnemyController>().currentRoom.GetComponent<Room>().GetRoomColor();
+
             enemyScanRooms.Add(enemyRoom);
-            enemyRoomColors.Add(enemyRoomColor);
+            enemyRoomScannedColors.Add(enemyRoomScannedColor);
+            enemyRoomNormalColors.Add(enemyRoomNormalColor);
+            enemyRoomFinalColors.Add(enemyRoomScannedColor);
+
             roomSprite = enemyRoom.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
             roomSprite.color = Color.red;
         }
@@ -50,6 +62,25 @@ public class Scanner : MonoBehaviour
  
     }
 
+    public void SwitchFinalRoomColor(bool movementScreen)
+    {
+        if(movementScreen)
+        {
+            for(int i=0; i<enemyRoomFinalColors.Count; i++)
+            {
+                enemyRoomFinalColors[i] = enemyRoomNormalColors[i];
+            }
+            
+        }
+        else
+        {
+            for (int i = 0; i < enemyRoomFinalColors.Count; i++)
+            {
+                enemyRoomFinalColors[i] = enemyRoomScannedColors[i];
+            }
+        }    
+    }
+
     private IEnumerator BlurScan()
     {
         float timeLeft = blurTimer;
@@ -57,13 +88,13 @@ public class Scanner : MonoBehaviour
         if (enemyScanRooms.Count > 0 && !bluring)
         {
             bluring = true;
-            while (enemyScanRooms[0].GetComponentInChildren<SpriteRenderer>().color != enemyRoomColors[0])
+            while (enemyScanRooms[0].GetComponentInChildren<SpriteRenderer>().color != enemyRoomFinalColors[0])
             {
                 if (timeLeft <= Time.deltaTime)
                 {
                     for (int i = 0; i < enemyScanRooms.Count; i++)
                     {
-                        enemyScanRooms[i].GetComponentInChildren<SpriteRenderer>().color = enemyRoomColors[0];
+                        enemyScanRooms[i].GetComponentInChildren<SpriteRenderer>().color = enemyRoomFinalColors[0];
                     }
                 }
                 else
@@ -73,7 +104,7 @@ public class Scanner : MonoBehaviour
 
                     for (int j = 0; j < enemyScanRooms.Count; j++)
                     {
-                        enemyScanRooms[j].GetComponentInChildren<SpriteRenderer>().color = Color.Lerp(enemyScanRooms[j].GetComponentInChildren<SpriteRenderer>().color, enemyRoomColors[0], Time.deltaTime / timeLeft);
+                        enemyScanRooms[j].GetComponentInChildren<SpriteRenderer>().color = Color.Lerp(enemyScanRooms[j].GetComponentInChildren<SpriteRenderer>().color, enemyRoomFinalColors[0], Time.deltaTime / timeLeft);
                     }
 
                     // update the timer
@@ -87,7 +118,7 @@ public class Scanner : MonoBehaviour
             {
                 enemyRoom.UpdateRoomColor();
             }
-            enemyRoomColors.RemoveRange(0, enemyRoomColors.Count);
+            //enemyRoomScannedColors.RemoveRange(0, enemyRoomScannedColors.Count);
             enemyScanRooms.RemoveRange(0, enemyScanRooms.Count);
             bluring = false;
         }  
