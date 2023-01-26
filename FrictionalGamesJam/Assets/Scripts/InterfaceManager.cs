@@ -54,7 +54,6 @@ public class InterfaceManager : MonoBehaviour
             Time.timeScale = 0f;
             emailMenu.SetActive(true);
             backButton.SetActive(true);
-            CrossSceneInfo.restartToEmails = false;
         } 
         else if (!CrossSceneInfo.restart)
         {
@@ -386,17 +385,27 @@ public class InterfaceManager : MonoBehaviour
 
     public void Back()
     {
-        codeMenu.SetActive(false);
-        emailMenu.SetActive(false);
-        backButton.SetActive(false);
+        if (!CrossSceneInfo.restartToEmails)
+        {
+            codeMenu.SetActive(false);
+            emailMenu.SetActive(false);
+            backButton.SetActive(false);
 
-        AudioManager.instance.PlayUIBack();
-        AudioManager.instance.ChangeToMainMenuMusic();
-        GameManager.GM.BC.HardStopOverTimeBattery();
+            AudioManager.instance.PlayUIBack();
+            AudioManager.instance.ChangeToMainMenuMusic();
+            GameManager.GM.BC.HardStopOverTimeBattery();
 
-        isInMenus = true;
-        Time.timeScale = 0f;
-        mainMenu.SetActive(true);
+            isInMenus = true;
+            Time.timeScale = 0f;
+            mainMenu.SetActive(true);
+        }
+        else
+        {
+            CrossSceneInfo.restartToEmails = false;
+            Time.timeScale = 1f;
+            SceneManager.LoadScene("Credits");
+        }
+        
     }
 
     public void ShowRadarWarning(bool activate)
