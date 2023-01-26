@@ -145,7 +145,6 @@ public class BatteryController : MonoBehaviour
     {
         while (true)
         {
-            print(batterySpent);
             if ((currentBatteryLvl - batterySpent) < 0)
             {
                 currentBatteryLvl = 0;
