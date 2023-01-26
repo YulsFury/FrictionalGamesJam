@@ -30,7 +30,7 @@ public class BatteryController : MonoBehaviour
     void Start()
     {
         currentBatteryLvl = maxBatteryLvl;
-        decreaseOverTimeCoroutine = DecreaseOverTimeCoroutine(batterySpent); //This is made so we know the exact coroutine that was started when we want to stop it.
+        decreaseOverTimeCoroutine = DecreaseOverTimeCoroutine(); //This is made so we know the exact coroutine that was started when we want to stop it.
     }
 
     /// <summary>
@@ -141,10 +141,11 @@ public class BatteryController : MonoBehaviour
     /// Reduces the battery ammount depending on how many elements are using electricity.
     /// </summary>
     /// <returns></returns>
-    private IEnumerator DecreaseOverTimeCoroutine(float batterySpent)
+    private IEnumerator DecreaseOverTimeCoroutine()
     {
         while (true)
         {
+            print(batterySpent);
             if ((currentBatteryLvl - batterySpent) < 0)
             {
                 currentBatteryLvl = 0;
