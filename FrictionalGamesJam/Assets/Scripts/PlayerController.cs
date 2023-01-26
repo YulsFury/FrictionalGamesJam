@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public Room previousRoom;
     NavMeshPath path;
     Animator playerAnimator;
+    private bool canMovePlayer = false;
 
     [HideInInspector] public bool isInMovementScreen;
 
@@ -26,6 +27,11 @@ public class PlayerController : MonoBehaviour
         Destination = null;
         playerAnimator = GetComponent<Animator>();
         isInMovementScreen = true;
+    }
+
+    public void CanMovePlayer()
+    {
+        canMovePlayer = true;
     }
 
     private void Update()
@@ -52,7 +58,11 @@ public class PlayerController : MonoBehaviour
     }
     void SetAgentPosition(Vector3 target)
     {
-        agent.SetDestination(new Vector3(target.x, target.y, transform.position.z));
+        if(canMovePlayer)
+        {
+            agent.SetDestination(new Vector3(target.x, target.y, transform.position.z));
+        }
+        
     }
 
     public void RepositionPlayer(Vector3 doorPosition)
