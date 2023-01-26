@@ -43,13 +43,14 @@ public class InterfaceManager : MonoBehaviour
 
     private void Start()
     {
-        if (CrossSceneInfo.victoryEmails)
+        if (CrossSceneInfo.restartToEmails)
         {
             isInMenus = true;
             isGamePlaying = false;
             Time.timeScale = 0f;
             emailMenu.SetActive(true);
             backButton.SetActive(true);
+            CrossSceneInfo.restartToEmails = false;
         } 
         else if (!CrossSceneInfo.restart)
         {
@@ -367,6 +368,7 @@ public class InterfaceManager : MonoBehaviour
     {
         CrossSceneInfo.restart = false;
         CrossSceneInfo.victoryEmails = true;
+        CrossSceneInfo.restartToEmails = true;
         SceneManager.LoadScene("MainLevel");
     }
 
