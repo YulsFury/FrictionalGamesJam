@@ -127,7 +127,7 @@ public class EnemyController : MonoBehaviour
                 }  
             }
         }
-       
+
         MoveToTarget();
     }
 
@@ -217,15 +217,6 @@ public class EnemyController : MonoBehaviour
             Vector3 vectorDoorEnemy = this.transform.position - doorPosition;
             target = this.transform.position + vectorDoorEnemy;
 
-            isChasing = false;
-            
-            if (coroutineWaitBeforeChasing != null)
-            {
-                StopCoroutine(coroutineWaitBeforeChasing);
-            }
-            hasWaitedBeforeChasing = false;
-            isWaitingBeforeChasing = false;
-
             if (coroutineWithoutFinding != null)
             {
                 StopCoroutine(coroutineWithoutFinding);
@@ -238,8 +229,20 @@ public class EnemyController : MonoBehaviour
             }
             automaticFollowPlayer = false;
 
-            isWaitingBecauseOfDoor = true;
-            coroutineFindNewPath = StartCoroutine(FindNewPath());
+            if (!IsInSameFloorAsPlayer())
+            {
+                isChasing = false;
+
+                if (coroutineWaitBeforeChasing != null)
+                {
+                    StopCoroutine(coroutineWaitBeforeChasing);
+                }
+                hasWaitedBeforeChasing = false;
+                isWaitingBeforeChasing = false;
+
+                isWaitingBecauseOfDoor = true;
+                coroutineFindNewPath = StartCoroutine(FindNewPath());
+            }
         }
     }
 
@@ -271,14 +274,18 @@ public class EnemyController : MonoBehaviour
 
         yield return new WaitForSeconds(timer);
 
-        NavMeshNode tempNode = currentNode;
-        currentNode = lastNode;
-        lastNode = tempNode;
+        if (!isChasing)
+        {
+            NavMeshNode tempNode = currentNode;
+            currentNode = lastNode;
+            lastNode = tempNode;
 
-        float tempProb = probabilityGoingBack;
-        probabilityGoingBack = 0;
-        SetTarget();
-        probabilityGoingBack = tempProb;
+            float tempProb = probabilityGoingBack;
+            probabilityGoingBack = 0;
+            SetTarget();
+            probabilityGoingBack = tempProb;
+        }
+        
         isWaitingBecauseOfDoor = false;
     }
 
@@ -286,6 +293,7 @@ public class EnemyController : MonoBehaviour
     {
         isWaitingBeforeChasing = true;
         target = transform.position;
+        MoveToTarget();
 
         yield return new WaitForSeconds(waitBeforeChaseTimer);
 
