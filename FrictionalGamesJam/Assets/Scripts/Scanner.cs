@@ -11,8 +11,8 @@ public class Scanner : MonoBehaviour
     public float timeToReveal;
     public float blurTimer = 5;
     public float cooldownTimer;
+    private float cooldownTimerUpdate;
 
-    private bool cooldownTimerUp;
     private bool bluring = false;
 
     private Color enemyRoomColor;
@@ -20,34 +20,34 @@ public class Scanner : MonoBehaviour
     private void Start()
     {
         enemies = GameManager.GM.EM.enemiesList;
+        GameManager.GM.IM.ScannerCooldownSlider.maxValue = cooldownTimer;
+        GameManager.GM.IM.ScannerCooldownSlider.value = cooldownTimer;
     }
   
     public IEnumerator ActiveScanner()
     {
-        if (!cooldownTimerUp)
+
+        StartCoroutine(CooldownTimer());
+        GameManager.GM.ReduceBatteryLevelSingleTime(BatteryController.singleTimeSources.Scanner);
+
+        Room enemyRoom;
+        SpriteRenderer roomSprite;
+
+        yield return new WaitForSeconds(timeToReveal);
+
+        for (int i = 0; i < enemies.Count; i++)
         {
-            Debug.Log("coold won");
-            StartCoroutine(CooldownTimer());
-            GameManager.GM.ReduceBatteryLevelSingleTime(BatteryController.singleTimeSources.Scanner);
-
-            Room enemyRoom;
-            SpriteRenderer roomSprite;
-
-            yield return new WaitForSeconds(timeToReveal);
-
-            for (int i = 0; i < enemies.Count; i++)
-            {
-                enemyRoom = enemies[i].GetComponent<EnemyController>().currentRoom;
-                enemyRoomColor = enemies[i].GetComponent<EnemyController>().currentRoom.GetComponentInChildren<SpriteRenderer>().color;
-                enemyScanRooms.Add(enemyRoom);
-                enemyRoomColors.Add(enemyRoomColor);
-                roomSprite = enemyRoom.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
-                Debug.Log("color red");
-                roomSprite.color = Color.red;
-            }
-
-            StartCoroutine(BlurScan());
+            enemyRoom = enemies[i].GetComponent<EnemyController>().currentRoom;
+            enemyRoomColor = enemies[i].GetComponent<EnemyController>().currentRoom.GetComponentInChildren<SpriteRenderer>().color;
+            enemyScanRooms.Add(enemyRoom);
+            enemyRoomColors.Add(enemyRoomColor);
+            roomSprite = enemyRoom.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
+            roomSprite.color = Color.red;
         }
+
+        StartCoroutine(BlurScan());
+        
+ 
     }
 
     private IEnumerator BlurScan()
@@ -96,8 +96,23 @@ public class Scanner : MonoBehaviour
 
     private IEnumerator CooldownTimer()
     {
-        cooldownTimerUp = true;
+        GameManager.GM.IM.scannerButton.interactable = false;
+
+        cooldownTimerUpdate = 0;
+        StartCoroutine(CoolDownTimerUpdate());
+
         yield return new WaitForSeconds(cooldownTimer);
-        cooldownTimerUp = false;
+
+        GameManager.GM.IM.scannerButton.interactable = true;
+    }
+
+    private IEnumerator CoolDownTimerUpdate()
+    {
+        while(cooldownTimerUpdate <= cooldownTimer)
+        {
+            GameManager.GM.IM.UpdateScannerCooldownSlider(cooldownTimerUpdate);
+            cooldownTimerUpdate += Time.deltaTime;
+            yield return 0;
+        }
     }
 }

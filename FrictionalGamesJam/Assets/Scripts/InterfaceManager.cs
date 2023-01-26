@@ -9,6 +9,10 @@ public class InterfaceManager : MonoBehaviour
     [HideInInspector] public bool isInMenus;
     [HideInInspector] public bool isGamePlaying;
 
+    [Header("Scanner")]
+    public Slider ScannerCooldownSlider;
+    public Button scannerButton;
+
     [Header ("Battery")]
     public Slider batteryLevelSlider;
     public GameObject[] batteryUsageTiles;
@@ -176,6 +180,11 @@ public class InterfaceManager : MonoBehaviour
                 batteryUsageTiles[4].SetActive(true);
             }
         }
+    }
+
+    public void UpdateScannerCooldownSlider(float scannerCooldownLevel)
+    {
+        ScannerCooldownSlider.value = scannerCooldownLevel;
     }
 
     /// <summary>
