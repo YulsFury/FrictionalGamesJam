@@ -32,7 +32,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1743970634289488195}
+  - {fileID: 3866099738241865375}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -118,8 +118,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1743970634289488195}
+  - component: {fileID: 3866099738241865375}
   - component: {fileID: 5772598185628831249}
+  - component: {fileID: 2528896509170149602}
   m_Layer: 0
   m_Name: EnemySprite
   m_TagString: Untagged
@@ -127,8 +128,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1743970634289488195
-Transform:
+--- !u!224 &3866099738241865375
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -142,6 +143,11 @@ Transform:
   m_Father: {fileID: 6233763113570792151}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1.0302734, y: 1.0302734}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &5772598185628831249
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -194,3 +200,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
+--- !u!222 &2528896509170149602
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6425390449200870508}
+  m_CullTransparentMesh: 1

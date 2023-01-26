@@ -295,7 +295,7 @@ public class InterfaceManager : MonoBehaviour
     {
         CrossSceneInfo.restart = true;
         gameOverMenu.SetActive(false);
-        AudioManager.instance.PlayUIForward();
+        AudioManager.instance.PlayUIConfirm();
         AudioManager.instance.ChangeToMapMusic();
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainLevel");
@@ -334,7 +334,7 @@ public class InterfaceManager : MonoBehaviour
         Time.timeScale = 1f;
         mainMenu.SetActive(false);
         backButton.SetActive(true);
-        AudioManager.instance.PlayUIForward();
+        AudioManager.instance.PlayUIConfirm();
     }
 
     public void GameOver(bool byEnemy)
