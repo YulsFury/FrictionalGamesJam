@@ -1199,6 +1199,13 @@ MonoBehaviour:
       Data3: 215077298
       Data4: -1680691062
     Path: event:/Door/Door_Close
+  blockedDoor:
+    Guid:
+      Data1: -873951845
+      Data2: 1087535638
+      Data3: 1626065065
+      Data4: 759019411
+    Path: event:/Door/Door_Blocked
   radar:
     Guid:
       Data1: 1454881603
