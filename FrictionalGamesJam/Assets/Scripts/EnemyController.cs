@@ -181,7 +181,7 @@ public class EnemyController : MonoBehaviour
 
     public void InitializeValues(EnemiesManager manager)
     {
-        defaultSpeed = manager.dafaultSpeed;
+        defaultSpeed = manager.defaultSpeed;
         chaseSpeed = manager.chaseSpeed;
         waitBeforeChaseTimer = manager.waitBeforeChaseTimer;
         probabilityGoingBack = manager.probabilityGoingBack;

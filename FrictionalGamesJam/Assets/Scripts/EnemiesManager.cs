@@ -8,7 +8,7 @@ public class EnemiesManager : MonoBehaviour
     [HideInInspector] public List<EnemyController> enemiesList;
 
     [Header("Speed")]
-    public float dafaultSpeed;
+    public float defaultSpeed;
     public float chaseSpeed;
 
     [Header("Chase")]
