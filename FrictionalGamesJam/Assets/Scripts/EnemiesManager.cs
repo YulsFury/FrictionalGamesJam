@@ -26,6 +26,9 @@ public class EnemiesManager : MonoBehaviour
     public float minTimeWhenFindingClosedDoor;
     public float maxTimeWhenFindingClosedDoor;
 
+    [Header ("Counter chase")]
+    public float waitCounterChase;
+
     [Header("Debbug")]
     public bool resetLevel;
     public bool hideEnemy = true;
@@ -38,6 +41,22 @@ public class EnemiesManager : MonoBehaviour
             EnemyController enemy = enemiesGameObject.transform.GetChild(i).gameObject.GetComponent<EnemyController>();
             enemiesList.Add(enemy);
             enemy.InitializeValues(this);
+        }
+    }
+
+    public void StartCounterChase()
+    {
+        foreach (EnemyController enemy in enemiesList)
+        {
+            enemy.StartCounterChase();
+        }
+    }
+
+    public void StopCounterChase()
+    {
+        foreach (EnemyController enemy in enemiesList)
+        {
+            enemy.StopCounterChase();
         }
     }
 }

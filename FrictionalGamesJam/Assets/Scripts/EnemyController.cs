@@ -15,6 +15,7 @@ public class EnemyController : MonoBehaviour
     private Coroutine coroutineAutomaticFollowing;
     private Coroutine coroutineFindNewPath;
     private Coroutine coroutineWaitBeforeChasing;
+    private Coroutine coroutineCounterChase;
     private bool isWithoutFindingCouroutineRunning;
     private bool automaticFollowPlayer;
     private bool isWaitingBecauseOfDoor;
@@ -34,6 +35,7 @@ public class EnemyController : MonoBehaviour
     private float durationAutomaticFollowingPlayer;
     private float minTimeWhenFindingClosedDoor;
     private float maxTimeWhenFindingClosedDoor;
+    private float waitCounterChase;
     private bool resetLevel;
     private bool hideEnemy;
 
@@ -59,6 +61,8 @@ public class EnemyController : MonoBehaviour
         isChasing = false;
         hasWaitedBeforeChasing = false;
         isWaitingBeforeChasing = false;
+
+        StartCounterChase();
     }
 
     void Update()
@@ -190,6 +194,7 @@ public class EnemyController : MonoBehaviour
         durationAutomaticFollowingPlayer = manager.durationAutomaticFollowingPlayer;
         minTimeWhenFindingClosedDoor = manager.minTimeWhenFindingClosedDoor;
         maxTimeWhenFindingClosedDoor = manager.maxTimeWhenFindingClosedDoor;
+        waitCounterChase = manager.waitCounterChase;
         resetLevel = manager.resetLevel;
         hideEnemy = manager.hideEnemy;
     }
@@ -307,5 +312,36 @@ public class EnemyController : MonoBehaviour
         sprite.enabled = hide;
 
         Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), GameManager.GM.PC.GetComponent<Collider2D>(), hide);
+    }
+
+    IEnumerator TimerCounterChase()
+    {
+        yield return new WaitForSeconds(waitCounterChase);
+
+        defaultSpeed = chaseSpeed;
+        durationAutomaticFollowingPlayer = 2000;
+
+        Debug.Log("aaaaaaaah");
+    }
+
+    public void StartCounterChase()
+    {
+        coroutineCounterChase = StartCoroutine(TimerCounterChase());
+        //Debug.Log("te estoy vigilando");
+    }
+
+    public void StopCounterChase()
+    {
+        StopCoroutine(coroutineCounterChase);
+        defaultSpeed = GameManager.GM.EM.defaultSpeed;
+        durationAutomaticFollowingPlayer = GameManager.GM.EM.durationAutomaticFollowingPlayer;
+
+        automaticFollowPlayer = false;
+        if(coroutineAutomaticFollowing != null)
+        {
+            StopCoroutine(coroutineAutomaticFollowing);
+        }
+        SetTarget();
+        //Debug.Log("chilleamos");
     }
 }

@@ -3284,6 +3284,7 @@ MonoBehaviour:
   durationAutomaticFollowingPlayer: 10
   minTimeWhenFindingClosedDoor: 0.5
   maxTimeWhenFindingClosedDoor: 1
+  waitCounterChase: 40
   resetLevel: 1
   hideEnemy: 1
 --- !u!114 &528250640 stripped

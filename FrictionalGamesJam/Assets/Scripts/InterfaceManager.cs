@@ -212,6 +212,8 @@ public class InterfaceManager : MonoBehaviour
             radarToggle.isOn = false;
 
             ActivateRadarWarning(true);
+
+            GameManager.GM.EM.StartCounterChase();
         }
     }
 
@@ -240,6 +242,8 @@ public class InterfaceManager : MonoBehaviour
             radarToggle.isOn = false;
 
             ActivateRadarWarning(true);
+
+            GameManager.GM.EM.StopCounterChase();
         }
     }
 
@@ -268,6 +272,8 @@ public class InterfaceManager : MonoBehaviour
             radarToggle.interactable = false;
 
             ActivateRadarWarning(false);
+
+            GameManager.GM.EM.StopCounterChase();
         }
     }
 
