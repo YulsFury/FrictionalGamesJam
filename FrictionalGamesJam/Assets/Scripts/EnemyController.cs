@@ -206,7 +206,7 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            if (resetLevel)
+            if (resetLevel && IsInSameFloorAsPlayer())
             {
                 GameManager.GM.GameOver(true);
             }
