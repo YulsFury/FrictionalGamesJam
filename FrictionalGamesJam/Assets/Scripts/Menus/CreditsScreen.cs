@@ -23,6 +23,7 @@ public class CreditsScreen : MonoBehaviour
 
     [Header ("Logo")]
     public float delayBeforeLogo;
+    public float alphaLogo;
     public Image logo;
     public float lerpTime;
 
@@ -93,7 +94,7 @@ public class CreditsScreen : MonoBehaviour
 
         var alpha0 = logo.color;
         var alpha1 = logo.color;
-        alpha1.a = 1f;
+        alpha1.a = alphaLogo;
 
         float timeLeft = lerpTime;
 
