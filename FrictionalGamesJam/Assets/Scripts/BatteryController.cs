@@ -13,13 +13,16 @@ public class BatteryController : MonoBehaviour
     public float standardOvertimeUseDecrease;
     public float doorOvertimeUseDecrease;
     public float radarOvertimeUseDecrease;
+    [Header("Discount Multiplyer")]
+    public float discountPerUsage = 1;
+    public float maxDiscount = 0.1f;
+    public int usagesWithoutDiscount = 1;
 
     public enum singleTimeSources { Standard, Scanner }
     public enum overtimeSources { Standard, Radar, Door}
 
     private int elementsUsingBattery = 0;
     private float batterySpent = 0;
-
 
     private float maxBatteryLvl = 100;
     private float currentBatteryLvl;
@@ -145,7 +148,7 @@ public class BatteryController : MonoBehaviour
     {
         while (true)
         {
-            if ((currentBatteryLvl - batterySpent) < 0)
+            if ((currentBatteryLvl - (batterySpent * CalculateDiscount())) < 0)
             {
                 currentBatteryLvl = 0;
 
@@ -155,12 +158,27 @@ public class BatteryController : MonoBehaviour
             }
             else
             {
-                currentBatteryLvl = currentBatteryLvl - batterySpent;
+                currentBatteryLvl = currentBatteryLvl - (batterySpent * CalculateDiscount());
             }
 
             GameManager.GM.IM.UpdateBatteryLevelContinuous(currentBatteryLvl);
 
             yield return new WaitForSeconds(timerUseDecrease);
         }
+    }
+
+    private float CalculateDiscount()
+    {        
+        float discount;
+        if(Mathf.Pow(discountPerUsage, elementsUsingBattery - usagesWithoutDiscount) < maxDiscount)
+        {
+            discount = maxDiscount;
+        }
+        else
+        {
+            discount = Mathf.Pow(discountPerUsage, elementsUsingBattery - usagesWithoutDiscount);
+        }
+        print(discount);
+        return discount;
     }
 }

@@ -181,7 +181,7 @@ public class EnemyController : MonoBehaviour
 
     public void InitializeValues(EnemiesManager manager)
     {
-        defaultSpeed = manager.dafaultSpeed;
+        defaultSpeed = manager.defaultSpeed;
         chaseSpeed = manager.chaseSpeed;
         waitBeforeChaseTimer = manager.waitBeforeChaseTimer;
         probabilityGoingBack = manager.probabilityGoingBack;
@@ -206,7 +206,7 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            if (resetLevel)
+            if (resetLevel && IsInSameFloorAsPlayer())
             {
                 GameManager.GM.GameOver(true);
             }

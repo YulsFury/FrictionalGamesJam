@@ -70,6 +70,7 @@ public class InterfaceManager : MonoBehaviour
             Time.timeScale = 1f;
             backButton.SetActive(true);
             AudioManager.instance.ChangeToMapMusic();
+            AudioManager.instance.PlayRobotOn();
         }
 
         ShowRadarWarning(false);
@@ -295,6 +296,7 @@ public class InterfaceManager : MonoBehaviour
         CrossSceneInfo.restart = true;
         gameOverMenu.SetActive(false);
         AudioManager.instance.PlayUIConfirm();
+        AudioManager.instance.PlayRobotOn();
         AudioManager.instance.ChangeToMapMusic();
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainLevel");
@@ -325,6 +327,7 @@ public class InterfaceManager : MonoBehaviour
         codeMenu.SetActive(false);
         backButton.SetActive(true);
         AudioManager.instance.ChangeToMapMusic();
+        AudioManager.instance.PlayRobotOn();
     }
 
     public void Continue()

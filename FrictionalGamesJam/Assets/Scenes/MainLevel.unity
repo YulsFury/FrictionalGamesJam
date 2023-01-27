@@ -1199,6 +1199,13 @@ MonoBehaviour:
       Data3: 215077298
       Data4: -1680691062
     Path: event:/Door/Door_Close
+  blockedDoor:
+    Guid:
+      Data1: -873951845
+      Data2: 1087535638
+      Data3: 1626065065
+      Data4: 759019411
+    Path: event:/Door/Door_Blocked
   radar:
     Guid:
       Data1: 1454881603
@@ -1213,6 +1220,34 @@ MonoBehaviour:
       Data3: 481649282
       Data4: -1905229883
     Path: event:/pathOS/pathOS_ folder_click
+  consoleLetter:
+    Guid:
+      Data1: 160844376
+      Data2: 1123535142
+      Data3: 478506649
+      Data4: 1240101467
+    Path: event:/Letter
+  powerOff:
+    Guid:
+      Data1: 272325
+      Data2: 1313335003
+      Data3: -1366285923
+      Data4: -1170289471
+    Path: event:/powerOff
+  monitorOff:
+    Guid:
+      Data1: 1585352165
+      Data2: 1074989298
+      Data3: 47348663
+      Data4: 318812556
+    Path: event:/MonitorOff
+  robotOn:
+    Guid:
+      Data1: -2012020281
+      Data2: 1080947138
+      Data3: -213813107
+      Data4: 1125028875
+    Path: event:/RobotoTurningOn
   enemyAlert:
     Guid:
       Data1: 116219788
@@ -3240,13 +3275,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemiesGameObject: {fileID: 986566845}
   enemiesList: []
-  dafaultSpeed: 0.3
-  chaseSpeed: 1.1
-  waitBeforeChaseTimer: 3.5
+  defaultSpeed: 0.3
+  chaseSpeed: 2
+  waitBeforeChaseTimer: 0
   probabilityGoingBack: 5
   minTimeBeforeGoingAfterPlayer: 10
-  maxTimeBeforeGoingAfterPlayer: 15
-  durationAutomaticFollowingPlayer: 7
+  maxTimeBeforeGoingAfterPlayer: 17
+  durationAutomaticFollowingPlayer: 10
   minTimeWhenFindingClosedDoor: 0.5
   maxTimeWhenFindingClosedDoor: 1
   resetLevel: 1
@@ -7457,22 +7492,6 @@ PrefabInstance:
     - target: {fileID: 5589927324602471199, guid: 40d342e22aa349343b0da4791252b3d1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5589927324602471265, guid: 40d342e22aa349343b0da4791252b3d1, type: 3}
-      propertyPath: m_Speed
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5589927324602471265, guid: 40d342e22aa349343b0da4791252b3d1, type: 3}
-      propertyPath: m_Height
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 5589927324602471265, guid: 40d342e22aa349343b0da4791252b3d1, type: 3}
-      propertyPath: m_Radius
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5589927324602471265, guid: 40d342e22aa349343b0da4791252b3d1, type: 3}
-      propertyPath: m_BaseOffset
-      value: 0.125
       objectReference: {fileID: 0}
     - target: {fileID: 5589927324602471267, guid: 40d342e22aa349343b0da4791252b3d1, type: 3}
       propertyPath: m_Name
@@ -12278,8 +12297,11 @@ MonoBehaviour:
   standardSingleUseDecrease: 4
   scannerSingleUseDecrease: 4
   standardOvertimeUseDecrease: 0.5
-  doorOvertimeUseDecrease: 1
-  radarOvertimeUseDecrease: 0.5
+  doorOvertimeUseDecrease: 1.5
+  radarOvertimeUseDecrease: 2
+  discountPerUsage: 0.8
+  maxDiscount: 0.5
+  usagesWithoutDiscount: 1
 --- !u!1001 &1819240035
 PrefabInstance:
   m_ObjectHideFlags: 0

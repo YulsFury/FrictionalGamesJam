@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{b78228e7-c862-4a23-aa60-4543267a9f5b}">
+		<property name="assetPath">
+			<value>Door/blockedDoor.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.84229166666666666</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{53eec1ea-9bef-449a-8b45-0f6b4a8cde93}</destination>
+		</relationship>
+	</object>
+</objects>
