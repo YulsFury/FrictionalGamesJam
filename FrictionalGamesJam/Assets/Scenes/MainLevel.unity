@@ -3268,7 +3268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemiesGameObject: {fileID: 986566845}
   enemiesList: []
-  dafaultSpeed: 0.3
+  defaultSpeed: 0.3
   chaseSpeed: 1.1
   waitBeforeChaseTimer: 3.5
   probabilityGoingBack: 5
