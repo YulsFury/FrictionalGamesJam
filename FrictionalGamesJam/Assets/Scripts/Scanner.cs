@@ -139,7 +139,7 @@ public class Scanner : MonoBehaviour
 
     private IEnumerator CoolDownTimerUpdate()
     {
-        while(cooldownTimerUpdate <= cooldownTimer)
+        while(cooldownTimerUpdate < cooldownTimer)
         {
             GameManager.GM.IM.UpdateScannerCooldownSlider(cooldownTimerUpdate);
             cooldownTimerUpdate += Time.deltaTime;
