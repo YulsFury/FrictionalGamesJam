@@ -3273,8 +3273,8 @@ MonoBehaviour:
   waitBeforeChaseTimer: 3.5
   probabilityGoingBack: 5
   minTimeBeforeGoingAfterPlayer: 10
-  maxTimeBeforeGoingAfterPlayer: 15
-  durationAutomaticFollowingPlayer: 7
+  maxTimeBeforeGoingAfterPlayer: 17
+  durationAutomaticFollowingPlayer: 10
   minTimeWhenFindingClosedDoor: 0.5
   maxTimeWhenFindingClosedDoor: 1
   resetLevel: 1
@@ -7485,22 +7485,6 @@ PrefabInstance:
     - target: {fileID: 5589927324602471199, guid: 40d342e22aa349343b0da4791252b3d1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5589927324602471265, guid: 40d342e22aa349343b0da4791252b3d1, type: 3}
-      propertyPath: m_Speed
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5589927324602471265, guid: 40d342e22aa349343b0da4791252b3d1, type: 3}
-      propertyPath: m_Height
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 5589927324602471265, guid: 40d342e22aa349343b0da4791252b3d1, type: 3}
-      propertyPath: m_Radius
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5589927324602471265, guid: 40d342e22aa349343b0da4791252b3d1, type: 3}
-      propertyPath: m_BaseOffset
-      value: 0.125
       objectReference: {fileID: 0}
     - target: {fileID: 5589927324602471267, guid: 40d342e22aa349343b0da4791252b3d1, type: 3}
       propertyPath: m_Name
@@ -12306,8 +12290,8 @@ MonoBehaviour:
   standardSingleUseDecrease: 4
   scannerSingleUseDecrease: 4
   standardOvertimeUseDecrease: 0.5
-  doorOvertimeUseDecrease: 1
-  radarOvertimeUseDecrease: 0.5
+  doorOvertimeUseDecrease: 1.5
+  radarOvertimeUseDecrease: 2
 --- !u!1001 &1819240035
 PrefabInstance:
   m_ObjectHideFlags: 0
