@@ -3276,8 +3276,8 @@ MonoBehaviour:
   enemiesGameObject: {fileID: 986566845}
   enemiesList: []
   defaultSpeed: 0.3
-  chaseSpeed: 1.1
-  waitBeforeChaseTimer: 3.5
+  chaseSpeed: 2
+  waitBeforeChaseTimer: 0
   probabilityGoingBack: 5
   minTimeBeforeGoingAfterPlayer: 10
   maxTimeBeforeGoingAfterPlayer: 17
@@ -12299,6 +12299,9 @@ MonoBehaviour:
   standardOvertimeUseDecrease: 0.5
   doorOvertimeUseDecrease: 1.5
   radarOvertimeUseDecrease: 2
+  discountPerUsage: 0.8
+  maxDiscount: 0.5
+  usagesWithoutDiscount: 1
 --- !u!1001 &1819240035
 PrefabInstance:
   m_ObjectHideFlags: 0

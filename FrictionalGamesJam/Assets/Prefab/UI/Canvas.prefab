@@ -3533,7 +3533,7 @@ PrefabInstance:
     - target: {fileID: 2354638469192111917, guid: fac0b68730668f04eb13303f20033370, type: 3}
       propertyPath: m_text
       value: "Task completed: The files have been succesfully uploaded to the PATHOS-II
-        messege server. \n"
+        message server. \n"
       objectReference: {fileID: 0}
     - target: {fileID: 2354638469192111917, guid: fac0b68730668f04eb13303f20033370, type: 3}
       propertyPath: m_fontSize
