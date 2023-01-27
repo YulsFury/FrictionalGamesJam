@@ -1213,6 +1213,34 @@ MonoBehaviour:
       Data3: 481649282
       Data4: -1905229883
     Path: event:/pathOS/pathOS_ folder_click
+  consoleLetter:
+    Guid:
+      Data1: 160844376
+      Data2: 1123535142
+      Data3: 478506649
+      Data4: 1240101467
+    Path: event:/Letter
+  powerOff:
+    Guid:
+      Data1: 272325
+      Data2: 1313335003
+      Data3: -1366285923
+      Data4: -1170289471
+    Path: event:/powerOff
+  monitorOff:
+    Guid:
+      Data1: 1585352165
+      Data2: 1074989298
+      Data3: 47348663
+      Data4: 318812556
+    Path: event:/MonitorOff
+  robotOn:
+    Guid:
+      Data1: -2012020281
+      Data2: 1080947138
+      Data3: -213813107
+      Data4: 1125028875
+    Path: event:/RobotoTurningOn
   enemyAlert:
     Guid:
       Data1: 116219788

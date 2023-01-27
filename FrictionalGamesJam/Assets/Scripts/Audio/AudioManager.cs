@@ -23,6 +23,10 @@ public class AudioManager : MonoBehaviour
     public FMODUnity.EventReference closeDoor;
     public FMODUnity.EventReference radar;
     public FMODUnity.EventReference playerDestination;
+    public FMODUnity.EventReference consoleLetter;
+    public FMODUnity.EventReference powerOff;
+    public FMODUnity.EventReference monitorOff;
+    public FMODUnity.EventReference robotOn;
 
     public FMODUnity.EventReference enemyAlert;
     private FMOD.Studio.EventInstance enemyAlertInst;
@@ -152,5 +156,22 @@ public class AudioManager : MonoBehaviour
     public void ChangeToVictoryMusic()
     {
         CrossSceneInfo.musicInst.setParameterByNameWithLabel("Music", "Victory");
+    }
+
+    public void PlayPowerOff()
+    {
+        RuntimeManager.PlayOneShot(powerOff);
+    }
+    public void PlayMonitorOff()
+    {
+        RuntimeManager.PlayOneShot(monitorOff);
+    }
+    public void PlayConsoleLetter()
+    {
+        RuntimeManager.PlayOneShot(consoleLetter);
+    }
+    public void PlayRobotOn()
+    {
+        RuntimeManager.PlayOneShot(robotOn);
     }
 }
