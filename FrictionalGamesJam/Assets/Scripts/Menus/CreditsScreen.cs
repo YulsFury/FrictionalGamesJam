@@ -12,8 +12,14 @@ public class CreditsScreen : MonoBehaviour
     [Header("Background")]
     public float delayBeforeDarkening;
     public GameObject darkenBackground;
+    public GameObject Monitor;
+    public GameObject TurnOffMonitor;
+    public GameObject TurnOnMonitor;
     public int numberOfLightFlicks;
     public float timeBetweenLightFlicks;
+
+    [Header("TurnOnComputer")]
+    public float delayBeforeTurnOnComputer;
 
     [Header ("Logo")]
     public float delayBeforeLogo;
@@ -29,6 +35,7 @@ public class CreditsScreen : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(TurnOffLights());
         Time.timeScale = 1f;
         textShown.text = "";
         videoTurnOff.GetComponent<VideoPlayer>().loopPointReached += EndOfVideo;
@@ -40,7 +47,7 @@ public class CreditsScreen : MonoBehaviour
     void EndOfVideo(VideoPlayer vp)
     {
         videoTurnOff.SetActive(false);
-        StartCoroutine(TurnOffLights());
+        
     }
 
     IEnumerator TurnOffLights()
@@ -52,20 +59,37 @@ public class CreditsScreen : MonoBehaviour
             yield return new WaitForSeconds(timeBetweenLightFlicks);
 
             darkenBackground.SetActive(true);
+            TurnOffMonitor.SetActive(true);
+            Monitor.SetActive(false);
 
             yield return new WaitForSeconds(timeBetweenLightFlicks);
 
+            Monitor.SetActive(true);
             darkenBackground.SetActive(false);
+            TurnOffMonitor.SetActive(false);
+            
         }
 
         darkenBackground.SetActive(true);
+        TurnOffMonitor.SetActive(true);
+        Monitor.SetActive(false);
 
+        StartCoroutine(TurnOnComputer());
         StartCoroutine(LogoLerp());
     }
 
+    IEnumerator TurnOnComputer()
+    {
+        yield return new WaitForSeconds(delayBeforeTurnOnComputer);
+        Monitor.SetActive(false);
+        TurnOnMonitor.SetActive(true);
+    }
     IEnumerator LogoLerp()
     {
+
         yield return new WaitForSeconds(delayBeforeLogo);
+
+        TurnOffMonitor.SetActive(false);
 
         var alpha0 = logo.color;
         var alpha1 = logo.color;
@@ -107,12 +131,17 @@ public class CreditsScreen : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
+        //var ColorAuxiliar = logo.color;
+        //ColorAuxiliar.a = 0f;
+        //logo.color = ColorAuxiliar;
+
         StartCoroutine(PrintText());
     }
 
 
     IEnumerator PrintText()
     {
+
         yield return new WaitForSeconds(delayBeforeShell);
 
         string realPath = Application.dataPath;
