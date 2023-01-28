@@ -406,6 +406,7 @@ public class InterfaceManager : MonoBehaviour
         mainMenu.SetActive(false);
         backButton.SetActive(true);
         AudioManager.instance.PlayUIConfirm();
+        AudioManager.instance.ChangeToMapMusic();
     }
 
     public void GameOver(bool byEnemy)
@@ -435,6 +436,11 @@ public class InterfaceManager : MonoBehaviour
         AudioManager.instance.PlayUIBack();
         AudioManager.instance.ChangeToMainMenuMusic();
         GameManager.GM.BC.HardStopOverTimeBattery();
+        if (AudioManager.instance.uiWhiteNoiseInst.isValid())
+        {
+            AudioManager.instance.StopUIWhiteNoise();
+        }
+
         SceneManager.LoadScene("MainLevel");
     }
 
