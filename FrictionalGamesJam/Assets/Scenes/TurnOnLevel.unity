@@ -263,10 +263,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayBeforeTurnOn: 4
-  delayBeforeInitialize: 14.5
-  delayBeforeLogo: 2
-  logoLerpTime: 4
-  delayBeforeStartingGame: 1
+  delayBeforeInitialize: 2.5
+  delayBeforeLogo: 3
+  logoLerpTimeIn: 4
+  logoLerpTimeOut: 1.5
+  delayBeforeStartingGame: 0.2
   alphaLogo: 0.6
   BlackScreen: {fileID: 655745814}
   InitializingMenu: {fileID: 1736348922}
