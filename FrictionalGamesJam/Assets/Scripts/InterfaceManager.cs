@@ -362,7 +362,6 @@ public class InterfaceManager : MonoBehaviour
         CrossSceneInfo.restart = true;
         gameOverMenu.SetActive(false);
         AudioManager.instance.PlayUIConfirm();
-        AudioManager.instance.PlayRobotOn();
         AudioManager.instance.ChangeToMapMusic();
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainLevel");

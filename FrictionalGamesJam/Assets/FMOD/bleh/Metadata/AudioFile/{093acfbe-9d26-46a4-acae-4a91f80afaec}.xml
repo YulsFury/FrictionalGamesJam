@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{093acfbe-9d26-46a4-acae-4a91f80afaec}">
 		<property name="assetPath">
-			<value>tvTurnOff/screenOff-01.ogg</value>
+			<value>Monitor/screenOff-01.ogg</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>48</value>

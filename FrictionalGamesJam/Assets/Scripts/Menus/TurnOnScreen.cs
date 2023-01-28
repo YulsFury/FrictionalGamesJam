@@ -10,6 +10,7 @@ public class TurnOnScreen : MonoBehaviour
 
     [Header("Delays")]
     public float delayBeforeTurnOn;
+    public float delayAfterTurnOnSFX;
     public float delayBeforeInitialize;
     public float delayBeforeLogo;
     public float logoLerpTimeIn;
@@ -37,6 +38,8 @@ public class TurnOnScreen : MonoBehaviour
     IEnumerator TurnsOn()
     {
         yield return new WaitForSeconds(delayBeforeTurnOn);
+        AudioManager.instance.StartMonitorTurnOn();
+        yield return new WaitForSeconds(delayAfterTurnOnSFX);
         GetComponent<Animator>().SetTrigger("TurnOnComputer");
     }
 
@@ -51,7 +54,6 @@ public class TurnOnScreen : MonoBehaviour
         InitializingMenu.SetActive(true);
         InitializingSlider.maxValue = initializingTimer;
         StartCoroutine(InitializingTimer());
-        AudioManager.instance.PlayRobotOn();
     }
 
     private IEnumerator WaitForInitializing()
@@ -85,6 +87,7 @@ public class TurnOnScreen : MonoBehaviour
     private IEnumerator WaitForStartingGame()
     {
         yield return new WaitForSeconds(delayBeforeStartingGame);
+        AudioManager.instance.StopMonitorTurnOn();
         StartGame();
     }
 

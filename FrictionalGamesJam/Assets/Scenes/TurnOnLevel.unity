@@ -262,7 +262,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76b45f84e588f60429f28fdfdb9019ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayBeforeTurnOn: 4
+  delayBeforeTurnOn: 3
+  delayAfterTurnOnSFX: 1
   delayBeforeInitialize: 2.5
   delayBeforeLogo: 3
   logoLerpTimeIn: 4

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="DataFile" id="{3ab997d9-beff-4959-ba96-8a795f273828}">
+		<property name="assetPath">
+			<value>Monitor/screenOff-01.ogg.meta</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{53eec1ea-9bef-449a-8b45-0f6b4a8cde93}</destination>
+		</relationship>
+	</object>
+</objects>

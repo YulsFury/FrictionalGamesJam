@@ -148,7 +148,7 @@ MonoBehaviour:
       Data2: 1182250987
       Data3: 313761158
       Data4: -149171930
-    Path: event:/Radar
+    Path: event:/player/Radar
   playerDestination:
     Guid:
       Data1: -1659469623
@@ -162,7 +162,7 @@ MonoBehaviour:
       Data2: 1123535142
       Data3: 478506649
       Data4: 1240101467
-    Path: event:/Letter
+    Path: event:/Monitor/Letter
   powerOff:
     Guid:
       Data1: 272325
@@ -176,7 +176,7 @@ MonoBehaviour:
       Data2: 1074989298
       Data3: 47348663
       Data4: 318812556
-    Path: event:/MonitorOff
+    Path: event:/Monitor/MonitorOff
   robotOn:
     Guid:
       Data1: -2012020281
@@ -184,6 +184,13 @@ MonoBehaviour:
       Data3: -213813107
       Data4: 1125028875
     Path: event:/RobotoTurningOn
+  monitorOn:
+    Guid:
+      Data1: 232830238
+      Data2: 1099499778
+      Data3: -1817024577
+      Data4: -1296517915
+    Path: event:/Monitor/MonitorOn
   enemyAlert:
     Guid:
       Data1: 116219788

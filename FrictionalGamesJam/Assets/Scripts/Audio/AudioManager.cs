@@ -29,13 +29,15 @@ public class AudioManager : MonoBehaviour
     public FMODUnity.EventReference monitorOff;
     public FMODUnity.EventReference robotOn;
 
+    public FMODUnity.EventReference monitorOn;
+    private FMOD.Studio.EventInstance monitorOnInst;
+
     public FMODUnity.EventReference enemyAlert;
     private FMOD.Studio.EventInstance enemyAlertInst;
 
     public FMODUnity.EventReference batteryOvertime;
 
     public FMODUnity.EventReference music;
-    //private FMOD.Studio.EventInstance musicInst;
 
     void Awake()
     {
@@ -176,5 +178,16 @@ public class AudioManager : MonoBehaviour
     public void PlayRobotOn()
     {
         RuntimeManager.PlayOneShot(robotOn);
+    }
+
+    public void StartMonitorTurnOn()
+    {
+        monitorOnInst = FMODUnity.RuntimeManager.CreateInstance(monitorOn);
+        monitorOnInst.setParameterByNameWithLabel("Loop", "Play");
+        monitorOnInst.start();
+    }
+    public void StopMonitorTurnOn()
+    {
+        monitorOnInst.setParameterByNameWithLabel("Loop", "Silence");
     }
 }
