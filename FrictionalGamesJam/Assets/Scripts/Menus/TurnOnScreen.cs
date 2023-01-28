@@ -12,7 +12,8 @@ public class TurnOnScreen : MonoBehaviour
     public float delayBeforeTurnOn;
     public float delayBeforeInitialize;
     public float delayBeforeLogo;
-    public float logoLerpTime;
+    public float logoLerpTimeIn;
+    public float logoLerpTimeOut;
     public float delayBeforeStartingGame;
 
     public float alphaLogo;
@@ -30,8 +31,7 @@ public class TurnOnScreen : MonoBehaviour
         logo.color = tempColor;
         StartCoroutine(TurnsOn());
         StartCoroutine(LogoAppears());
-        StartCoroutine(WaitForInitializing());
-
+       
     }
 
     IEnumerator TurnsOn()
@@ -63,7 +63,6 @@ public class TurnOnScreen : MonoBehaviour
     public void DisableBlackScreen()
     {
         BlackScreen.SetActive(false);
-        
     }
 
     private IEnumerator InitializingTimer()
@@ -104,7 +103,7 @@ public class TurnOnScreen : MonoBehaviour
         var alpha1 = logo.color;
         alpha1.a = alphaLogo;
 
-        float timeLeft = logoLerpTime;
+        float timeLeft = logoLerpTimeIn;
 
         while (logo.color != alpha1)
         {
@@ -122,7 +121,9 @@ public class TurnOnScreen : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
-        timeLeft = logoLerpTime;
+        yield return new WaitForSeconds(1);
+
+        timeLeft = logoLerpTimeOut;
 
         while (logo.color != alpha0)
         {
@@ -140,5 +141,6 @@ public class TurnOnScreen : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
+        StartCoroutine(WaitForInitializing());
     }
 }
