@@ -367,8 +367,10 @@ public class InterfaceManager : MonoBehaviour
         {
             AudioManager.instance.StopUIWhiteNoise();
         }
-        CrossSceneInfo.elementsUsingBattery = 0;
-        AudioManager.instance.StopBatteryOvertime();
+        if (CrossSceneInfo.elementsUsingBattery > 0)
+        {
+            GameManager.GM.BC.HardStopOverTimeBattery();
+        }
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainLevel");
     }
@@ -433,6 +435,11 @@ public class InterfaceManager : MonoBehaviour
             gameOverByEnergyText.SetActive(true);
         }
 
+        if (CrossSceneInfo.elementsUsingBattery > 0)
+        {
+            GameManager.GM.BC.HardStopOverTimeBattery();
+        }
+
         backButton.SetActive(false);
         AudioManager.instance.ChangeToGameOverMusic();
     }
@@ -440,6 +447,7 @@ public class InterfaceManager : MonoBehaviour
     public void MainMenuButton()
     {
         CrossSceneInfo.restart = false;
+
         AudioManager.instance.PlayUIBack();
         AudioManager.instance.ChangeToMainMenuMusic();
         GameManager.GM.BC.HardStopOverTimeBattery();
@@ -458,6 +466,10 @@ public class InterfaceManager : MonoBehaviour
         Time.timeScale = 0f;
         victoryMenu.SetActive(true);
         backButton.SetActive(false);
+        if (CrossSceneInfo.elementsUsingBattery > 0)
+        {
+            GameManager.GM.BC.HardStopOverTimeBattery();
+        }
         AudioManager.instance.ChangeToVictoryMusic();
     }
 
@@ -490,6 +502,7 @@ public class InterfaceManager : MonoBehaviour
             CrossSceneInfo.restartToEmails = false;
             Time.timeScale = 1f;
             AudioManager.instance.StopMusic();
+            AudioManager.instance.StopBatteryOvertime();
             SceneManager.LoadScene("Credits");
         }
         

@@ -131,7 +131,7 @@ public class AudioManager : MonoBehaviour
 
     public void StopBatteryOvertime()
     {
-        CrossSceneInfo.batteryOvertimeInst.setParameterByNameWithLabel("Loop", "Silence");
+        CrossSceneInfo.batteryOvertimeInst.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
 
     public void PlayEnemyAlert()
