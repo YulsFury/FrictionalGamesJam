@@ -446,6 +446,7 @@ public class InterfaceManager : MonoBehaviour
         if (AudioManager.instance.uiWhiteNoiseInst.isValid())
         {
             AudioManager.instance.StopUIWhiteNoise();
+            AudioManager.instance.StopBatteryOvertime();
         }
 
         SceneManager.LoadScene("MainLevel");
