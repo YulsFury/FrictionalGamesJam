@@ -161,33 +161,36 @@ public class CreditsScreen : MonoBehaviour
 
         foreach(string piece in allPieces)
         {
-
-            textShown.verticalAlignment = textShown.isTextOverflowing ? TMPro.VerticalAlignmentOptions.Bottom : TMPro.VerticalAlignmentOptions.Top;
-
             yield return new WaitForSeconds(delayChunck);
 
-            if (piece.StartsWith("$"))
+            if (piece.Length > 0)
             {
-                string s = piece.Remove(0, 1);
-
-                if (s == "#")
+                if (piece.StartsWith("$"))
                 {
-                    textShown.text += path + ">";
+                    AudioManager.instance.PlayConsoleLetter();
+
+                    string s = piece.Remove(0, 1);
+
+                    if (s == "#")
+                    {
+                        textShown.text += path + ">";
+                    }
+                    else
+                    {
+                        textShown.text += s;
+                    }
                 }
                 else
                 {
-                    textShown.text += s;
+                    foreach (char c in piece)
+                    {
+                        AudioManager.instance.PlayConsoleLetter();
+                        yield return new WaitForSeconds(delayLetter);
+                        textShown.text += c;
+                        textShown.verticalAlignment = textShown.isTextOverflowing ? TMPro.VerticalAlignmentOptions.Bottom : TMPro.VerticalAlignmentOptions.Top;
+                    }
                 }
-            }
-            else
-            {
-                foreach(char c in piece)
-                {
-                    AudioManager.instance.PlayConsoleLetter();
-                    yield return new WaitForSeconds(delayLetter);
-                    textShown.text += c;
-                }
-            }
+            } 
         }
 
         Application.Quit();
