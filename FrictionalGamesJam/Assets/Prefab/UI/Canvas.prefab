@@ -2002,7 +2002,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6609635875049900499, guid: a760a635a7d151342a61931bc591717c, type: 3}
       propertyPath: m_text
-      value: "From: PATHOS-II Message Manager System.\r\n\rTo : KAPPA TERMINAL #0451\nSubject:
+      value: "From: PATHOS-II Messaging System.\r\n\rTo : KAPPA TERMINAL #0451\nSubject:
         Data Upload Diagnosis.\r\n\r\nHello KAPPA TERMINAL #0451 , your message has
         been successfully uploaded to the main pathOS server. However, we are terribly
         sorry to inform that Dr. Catherine Chun has been deceased for 5h and 32min.

@@ -27,6 +27,8 @@ public class UploadKeyItem : MonoBehaviour
     }
     public void EnableUploadKeyItem()
     {
+        AudioManager.instance.PlayUIOmnitoolConfigured();
+        GetComponent<Animator>().SetTrigger("UploadKeyItemUnlocked");
         canUpload = true;
         sprite.color = readyNonInteractableColor;
     }
