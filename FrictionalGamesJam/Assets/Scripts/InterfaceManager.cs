@@ -127,6 +127,7 @@ public class InterfaceManager : MonoBehaviour
             if (batteryUsageTiles[0].activeInHierarchy)
             {
                 batteryUsageTiles[0].SetActive(false);
+                ChangeBatterySliderColor(Color.white);
             }
         }
         else if (usage == 1)
@@ -134,10 +135,12 @@ public class InterfaceManager : MonoBehaviour
             if (batteryUsageTiles[0].activeInHierarchy)
             {
                 batteryUsageTiles[1].SetActive(false);
+                ChangeBatterySliderColor(batteryUsageTiles[0].GetComponent<Image>().color);
             }
             else
             {
                 batteryUsageTiles[0].SetActive(true);
+                ChangeBatterySliderColor(batteryUsageTiles[0].GetComponent<Image>().color);
             }
         }
         else if (usage == 2)
@@ -145,21 +148,25 @@ public class InterfaceManager : MonoBehaviour
             if (batteryUsageTiles[1].activeInHierarchy)
             {
                 batteryUsageTiles[2].SetActive(false);
+                ChangeBatterySliderColor(batteryUsageTiles[1].GetComponent<Image>().color);
             }
             else
             {
                 batteryUsageTiles[1].SetActive(true);
+                ChangeBatterySliderColor(batteryUsageTiles[1].GetComponent<Image>().color);
             }
         }
         else if (usage == 3)
         {
             if (batteryUsageTiles[2].activeInHierarchy)
             {
+                ChangeBatterySliderColor(batteryUsageTiles[2].GetComponent<Image>().color);
                 batteryUsageTiles[3].SetActive(false);
             }
             else
             {
                 batteryUsageTiles[2].SetActive(true);
+                ChangeBatterySliderColor(batteryUsageTiles[2].GetComponent<Image>().color);
             }
         }
         else if (usage == 4)
@@ -167,10 +174,12 @@ public class InterfaceManager : MonoBehaviour
             if (batteryUsageTiles[3].activeInHierarchy)
             {
                 batteryUsageTiles[4].SetActive(false);
+                ChangeBatterySliderColor(batteryUsageTiles[3].GetComponent<Image>().color);
             }
             else
             {
                 batteryUsageTiles[3].SetActive(true);
+                ChangeBatterySliderColor(batteryUsageTiles[3].GetComponent<Image>().color);
             }
         }
         else if (usage == 5)
@@ -178,6 +187,7 @@ public class InterfaceManager : MonoBehaviour
             if (!batteryUsageTiles[4].activeInHierarchy)
             {
                 batteryUsageTiles[4].SetActive(true);
+                ChangeBatterySliderColor(batteryUsageTiles[4].GetComponent<Image>().color);
             }
         }
     }
@@ -185,6 +195,18 @@ public class InterfaceManager : MonoBehaviour
     public void UpdateScannerCooldownSlider(float scannerCooldownLevel)
     {
         ScannerCooldownSlider.value = scannerCooldownLevel;
+    }
+
+    public void ChangeBatterySliderColor(Color batteryUsageColor)
+    {
+        var alpha = batteryLevelSlider.transform.GetChild(0).GetComponent<Image>().color.a;
+        batteryLevelSlider.transform.GetChild(0).GetComponent<Image>().color = new Color(batteryUsageColor.r, batteryUsageColor.g, batteryUsageColor.b, alpha);
+
+        //foreach(Image batterySliderChild in batteryLevelSlider.transform.GetComponentsInChildren<Image>())
+        //{
+        //    var alpha = batterySliderChild.color.a;
+        //    batterySliderChild.color = new Color(batteryUsageColor.r, batteryUsageColor.g, batteryUsageColor.b, alpha);
+        //}
     }
 
     /// <summary>
