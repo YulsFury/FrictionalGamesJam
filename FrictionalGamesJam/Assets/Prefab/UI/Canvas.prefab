@@ -1549,9 +1549,9 @@ PrefabInstance:
       value: "From: Julia Barber\xE1n\nTo: All Kappa employees\nSubject: Welcome
         to Kappa!\n\nWelcome all to the new Site Kappa.\r\n\r\nSince the impact event,
         we hope that you can enjoy your stance here and keep working towards the
-        future of mankind. Even thou, the place was expected to open in a year and
-        a half we have been able to rush most of the important tasks so you can have
-        a safe place to stay.\r\n\r\nThis hurry also means that we had to prioritize
+        future of mankind. Even though the place was expected to open in a year and
+        a half, we have been able to rush most of the important tasks so you can
+        have a safe place to stay.\r\n\r\nThis hurry also means that we had to prioritize
         not building some of the defenses against the WAU filtrations that have been
         seen in other sites (so you may find some black leaks here and there for
         a while) and that we are not conected to the main pathOS II energy network,
@@ -1878,7 +1878,7 @@ PrefabInstance:
         the site. I\u2019ve also include the ability to control it from any standard
         monitor inside the station without needing a pilot seat <b><u>(the code of
         activation is 2103!)</b></u> by just tapping on the screen where you want
-        it to go. \r\n\r\nThe use of the Scaner and Radar has also been implemented
+        it to go. \r\n\r\nThe use of the Scanner and Radar has also been implemented
         so we have a lesser risk of the WAU\u2019s monsters destroying it. Despite
         that, use these tools smartly since they consume a chunk of the few energy
         we have left. \r\n\r\nWith this we can stand until help from Theta comes.
@@ -4100,19 +4100,19 @@ PrefabInstance:
       objectReference: {fileID: 3257158386296075051}
     - target: {fileID: 7897931589554606734, guid: 400639fdd23abca48b1124ea8cb62ca6, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7897931589554606734, guid: 400639fdd23abca48b1124ea8cb62ca6, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7897931589554606734, guid: 400639fdd23abca48b1124ea8cb62ca6, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7897931589554606734, guid: 400639fdd23abca48b1124ea8cb62ca6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -44.81421
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7897931590060066433, guid: 400639fdd23abca48b1124ea8cb62ca6, type: 3}
       propertyPath: m_Pivot.x
@@ -4212,19 +4212,19 @@ PrefabInstance:
       objectReference: {fileID: 3257158386296075051}
     - target: {fileID: 7897931590304864057, guid: 400639fdd23abca48b1124ea8cb62ca6, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7897931590304864057, guid: 400639fdd23abca48b1124ea8cb62ca6, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7897931590304864057, guid: 400639fdd23abca48b1124ea8cb62ca6, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7897931590304864057, guid: 400639fdd23abca48b1124ea8cb62ca6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -156.44263
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8695965850559720992, guid: 400639fdd23abca48b1124ea8cb62ca6, type: 3}
       propertyPath: m_AnchoredPosition.y
