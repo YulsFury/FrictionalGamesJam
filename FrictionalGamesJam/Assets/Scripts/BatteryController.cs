@@ -21,7 +21,6 @@ public class BatteryController : MonoBehaviour
     public enum singleTimeSources { Standard, Scanner }
     public enum overtimeSources { Standard, Radar, Door}
 
-    private int elementsUsingBattery = 0;
     private float batterySpent = 0;
 
     private float maxBatteryLvl = 100;
@@ -91,11 +90,11 @@ public class BatteryController : MonoBehaviour
                 break;
         }
 
-        elementsUsingBattery++;
+        CrossSceneInfo.elementsUsingBattery++;
 
-        GameManager.GM.IM.UpdateBatteryUsage(elementsUsingBattery);
+        GameManager.GM.IM.UpdateBatteryUsage(CrossSceneInfo.elementsUsingBattery);
 
-        if (elementsUsingBattery == 1)
+        if (CrossSceneInfo.elementsUsingBattery == 1)
         {
             StartCoroutine(decreaseOverTimeCoroutine);
             AudioManager.instance.PlayBatteryOvertime();         
@@ -121,11 +120,11 @@ public class BatteryController : MonoBehaviour
             default:
                 break;
         }
-        elementsUsingBattery--;
+        CrossSceneInfo.elementsUsingBattery--;
 
-        GameManager.GM.IM.UpdateBatteryUsage(elementsUsingBattery);
+        GameManager.GM.IM.UpdateBatteryUsage(CrossSceneInfo.elementsUsingBattery);
 
-        if (elementsUsingBattery == 0)
+        if (CrossSceneInfo.elementsUsingBattery == 0)
         {
             StopCoroutine(decreaseOverTimeCoroutine);
             AudioManager.instance.StopBatteryOvertime();
@@ -134,7 +133,7 @@ public class BatteryController : MonoBehaviour
 
     public void HardStopOverTimeBattery()
     {
-        elementsUsingBattery = 0;
+        CrossSceneInfo.elementsUsingBattery = 0;
         AudioManager.instance.StopBatteryOvertime();
         batterySpent = 0;
         StopCoroutine(decreaseOverTimeCoroutine);
@@ -175,13 +174,13 @@ public class BatteryController : MonoBehaviour
     private float CalculateDiscount()
     {        
         float discount;
-        if(Mathf.Pow(discountPerUsage, elementsUsingBattery - usagesWithoutDiscount) < maxDiscount)
+        if(Mathf.Pow(discountPerUsage, CrossSceneInfo.elementsUsingBattery - usagesWithoutDiscount) < maxDiscount)
         {
             discount = maxDiscount;
         }
         else
         {
-            discount = Mathf.Pow(discountPerUsage, elementsUsingBattery - usagesWithoutDiscount);
+            discount = Mathf.Pow(discountPerUsage, CrossSceneInfo.elementsUsingBattery - usagesWithoutDiscount);
         }
         print(discount);
         return discount;
