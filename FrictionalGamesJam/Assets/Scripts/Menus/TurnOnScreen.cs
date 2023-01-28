@@ -51,6 +51,7 @@ public class TurnOnScreen : MonoBehaviour
         InitializingMenu.SetActive(true);
         InitializingSlider.maxValue = initializingTimer;
         StartCoroutine(InitializingTimer());
+        AudioManager.instance.PlayRobotOn();
     }
 
     private IEnumerator WaitForInitializing()
@@ -90,6 +91,7 @@ public class TurnOnScreen : MonoBehaviour
 
     private void StartGame()
     {
+        AudioManager.instance.PlayMusic();
         SceneManager.LoadScene("MainLevel");
     }
 

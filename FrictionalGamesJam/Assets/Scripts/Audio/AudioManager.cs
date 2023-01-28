@@ -47,11 +47,6 @@ public class AudioManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(this.gameObject);
-            if (!CrossSceneInfo.playingMusic)
-            {
-                AudioManager.instance.PlayMusic();
-                CrossSceneInfo.playingMusic = true;
-            }
         }
     }
 
@@ -144,6 +139,7 @@ public class AudioManager : MonoBehaviour
         CrossSceneInfo.musicInst = FMODUnity.RuntimeManager.CreateInstance(music);
         CrossSceneInfo.musicInst.setParameterByNameWithLabel("Music", "Main Menu");
         CrossSceneInfo.musicInst.start();
+        CrossSceneInfo.playingMusic = true;
     }
     public void ChangeToMainMenuMusic()
     {
