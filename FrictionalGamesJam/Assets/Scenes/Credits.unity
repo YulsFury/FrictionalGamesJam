@@ -185,7 +185,8 @@ MonoBehaviour:
   TurnOnMonitor: {fileID: 1600536564}
   numberOfLightFlicks: 3
   timeBetweenLightFlicks: 0.1
-  delayBeforeTurnOnComputer: 6
+  delayBeforeTurnOnComputer: 5
+  delayAfterTurnOnSFX: 1
   delayBeforeLogo: 6
   alphaLogo: 0.6
   logo: {fileID: 771667400}

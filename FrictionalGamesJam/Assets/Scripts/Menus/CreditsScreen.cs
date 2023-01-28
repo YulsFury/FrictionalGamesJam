@@ -20,6 +20,7 @@ public class CreditsScreen : MonoBehaviour
 
     [Header("TurnOnComputer")]
     public float delayBeforeTurnOnComputer;
+    public float delayAfterTurnOnSFX;
 
     [Header ("Logo")]
     public float delayBeforeLogo;
@@ -85,7 +86,8 @@ public class CreditsScreen : MonoBehaviour
     IEnumerator TurnOnComputer()
     {
         yield return new WaitForSeconds(delayBeforeTurnOnComputer);
-        AudioManager.instance.PlayRobotOn(); 
+        AudioManager.instance.StartMonitorTurnOn();
+        yield return new WaitForSeconds(delayAfterTurnOnSFX );
         TurnOnMonitor.SetActive(true);
         
     }
@@ -193,7 +195,7 @@ public class CreditsScreen : MonoBehaviour
                 }
             } 
         }
-
+        AudioManager.instance.StopMonitorTurnOn();
         Application.Quit();
     }
 }
