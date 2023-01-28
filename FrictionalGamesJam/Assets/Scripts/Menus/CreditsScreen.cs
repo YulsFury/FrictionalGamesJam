@@ -53,6 +53,8 @@ public class CreditsScreen : MonoBehaviour
 
     IEnumerator TurnOffLights()
     {
+        AudioManager.instance.PlayPowerOff();
+        AudioManager.instance.PlayMonitorOff();
         yield return new WaitForSeconds(delayBeforeDarkening);
 
         for (int i = 0; i < numberOfLightFlicks; i++)
@@ -82,6 +84,7 @@ public class CreditsScreen : MonoBehaviour
     IEnumerator TurnOnComputer()
     {
         yield return new WaitForSeconds(delayBeforeTurnOnComputer);
+        AudioManager.instance.PlayRobotOn();
         Monitor.SetActive(false);
         TurnOnMonitor.SetActive(true);
     }
@@ -180,6 +183,7 @@ public class CreditsScreen : MonoBehaviour
             {
                 foreach(char c in piece)
                 {
+                    AudioManager.instance.PlayConsoleLetter();
                     yield return new WaitForSeconds(delayLetter);
                     textShown.text += c;
                 }

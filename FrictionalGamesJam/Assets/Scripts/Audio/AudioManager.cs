@@ -49,7 +49,7 @@ public class AudioManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
             if (!CrossSceneInfo.playingMusic)
             {
-                AudioManager.instance.PlayMusic();
+                //AudioManager.instance.PlayMusic();
                 CrossSceneInfo.playingMusic = true;
             }
         }
