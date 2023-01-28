@@ -25,7 +25,8 @@ public class CreditsScreen : MonoBehaviour
     public float delayBeforeLogo;
     public float alphaLogo;
     public Image logo;
-    public float lerpTime;
+    public float LerpTimeIn;
+    public float LerpTimeOut;
 
     [Header ("Command Shell")]
     public float delayBeforeShell;
@@ -84,22 +85,21 @@ public class CreditsScreen : MonoBehaviour
     IEnumerator TurnOnComputer()
     {
         yield return new WaitForSeconds(delayBeforeTurnOnComputer);
-        AudioManager.instance.PlayRobotOn();
-        Monitor.SetActive(false);
+        AudioManager.instance.PlayRobotOn(); 
         TurnOnMonitor.SetActive(true);
+        
     }
+
     IEnumerator LogoLerp()
     {
 
         yield return new WaitForSeconds(delayBeforeLogo);
 
-        TurnOffMonitor.SetActive(false);
-
         var alpha0 = logo.color;
         var alpha1 = logo.color;
         alpha1.a = alphaLogo;
 
-        float timeLeft = lerpTime;
+        float timeLeft = LerpTimeIn;
 
         while (logo.color != alpha1)
         {
@@ -117,7 +117,8 @@ public class CreditsScreen : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
-        timeLeft = lerpTime;
+        yield return new WaitForSeconds(1);
+        timeLeft = LerpTimeOut;
 
         while (logo.color != alpha0)
         {
@@ -138,7 +139,7 @@ public class CreditsScreen : MonoBehaviour
         //var ColorAuxiliar = logo.color;
         //ColorAuxiliar.a = 0f;
         //logo.color = ColorAuxiliar;
-
+        TurnOffMonitor.SetActive(false);
         StartCoroutine(PrintText());
     }
 

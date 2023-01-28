@@ -185,15 +185,16 @@ MonoBehaviour:
   TurnOnMonitor: {fileID: 1600536564}
   numberOfLightFlicks: 3
   timeBetweenLightFlicks: 0.1
-  delayBeforeTurnOnComputer: 5
+  delayBeforeTurnOnComputer: 6
   delayBeforeLogo: 6
   alphaLogo: 0.6
   logo: {fileID: 771667400}
-  lerpTime: 3
-  delayBeforeShell: 0.8
+  LerpTimeIn: 3
+  LerpTimeOut: 1.5
+  delayBeforeShell: 2
   fullText: {fileID: 1396118666}
   textShown: {fileID: 1556545325}
-  delayChunck: 1
+  delayChunck: 0.8
   delayLetter: 0.05
 --- !u!1 &88710585
 GameObject:
