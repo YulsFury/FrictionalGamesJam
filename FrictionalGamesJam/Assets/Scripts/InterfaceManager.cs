@@ -17,6 +17,13 @@ public class InterfaceManager : MonoBehaviour
     public Slider batteryLevelSlider;
     public GameObject[] batteryUsageTiles;
 
+    [Header("Battery Level Colors")]
+    public Color batteryLevelColor1;
+    public Color batteryLevelColor2;
+    public Color batteryLevelColor3;
+    public Color batteryLevelColor4;
+    public Color batteryLevelColor5;
+
     [Header("Screens")]
     public GameObject scannerScreen;
     public GameObject radarScreen;
@@ -106,6 +113,7 @@ public class InterfaceManager : MonoBehaviour
         {
             batteryLevelSlider.value = 100;
         }
+        UpdateBatterySliderColor();
     }
     /// <summary>
     /// Updates the battery interface to the exact level.
@@ -114,6 +122,36 @@ public class InterfaceManager : MonoBehaviour
     public void UpdateBatteryLevelContinuous(float batteryLevel)
     {
         batteryLevelSlider.value = batteryLevel;
+        UpdateBatterySliderColor();
+    }
+
+    private void UpdateBatterySliderColor()
+    {
+        if (batteryLevelSlider.value == 0)
+        {
+            batteryLevelSlider.transform.GetChild(0).GetComponent<Image>().color = batteryLevelColor5;
+        }
+        else if (batteryLevelSlider.value > 0 && batteryLevelSlider.value <= 20)
+        {
+            batteryLevelSlider.transform.GetChild(0).GetComponent<Image>().color = batteryLevelColor4;
+        }
+        else if (batteryLevelSlider.value > 20 && batteryLevelSlider.value <= 40)
+        {
+            batteryLevelSlider.transform.GetChild(0).GetComponent<Image>().color = batteryLevelColor3;
+        }
+        else if (batteryLevelSlider.value > 40 && batteryLevelSlider.value <= 60)
+        {
+            batteryLevelSlider.transform.GetChild(0).GetComponent<Image>().color = batteryLevelColor2;
+        }
+        else if (batteryLevelSlider.value > 60 && batteryLevelSlider.value <= 80)
+        {
+            batteryLevelSlider.transform.GetChild(0).GetComponent<Image>().color = batteryLevelColor1;
+        }
+        else if (batteryLevelSlider.value > 80)
+        {
+            batteryLevelSlider.transform.GetChild(0).GetComponent<Image>().color = Color.white;
+        }
+
     }
 
     /// <summary>
@@ -199,8 +237,8 @@ public class InterfaceManager : MonoBehaviour
 
     public void ChangeBatterySliderColor(Color batteryUsageColor)
     {
-        var alpha = batteryLevelSlider.transform.GetChild(0).GetComponent<Image>().color.a;
-        batteryLevelSlider.transform.GetChild(0).GetComponent<Image>().color = new Color(batteryUsageColor.r, batteryUsageColor.g, batteryUsageColor.b, alpha);
+        //var alpha = batteryLevelSlider.transform.GetChild(0).GetComponent<Image>().color.a;
+        //batteryLevelSlider.transform.GetChild(0).GetComponent<Image>().color = new Color(batteryUsageColor.r, batteryUsageColor.g, batteryUsageColor.b, alpha);
 
         //foreach(Image batterySliderChild in batteryLevelSlider.transform.GetComponentsInChildren<Image>())
         //{

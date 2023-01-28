@@ -398,7 +398,7 @@ MonoBehaviour:
   enemyScanRooms: []
   timeToReveal: 0.5
   blurTimer: 5
-  cooldownTimer: 7
+  cooldownTimer: 9
   bluring: 0
 --- !u!114 &1252290144907779449
 MonoBehaviour:
