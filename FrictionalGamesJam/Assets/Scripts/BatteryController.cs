@@ -138,6 +138,14 @@ public class BatteryController : MonoBehaviour
         batterySpent = 0;
         StopCoroutine(decreaseOverTimeCoroutine);
     }
+    public void PauseBatteryUsage()
+    {
+        StopCoroutine(decreaseOverTimeCoroutine);
+    }
+    public void ContinueBatteryUsage()
+    {
+        StartCoroutine(decreaseOverTimeCoroutine);
+    }
 
     /// <summary>
     /// Reduces the battery ammount depending on how many elements are using electricity.

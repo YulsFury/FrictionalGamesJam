@@ -367,6 +367,8 @@ public class InterfaceManager : MonoBehaviour
         {
             AudioManager.instance.StopUIWhiteNoise();
         }
+        CrossSceneInfo.elementsUsingBattery = 0;
+        AudioManager.instance.StopBatteryOvertime();
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainLevel");
     }
@@ -407,6 +409,11 @@ public class InterfaceManager : MonoBehaviour
         backButton.SetActive(true);
         AudioManager.instance.PlayUIConfirm();
         AudioManager.instance.ChangeToMapMusic();
+        if (CrossSceneInfo.elementsUsingBattery > 0)
+        {
+            GameManager.GM.BC.ContinueBatteryUsage();
+            AudioManager.instance.PlayBatteryOvertime();
+        }
     }
 
     public void GameOver(bool byEnemy)
@@ -471,7 +478,7 @@ public class InterfaceManager : MonoBehaviour
 
             AudioManager.instance.PlayUIBack();
             AudioManager.instance.ChangeToMainMenuMusic();
-            GameManager.GM.BC.HardStopOverTimeBattery();
+            GameManager.GM.BC.PauseBatteryUsage();
 
             isInMenus = true;
             Time.timeScale = 0f;
