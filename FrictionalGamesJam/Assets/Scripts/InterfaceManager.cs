@@ -475,6 +475,7 @@ public class InterfaceManager : MonoBehaviour
 
     public void VictoryEmail()
     {
+        AudioManager.instance.PlayUIForward();
         CrossSceneInfo.restart = false;
         CrossSceneInfo.victoryEmails = true;
         CrossSceneInfo.restartToEmails = true;
