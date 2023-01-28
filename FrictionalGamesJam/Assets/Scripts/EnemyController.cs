@@ -71,7 +71,7 @@ public class EnemyController : MonoBehaviour
 
         if (hideEnemy)
         {
-            sprite.enabled = IsInSameFloorAsPlayer();
+            ShowEnemy(IsInSameFloorAsPlayer());
         }
 
         if (isChasing)
@@ -307,11 +307,11 @@ public class EnemyController : MonoBehaviour
         StopCoroutine(coroutineWaitBeforeChasing);
     }
 
-    private void HideEnemy(bool hide)
+    private void ShowEnemy(bool show)
     {
-        sprite.enabled = hide;
+        sprite.enabled = show;
 
-        Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), GameManager.GM.PC.GetComponent<Collider2D>(), hide);
+        Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), GameManager.GM.PC.GetComponent<Collider2D>(), !show);
     }
 
     IEnumerator TimerCounterChase()
@@ -321,13 +321,11 @@ public class EnemyController : MonoBehaviour
         defaultSpeed = chaseSpeed;
         durationAutomaticFollowingPlayer = 2000;
 
-        Debug.Log("aaaaaaaah");
     }
 
     public void StartCounterChase()
     {
         coroutineCounterChase = StartCoroutine(TimerCounterChase());
-        //Debug.Log("te estoy vigilando");
     }
 
     public void StopCounterChase()
@@ -342,6 +340,5 @@ public class EnemyController : MonoBehaviour
             StopCoroutine(coroutineAutomaticFollowing);
         }
         SetTarget();
-        //Debug.Log("chilleamos");
     }
 }
