@@ -434,6 +434,7 @@ public class InterfaceManager : MonoBehaviour
         {
             CrossSceneInfo.restartToEmails = false;
             Time.timeScale = 1f;
+            AudioManager.instance.StopMusic();
             SceneManager.LoadScene("Credits");
         }
         

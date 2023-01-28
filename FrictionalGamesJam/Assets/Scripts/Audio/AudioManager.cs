@@ -161,7 +161,10 @@ public class AudioManager : MonoBehaviour
     {
         CrossSceneInfo.musicInst.setParameterByNameWithLabel("Music", "Victory");
     }
-
+    public void StopMusic()
+    {
+        CrossSceneInfo.musicInst.setParameterByNameWithLabel("Music", "None");
+    }
     public void PlayPowerOff()
     {
         RuntimeManager.PlayOneShot(powerOff);
