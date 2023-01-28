@@ -491,6 +491,7 @@ public class InterfaceManager : MonoBehaviour
 
             AudioManager.instance.PlayUIBack();
             AudioManager.instance.ChangeToMainMenuMusic();
+            AudioManager.instance.StopBatteryOvertime();
             GameManager.GM.BC.PauseBatteryUsage();
 
             isInMenus = true;
