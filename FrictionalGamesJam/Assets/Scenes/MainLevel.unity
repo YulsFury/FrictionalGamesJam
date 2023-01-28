@@ -4115,6 +4115,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3282641583659436477, guid: 765d9cc80c93a72498884d2e48afe6b5, type: 3}
+      propertyPath: m_MaskInteraction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4019491567218544550, guid: 765d9cc80c93a72498884d2e48afe6b5, type: 3}
       propertyPath: m_Name
       value: KeyItem (2)
@@ -12226,6 +12230,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3282641583659436477, guid: 765d9cc80c93a72498884d2e48afe6b5, type: 3}
+      propertyPath: m_MaskInteraction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4019491567218544550, guid: 765d9cc80c93a72498884d2e48afe6b5, type: 3}
       propertyPath: m_Name
       value: KeyItem (3)
@@ -13966,6 +13974,10 @@ PrefabInstance:
     - target: {fileID: 2733005892202310145, guid: 765d9cc80c93a72498884d2e48afe6b5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3282641583659436477, guid: 765d9cc80c93a72498884d2e48afe6b5, type: 3}
+      propertyPath: m_MaskInteraction
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4019491567218544550, guid: 765d9cc80c93a72498884d2e48afe6b5, type: 3}
       propertyPath: m_Name
