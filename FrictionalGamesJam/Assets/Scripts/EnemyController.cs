@@ -81,6 +81,7 @@ public class EnemyController : MonoBehaviour
                 if (!isWaitingBeforeChasing)
                 {
                     AudioManager.instance.PlayEnemyAlert();
+                    AudioManager.instance.PlayUIWarning();
                     coroutineWaitBeforeChasing = StartCoroutine(WaitBeforeChasing());
                 } 
             }

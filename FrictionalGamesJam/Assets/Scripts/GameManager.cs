@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
     {
         IM.GameOver(byEnemy);
         BC.HardStopOverTimeBattery();
+        AudioManager.instance.StartUIWhiteNoise();
     }
 
     public void Victory()

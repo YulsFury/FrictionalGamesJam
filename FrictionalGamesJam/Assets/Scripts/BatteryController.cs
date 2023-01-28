@@ -156,6 +156,11 @@ public class BatteryController : MonoBehaviour
                 
                 StopCoroutine(decreaseOverTimeCoroutine);
             }
+            else if (currentBatteryLvl - (2 * batterySpent * CalculateDiscount()) < 0)
+            {
+                AudioManager.instance.PlayUIWarning();
+                currentBatteryLvl = currentBatteryLvl - (batterySpent * CalculateDiscount());         
+            }
             else
             {
                 currentBatteryLvl = currentBatteryLvl - (batterySpent * CalculateDiscount());

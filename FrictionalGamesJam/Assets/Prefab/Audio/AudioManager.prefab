@@ -184,6 +184,20 @@ MonoBehaviour:
       Data3: -213813107
       Data4: 1125028875
     Path: event:/RobotoTurningOn
+  uiWhiteNoise:
+    Guid:
+      Data1: -719661488
+      Data2: 1201682238
+      Data3: 1578346368
+      Data4: -1252527318
+    Path: event:/WhiteNoise
+  uiWarning:
+    Guid:
+      Data1: -2023187618
+      Data2: 1240866538
+      Data3: -637118298
+      Data4: -1006597437
+    Path: event:/Warning
   monitorOn:
     Guid:
       Data1: 232830238

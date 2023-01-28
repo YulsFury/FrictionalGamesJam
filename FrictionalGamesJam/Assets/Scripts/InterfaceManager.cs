@@ -363,6 +363,10 @@ public class InterfaceManager : MonoBehaviour
         gameOverMenu.SetActive(false);
         AudioManager.instance.PlayUIConfirm();
         AudioManager.instance.ChangeToMapMusic();
+        if (AudioManager.instance.uiWhiteNoiseInst.isValid())
+        {
+            AudioManager.instance.StopUIWhiteNoise();
+        }
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainLevel");
     }

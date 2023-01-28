@@ -28,6 +28,10 @@ public class AudioManager : MonoBehaviour
     public FMODUnity.EventReference powerOff;
     public FMODUnity.EventReference monitorOff;
     public FMODUnity.EventReference robotOn;
+    public FMODUnity.EventReference uiWarning;
+
+    public FMODUnity.EventReference uiWhiteNoise;
+    public FMOD.Studio.EventInstance uiWhiteNoiseInst;
 
     public FMODUnity.EventReference monitorOn;
     private FMOD.Studio.EventInstance monitorOnInst;
@@ -189,5 +193,18 @@ public class AudioManager : MonoBehaviour
     public void StopMonitorTurnOn()
     {
         monitorOnInst.setParameterByNameWithLabel("Loop", "Silence");
+    }
+    public void StartUIWhiteNoise()
+    {
+        uiWhiteNoiseInst = FMODUnity.RuntimeManager.CreateInstance(uiWhiteNoise);
+        uiWhiteNoiseInst.start();
+    }
+    public void StopUIWhiteNoise()
+    {
+        uiWhiteNoiseInst.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+    }
+    public void PlayUIWarning()
+    {
+        RuntimeManager.PlayOneShot(uiWarning);
     }
 }
