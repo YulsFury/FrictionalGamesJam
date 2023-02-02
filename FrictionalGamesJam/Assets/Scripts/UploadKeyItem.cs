@@ -48,6 +48,7 @@ public class UploadKeyItem : MonoBehaviour
         {
             GetComponent<Animator>().enabled = true;
             GetComponent<Animator>().SetTrigger("NotCompleted");
+            GameManager.GM.IM.WarningDataNotCompleted();
         }
     }
 

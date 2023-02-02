@@ -9,7 +9,7 @@ public class KeyItemsManager : MonoBehaviour
 
     [HideInInspector] public List<KeyItemController> keyItemsList;
 
-    private int keyItemsActivated;
+    public int keyItemsActivated;
 
     public UploadKeyItem uploadKeyItem;
     public GameObject progress;

@@ -6,7 +6,7 @@ public class KeyItemController : MonoBehaviour
 {
     public float scaleFactor = 1.4f;
     SpriteRenderer sprite;
-    bool activated;
+    [HideInInspector] public bool activated;
     bool isAvailable;
     Vector3 spriteScale;
 
