@@ -6,6 +6,7 @@ public class DoorController : MonoBehaviour
 {
 
     public float scaleFactor = 1.4f;
+    public bool isInitialDoor = false;
     bool doorOpen;
     public float DecreaseEneryRate;
     bool isAvailable;
@@ -25,13 +26,22 @@ public class DoorController : MonoBehaviour
         isAvailable = false;
 
         DisableCollisions();
-
+    
         sprite = GetComponentInChildren<SpriteRenderer>();
         spriteScale = GetComponentInChildren<SpriteRenderer>().transform.localScale;
+
+        IsInitialDoor();
 
         UpdateDoorColor();
     }
 
+    private void IsInitialDoor()
+    {
+        if (isInitialDoor)
+        {
+            CloseDoor();
+        }
+    }
 
     //Collisions
 
@@ -54,35 +64,41 @@ public class DoorController : MonoBehaviour
         //Close door
         if (doorOpen == true & isAvailable == true && GameManager.GM.PC.isInMovementScreen && !GameManager.GM.IM.isInMenus)
         {
-            doorOpen = false;
-            UnableCollisions();
-
-            sprite.color = InteractableClosedColor;
-
-            GetComponentInChildren<SpriteRenderer>().transform.localScale = spriteScale;
-
-            GameManager.GM.ReduceBatteryOvertime(BatteryController.overtimeSources.Door);
-
-            //Animación sellar puerta
-
+            CloseDoor();
             AudioManager.instance.PlayCloseDoor();
         }
 
         //Open door
         else if(doorOpen == false & isAvailable == true && GameManager.GM.PC.isInMovementScreen && !GameManager.GM.IM.isInMenus)
         {
-            doorOpen = true;
-            DisableCollisions();
-
-            UpdateDoorColor();
-
-            GameManager.GM.StopReduceBatteryOvertime(BatteryController.overtimeSources.Door);
-
-            //Animación dejar de sella puerta
-
+            OpenDoor();
             AudioManager.instance.PlayOpenDoor();
         }
 
+    }
+
+    private void OpenDoor()
+    {
+        doorOpen = true;
+        DisableCollisions();
+
+        UpdateDoorColor();
+
+        GameManager.GM.StopReduceBatteryOvertime(BatteryController.overtimeSources.Door);
+        
+    }
+
+    private void CloseDoor()
+    {
+        doorOpen = false;
+        UnableCollisions();
+
+        sprite.color = InteractableClosedColor;
+
+        GetComponentInChildren<SpriteRenderer>().transform.localScale = spriteScale;
+
+        GameManager.GM.ReduceBatteryOvertime(BatteryController.overtimeSources.Door);
+ 
     }
 
     private void OnMouseOver()

@@ -29,7 +29,8 @@ public class BatteryController : MonoBehaviour
     private IEnumerator decreaseOverTimeCoroutine;
 
     // Start is called before the first frame update
-    void Start()
+
+    void Awake()
     {
         currentBatteryLvl = maxBatteryLvl;
         decreaseOverTimeCoroutine = DecreaseOverTimeCoroutine(); //This is made so we know the exact coroutine that was started when we want to stop it.
@@ -190,7 +191,7 @@ public class BatteryController : MonoBehaviour
         {
             discount = Mathf.Pow(discountPerUsage, CrossSceneInfo.elementsUsingBattery - usagesWithoutDiscount);
         }
-        print(discount);
+
         return discount;
     }
 }
