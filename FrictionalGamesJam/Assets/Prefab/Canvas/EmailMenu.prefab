@@ -36,7 +36,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -0.0000047684, y: -0.0005507023}
-  m_SizeDelta: {x: -0.000015259, y: 101.94}
+  m_SizeDelta: {x: -0.00002, y: 117.4199}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &496835713172329576
 CanvasRenderer:
@@ -82,10 +82,10 @@ RectTransform:
   m_Father: {fileID: 1145153003356044521}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -764.9388, y: -38.0927}
-  m_SizeDelta: {x: 134.7324, y: 101.9386}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 195.0625, y: -38.0927}
+  m_SizeDelta: {x: 134.73242, y: 101.9386}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5035371344972342723
 CanvasRenderer:
@@ -192,7 +192,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5.744545, y: -4.002102}
+  m_AnchoredPosition: {x: -5.744568, y: -4.002102}
   m_SizeDelta: {x: 3.33674, y: -7.5191}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &2496545605719928063
@@ -276,8 +276,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7218152367147886919}
   m_HandleRect: {fileID: 2335036940842120059}
   m_Direction: 2
-  m_Value: 1.000012
-  m_Size: 0.6839011
+  m_Value: 1.3967391
+  m_Size: 0.99998623
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -606,17 +606,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'To: All Kappa employees
-
-    Subject: Welcome to Kappa!
-
-
-    Welcome
-    all to the new Kappa site.
-
-
-
-'
+  m_text: "From: Thibaut Lopez\nTo: Alexandrine Aranda\r\n\rSubject: New safe protocol\r\n\r\nI\u2019ve
+    finally completed the update on one of the BULL(UH3) so it is suitable for transporting
+    rations and deal with simple tasks inside the site. I\u2019ve also include the
+    ability to control it from any standard monitor inside the station without needing
+    a pilot seat <b><u>(the code of activation is 2103!)</b></u> by just tapping
+    on the screen where you want it to go. \r\n\r\nThe use of Scanner and Radar has
+    also been implemented alongside the usual door control so we have a lesser risk
+    of the WAU\u2019s monsters destroying it. Despite that, use these tools smartly
+    since they consume a chunk of the few energy we have left. \r\n\r\nWith this
+    we should stand until help from Theta comes. \r\n\r\nStay safe,\r\n\r\nThibaut.\n\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea2385dc4e2fe994f9e529e06d3d7ba2, type: 2}
   m_sharedMaterial: {fileID: -6630894916370296461, guid: ea2385dc4e2fe994f9e529e06d3d7ba2, type: 2}
@@ -751,7 +750,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Email subject
+  m_text: 'Welcome to Kappa!
 
 '
   m_isRightToLeft: 0
@@ -858,9 +857,9 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -0.33674002, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &1145153002081546851
 CanvasRenderer:
@@ -946,8 +945,8 @@ RectTransform:
   m_Father: {fileID: 1145153002594688144}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.16845232}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -0.04223, y: -0.00009918213}
   m_SizeDelta: {x: 6.71041, y: -0.00019073}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1024,9 +1023,9 @@ RectTransform:
   m_Father: {fileID: 5982377342877809101}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 142.41765, y: -232.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 284.8353, y: 69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1145153002227692358
@@ -1158,7 +1157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.85463715, y: -15.837917}
+  m_AnchoredPosition: {x: 0.85461426, y: -15.83791}
   m_SizeDelta: {x: -1.70924, y: 25.9546}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1145153002538835290
@@ -1189,19 +1188,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "To: All Kappa employees\nSubject: Welcome to Kappa!\n\nWelcome all to
-    the new Kappa site.\r\n\r\nSince the impact event, we hope that you can enjoy
-    your stance here and keep working towards the future of mankind. Even thou, the
-    place was expected to open in a year and a half we have been able to rush most
-    of the important tasks so you can have a safe place to stay.\r\n\r\nThis hurry
-    also means that we had to prioritize not building some of the defenses against
-    the WAU filtrations that have been seen in other sites (so you may find some
-    black leaks here and there for a while) and that we are not conected to the main
-    pathOS II energy network, so we ask all of you to make a wise use of the electricity
-    in the station.\r\n\r\nIf you have any questions or concerns, you can talk to
-    me directly in my office,\r\n\r\nKappa Manager Director Julia Barber\xE1n.\nIf
-    you have any questions or concerns, you can talk to me directly in my office,\r\n\r\nKappa
-    Manager Director Julia Barber\xE1n."
+  m_text: "From: Julia Barberan\nTo: All Kappa employees\nSubject: Welcome to Kappa!\n\nWelcome
+    all to the new Site Kappa.\r\n\r\nSince the impact event, we hope that you can
+    enjoy your stay here and keep working towards the future of mankind. Even though
+    the place was expected to open in a year and a half, we have been able to rush
+    most of the important tasks so you can have a safe place to stay.\r\n\r\nThis
+    hurry also means that we had to prioritize not building some of the defenses
+    against the WAU filtrations that have been seen in other sites (so you may find
+    some black leaks here and there for a while) and that we are not connected to
+    the main pathOS II energy network, so we ask all of you to make a wise use of
+    the electricity in the station.\r\n\r\nIf you have any questions or concerns,
+    you can talk to me directly in my office,\r\n\r\nKappa Manager Director Julia
+    Barber\xE1n.\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea2385dc4e2fe994f9e529e06d3d7ba2, type: 2}
   m_sharedMaterial: {fileID: -6630894916370296461, guid: ea2385dc4e2fe994f9e529e06d3d7ba2, type: 2}
@@ -1476,8 +1474,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 153.25452, y: 270.7533}
-  m_SizeDelta: {x: 557.8953, y: 46.8467}
+  m_AnchoredPosition: {x: 180.8899, y: 270.7533}
+  m_SizeDelta: {x: 613.1662, y: 46.847}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1145153002957963908
 CanvasRenderer:
@@ -1507,7 +1505,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Welcome to Kappa 2!
+  m_text: 'RE: New resources transport protocol needed'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea2385dc4e2fe994f9e529e06d3d7ba2, type: 2}
   m_sharedMaterial: {fileID: -6630894916370296461, guid: ea2385dc4e2fe994f9e529e06d3d7ba2, type: 2}
@@ -1534,8 +1532,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1642,7 +1640,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Welcome to Kappa 4!
+  m_text: Data Upload Diagnosis
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea2385dc4e2fe994f9e529e06d3d7ba2, type: 2}
   m_sharedMaterial: {fileID: -6630894916370296461, guid: ea2385dc4e2fe994f9e529e06d3d7ba2, type: 2}
@@ -1747,7 +1745,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -0.0000047684, y: -0.0000001751528}
-  m_SizeDelta: {x: 1.37669, y: 149.0546}
+  m_SizeDelta: {x: 1.37669, y: 127.7618}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &1145153003127383045
 CanvasRenderer:
@@ -1794,7 +1792,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5.744545, y: -4.002102}
+  m_AnchoredPosition: {x: -5.744568, y: -4.002102}
   m_SizeDelta: {x: 3.33674, y: -7.5191}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &1145153003163061254
@@ -1878,8 +1876,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1145153002208781179}
   m_HandleRect: {fileID: 1145153002208781180}
   m_Direction: 2
-  m_Value: 1.000012
-  m_Size: 0.6839011
+  m_Value: 1.0000004
+  m_Size: 0.8315477
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1943,7 +1941,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   victoryEmails: 0
+  readEmailColor: {r: 0.124955505, g: 0.21373264, b: 0.2264151, a: 1}
   victoryEmailsButtonList:
+  - {fileID: 3631636791274873099}
+  EmailsButtonList:
+  - {fileID: 1145153003877419217}
+  - {fileID: 1145153002730630499}
+  - {fileID: 1145153002227692362}
   - {fileID: 3631636791274873099}
   allEmails:
   - {fileID: 1145153003752262774}
@@ -2030,9 +2034,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Email subject
-
-'
+  m_text: THE LAST CHANCE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea2385dc4e2fe994f9e529e06d3d7ba2, type: 2}
   m_sharedMaterial: {fileID: -6630894916370296461, guid: ea2385dc4e2fe994f9e529e06d3d7ba2, type: 2}
@@ -2167,9 +2169,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Email subject
-
-'
+  m_text: "RE: New safe protocol \n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea2385dc4e2fe994f9e529e06d3d7ba2, type: 2}
   m_sharedMaterial: {fileID: -6630894916370296461, guid: ea2385dc4e2fe994f9e529e06d3d7ba2, type: 2}
@@ -2274,10 +2274,10 @@ RectTransform:
   m_Father: {fileID: 1145153003356044521}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -764.9388, y: -38.0927}
-  m_SizeDelta: {x: 134.7324, y: 101.9386}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 195.0625, y: -38.0927}
+  m_SizeDelta: {x: 134.73242, y: 101.9386}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1145153003752262770
 CanvasRenderer:
@@ -2413,7 +2413,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Welcome to Kappa 3!
+  m_text: THE LAST CHANCE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea2385dc4e2fe994f9e529e06d3d7ba2, type: 2}
   m_sharedMaterial: {fileID: -6630894916370296461, guid: ea2385dc4e2fe994f9e529e06d3d7ba2, type: 2}
@@ -2651,7 +2651,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.4284973, y: -1.4302979}
+  m_AnchoredPosition: {x: -0.42852783, y: -1.4302979}
   m_SizeDelta: {x: -4.27551, y: -2.8606}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &341724780829734854
@@ -2682,10 +2682,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'im done
-
-
-'
+  m_text: "From: Catherine Chun\nTo: All Kappa employees\r\n\rSubject: THE LAST CHANCE\r\n\r\nHello,
+    my name is Catherine Chun. We are finally leaving Theta to send the ARK into
+    space, but still I haven\u2019t received any signal from anyone from Kappa since
+    the rescue attempt nor any brain scan security copy from there.\r\n\r\nIf there
+    is still someone alive at Kappa, send me the data through the main server port
+    of your site so we can send you too. \r\n\r\nThis really is the last chance.\r\n\r\nBest
+    of luck,\r\n\r\nDr. Catherine Chun."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea2385dc4e2fe994f9e529e06d3d7ba2, type: 2}
   m_sharedMaterial: {fileID: -6630894916370296461, guid: ea2385dc4e2fe994f9e529e06d3d7ba2, type: 2}
@@ -2790,9 +2793,9 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -0.33674002, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &7489841079047359592
 CanvasRenderer:
@@ -2880,7 +2883,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.4284973, y: -1.4302979}
+  m_AnchoredPosition: {x: -0.42852783, y: -1.4302979}
   m_SizeDelta: {x: -4.27551, y: -2.8606}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4031091709899373168
@@ -2911,10 +2914,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'im done
-
-
-'
+  m_text: "From: PATHOS-II Messaging System.\r\n\rTo : KAPPA TERMINAL #0451\nSubject:
+    Data Upload Diagnosis.\r\n\r\nHello KAPPA TERMINAL #0451 , your message has been
+    successfully uploaded to the main pathOS server. However, we are terribly sorry
+    to inform that Dr. Catherine Chun has been deceased for 5h and 32min. \r\n\r\nIf
+    you would like to delete your message or resend it to another person, please
+    contact the IT department of your site.\r\n\r\n<i>Please do not respond to this
+    message, this is an automatic mail sent by PATHOS-II Messaging System.\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea2385dc4e2fe994f9e529e06d3d7ba2, type: 2}
   m_sharedMaterial: {fileID: -6630894916370296461, guid: ea2385dc4e2fe994f9e529e06d3d7ba2, type: 2}
@@ -3146,7 +3152,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.000045776367}
+  m_AnchoredPosition: {x: 105.13841, y: 0}
   m_SizeDelta: {x: 210.2767, y: 0}
   m_Pivot: {x: 0.4999999, y: 1.0000002}
 --- !u!222 &5100944673102394277
@@ -3352,7 +3358,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Email subject
+  m_text: 'Data Upload Diagnosis
 
 '
   m_isRightToLeft: 0
@@ -3623,7 +3629,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Welcome to Kappa 1!
+  m_text: Welcome to Kappa!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea2385dc4e2fe994f9e529e06d3d7ba2, type: 2}
   m_sharedMaterial: {fileID: -6630894916370296461, guid: ea2385dc4e2fe994f9e529e06d3d7ba2, type: 2}
@@ -3864,7 +3870,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5.744545, y: -4.002102}
+  m_AnchoredPosition: {x: -5.744568, y: -4.002102}
   m_SizeDelta: {x: 3.33674, y: -7.5191}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &1720199610642197489
@@ -3948,8 +3954,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 163555191022802216}
   m_HandleRect: {fileID: 8064343935026644047}
   m_Direction: 2
-  m_Value: 1.000012
-  m_Size: 0.6839011
+  m_Value: 1.3967391
+  m_Size: 0.99998623
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4143,7 +4149,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5.744545, y: -4.002102}
+  m_AnchoredPosition: {x: -5.744568, y: -4.002102}
   m_SizeDelta: {x: 3.33674, y: -7.5191}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &558546785081558328
@@ -4227,8 +4233,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1142814937207540737}
   m_HandleRect: {fileID: 7487206903983144827}
   m_Direction: 2
-  m_Value: 1.000012
-  m_Size: 0.6839011
+  m_Value: 1.000036
+  m_Size: 0.8681543
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4671,8 +4677,8 @@ RectTransform:
   m_Father: {fileID: 7071575004655850000}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.000013768673}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -0.04223, y: -0.00009918213}
   m_SizeDelta: {x: 6.71041, y: -0.00019073}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5123,10 +5129,10 @@ RectTransform:
   m_Father: {fileID: 1145153003356044521}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -764.9388, y: -38.0927}
-  m_SizeDelta: {x: 134.7324, y: 101.9386}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 195.0625, y: -38.0927}
+  m_SizeDelta: {x: 134.73242, y: 101.9386}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2917035605452573444
 CanvasRenderer:
@@ -5534,10 +5540,10 @@ RectTransform:
   m_Father: {fileID: 1145153003356044521}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 602.75244, y: -284.9968}
-  m_SizeDelta: {x: 287.1329, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -357.25, y: 255.00787}
+  m_SizeDelta: {x: 287.13293, y: 0}
   m_Pivot: {x: 0.4999999, y: 1.0000001}
 --- !u!114 &4150991586665573569
 MonoBehaviour:
@@ -5680,10 +5686,10 @@ RectTransform:
   m_Father: {fileID: 1145153003356044521}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -764.9388, y: -38.0927}
-  m_SizeDelta: {x: 134.7324, y: 101.9386}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 195.0625, y: -38.0927}
+  m_SizeDelta: {x: 134.73242, y: 101.9386}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7921203349420686843
 CanvasRenderer:
@@ -5831,27 +5837,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5232617590992097447, guid: 0a7e6deed076a594b92e90c627d791f3, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5232617590992097447, guid: 0a7e6deed076a594b92e90c627d791f3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5232617590992097447, guid: 0a7e6deed076a594b92e90c627d791f3, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5232617590992097447, guid: 0a7e6deed076a594b92e90c627d791f3, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5232617590992097447, guid: 0a7e6deed076a594b92e90c627d791f3, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -684.1645
+      value: 1235.8354
       objectReference: {fileID: 0}
     - target: {fileID: 5232617590992097447, guid: 0a7e6deed076a594b92e90c627d791f3, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -189.6519
+      value: 890.3481
       objectReference: {fileID: 0}
     - target: {fileID: 5232617590992097447, guid: 0a7e6deed076a594b92e90c627d791f3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5887,7 +5893,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5232617590992097447, guid: 0a7e6deed076a594b92e90c627d791f3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -11.520874
+      value: -11.5234375
       objectReference: {fileID: 0}
     - target: {fileID: 5232617590992097447, guid: 0a7e6deed076a594b92e90c627d791f3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
