@@ -24,10 +24,12 @@ public class UploadKeyItem : MonoBehaviour
         DisableCollisions();
         sprite.color = nonInteractableColor;
         spriteScale = GetComponentInChildren<SpriteRenderer>().transform.localScale;
+        GetComponent<Animator>().enabled = false;
     }
     public void EnableUploadKeyItem()
     {
         AudioManager.instance.PlayUIOmnitoolConfigured();
+        GetComponent<Animator>().enabled = true;
         GetComponent<Animator>().SetTrigger("UploadKeyItemUnlocked");
         canUpload = true;
         sprite.color = readyNonInteractableColor;
@@ -40,6 +42,12 @@ public class UploadKeyItem : MonoBehaviour
             AudioManager.instance.PlayUIDeviceConect();
             //feedback de que estás subiendo archivos
             GameManager.GM.Victory();
+        }
+
+        else if (isAvailable && !canUpload && GameManager.GM.PC.isInMovementScreen)
+        {
+            GetComponent<Animator>().enabled = true;
+            GetComponent<Animator>().SetTrigger("NotCompleted");
         }
     }
 
@@ -77,6 +85,11 @@ public class UploadKeyItem : MonoBehaviour
                 sprite.color = canUpload ? readyNonInteractableColor : nonInteractableColor;
             }   
         }
+    }
+
+    void  DisableAnimator()
+    {
+        GetComponent<Animator>().enabled = false;
     }
 
     void DisableCollisions()
