@@ -19,10 +19,18 @@ public class KeyItemsManager : MonoBehaviour
     {
         keyItemsActivated = 0;
 
-        int numOfChildren = keyItemsGameObject.transform.childCount;
+        int numOfGroups = keyItemsGameObject.transform.childCount;
+
+        UnityEngine.Random.InitState(((int)System.DateTime.Now.Ticks));
+
+        GameObject keyItemsGroup = keyItemsGameObject.transform.GetChild(UnityEngine.Random.Range(0, numOfGroups-1)).gameObject;
+
+        keyItemsGroup.SetActive(true);
+
+        int numOfChildren = keyItemsGroup.transform.childCount;
         for (int i = 0; i < numOfChildren; i++)
         {
-            KeyItemController keyItem = keyItemsGameObject.transform.GetChild(i).gameObject.GetComponent<KeyItemController>();
+            KeyItemController keyItem = keyItemsGroup.transform.GetChild(i).gameObject.GetComponent<KeyItemController>();
             keyItemsList.Add(keyItem);
         }  
     }

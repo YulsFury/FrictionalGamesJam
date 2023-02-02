@@ -14,7 +14,7 @@ public class Room : MonoBehaviour
 
     //bool isUploadRoom;
     public UploadKeyItem uploadKeyItem;
-    public KeyItemController keyItem;
+    [HideInInspector] public KeyItemController keyItem;
     bool unlockKey;
     //bool exitRoomIsEnabled;
 

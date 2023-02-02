@@ -10,6 +10,9 @@ public class KeyItemController : MonoBehaviour
     bool isAvailable;
     Vector3 spriteScale;
 
+    [Header("Room")]
+    public Room room;
+
     [Header("Interactable Colors")]
     public Color32 NonInteractablecolor;
     public Color32 InteractableColor;
@@ -26,6 +29,8 @@ public class KeyItemController : MonoBehaviour
         DisableCollisions();
 
         spriteScale = GetComponentInChildren<SpriteRenderer>().transform.localScale;
+
+        room.keyItem = this;
     }
 
     public void EnableKeyItem()
