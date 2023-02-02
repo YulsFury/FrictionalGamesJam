@@ -1384,7 +1384,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "%$Initializing pathOS-II emergency reboot system\n%%$Rebooting %.%.%$.\n%$Reboot
-    successful\n\n%%$Opening comand shell\n\n%%$#%%dir\n%$\n<DIR>\t.\n<DIR>\t..\n<DIR>\t.config\n<DIR>\tEmails\n<DIR>\tcredits.exe\n<DIR>\tlogout.exe\n\n%$#%%credits.exe\n%$\nCredits:\n\n%%Game
+    successful\n\n%%$Opening command shell\n\n%%$#%%dir\n%$\n<DIR>\t.\n<DIR>\t..\n<DIR>\t.config\n<DIR>\tEmails\n<DIR>\tcredits.exe\n<DIR>\tlogout.exe\n\n%$#%%credits.exe\n%$\nCredits:\n\n%%Game
     Design and Code: %Julia Barberan Garcia, %Thibaut Lopez, %Alexandrine Aranda
     Toledo.\n\n%2D Art: %Julia Barberan Garcia.\n\n%Technical Design: %Thibaut Lopez.\n\n%Audio
     Design: %Alexandrine Aranda Toledo.\n\n%Thanks for playing.\n\n%$#%%logout.exe\n%$Login
