@@ -19,6 +19,8 @@ public class Scanner : MonoBehaviour
 
     private Color enemyRoomScannedColor;
     private Color enemyRoomNormalColor;
+    private Coroutine coroutineActivate;
+    private Coroutine coroutineBlur;
 
     private void Start()
     {
@@ -26,8 +28,34 @@ public class Scanner : MonoBehaviour
         GameManager.GM.IM.ScannerCooldownSlider.maxValue = cooldownTimer;
         GameManager.GM.IM.ScannerCooldownSlider.value = cooldownTimer;
     }
+
+    public void UseScanner()
+    {
+        coroutineActivate = StartCoroutine(ActiveScanner());
+    }
+
+    public void StopScanner()
+    {
+        if(coroutineActivate != null)
+        {
+            StopCoroutine(coroutineActivate);
+        }
+
+        if(coroutineBlur != null)
+        {
+            StopCoroutine(coroutineBlur);
+        }
+
+        foreach (Room enemyRoom in enemyScanRooms)
+        {
+            enemyRoom.GetComponentInChildren<SpriteRenderer>().color = enemyRoomFinalColors[0];
+            enemyRoom.UpdateRoomColor();
+        }
+        enemyScanRooms.RemoveRange(0, enemyScanRooms.Count);
+        bluring = false;
+    }
   
-    public IEnumerator ActiveScanner()
+    private IEnumerator ActiveScanner()
     {
 
         StartCoroutine(CooldownTimer());
@@ -57,7 +85,7 @@ public class Scanner : MonoBehaviour
             roomSprite.color = Color.red;
         }
 
-        StartCoroutine(BlurScan());
+        coroutineBlur = StartCoroutine(BlurScan());
         
  
     }

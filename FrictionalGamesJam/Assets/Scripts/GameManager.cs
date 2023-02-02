@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
     }
     public void ScannerUsed()
     {
-        StartCoroutine(PC.GetComponent<Scanner>().ActiveScanner());
+        PC.GetComponent<Scanner>().UseScanner();
     }
 
     public void SonarRadar()

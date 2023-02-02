@@ -275,6 +275,7 @@ public class InterfaceManager : MonoBehaviour
             GameManager.GM.PC.isInMovementScreen = true;
             AudioManager.instance.PlayUIForward();
             GameManager.GM.PC.GetComponent<Scanner>().SwitchFinalRoomColor(true);
+            GameManager.GM.PC.GetComponent<Scanner>().StopScanner();
             GameManager.GM.RM.UpdateRoomColorOfRooms();
             GameManager.GM.DM.UpdateRoomColorOfDoors();
 
@@ -335,6 +336,7 @@ public class InterfaceManager : MonoBehaviour
             GameManager.GM.PC.isInMovementScreen = false;
             AudioManager.instance.PlayUIForward();
             GameManager.GM.PC.GetComponent<Scanner>().SwitchFinalRoomColor(false);
+            GameManager.GM.PC.GetComponent<Scanner>().StopScanner();
             GameManager.GM.RM.ScannerRadarChangeRoomColorOfRooms();
             GameManager.GM.DM.ScannerRadarChangeColorOfDoors();
 
