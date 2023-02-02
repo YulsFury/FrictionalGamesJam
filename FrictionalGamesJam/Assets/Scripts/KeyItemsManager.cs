@@ -36,14 +36,7 @@ public class KeyItemsManager : MonoBehaviour
 
     private void UpdateProgress()
     {
-        for(int i = 0; i < progress.transform.childCount; i++)
-        {
-            if(i < keyItemsActivated)
-            {
-                SpriteRenderer sprite = progress.transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>();
-                sprite.color = progressColor;
-            }
-        }
+        GameManager.GM.IM.UpdateDataProgress(keyItemsActivated, progressColor);
     }
 
     private void CountActivatedKeyItems()

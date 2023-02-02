@@ -1685,6 +1685,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInMenus: 0
   isGamePlaying: 0
+  dataTiles: {fileID: 7968255124727046006}
   ScannerCooldownSlider: {fileID: 1344865436}
   scannerButton: {fileID: 3269221310517470003}
   batteryLevelSlider: {fileID: 8957028779539342309}

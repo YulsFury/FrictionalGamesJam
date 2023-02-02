@@ -9,6 +9,9 @@ public class InterfaceManager : MonoBehaviour
     [HideInInspector] public bool isInMenus;
     [HideInInspector] public bool isGamePlaying;
 
+    [Header("Data")]
+    public GameObject dataTiles;
+
     [Header("Scanner")]
     public Slider ScannerCooldownSlider;
     public Button scannerButton;
@@ -81,6 +84,18 @@ public class InterfaceManager : MonoBehaviour
         }
 
         ShowRadarWarning(false);
+    }
+
+    public void UpdateDataProgress(int keyItemsActivated, Color progressColor)
+    {
+        for (int i = 0; i < dataTiles.transform.childCount; i++)
+        {
+            if (i < keyItemsActivated)
+            {
+                Image DataTileImage = dataTiles.transform.GetChild(i).transform.GetChild(0).gameObject.GetComponent<Image>();
+                DataTileImage.color = progressColor;
+            }
+        }
     }
 
     /// <summary>
