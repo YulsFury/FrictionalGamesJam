@@ -32,4 +32,16 @@ public class DoorManager : MonoBehaviour
             door.UpdateDoorColor();
         }
     }
+
+    public void CloseInitialDoor()
+    {
+        foreach (DoorController door in DoorsList)
+        {
+            if (door.isInitialDoor)
+            {
+                door.IsInitialDoor();
+                break;
+            }
+        }
+    }
 }

@@ -30,12 +30,10 @@ public class DoorController : MonoBehaviour
         sprite = GetComponentInChildren<SpriteRenderer>();
         spriteScale = GetComponentInChildren<SpriteRenderer>().transform.localScale;
 
-        IsInitialDoor();
-
         UpdateDoorColor();
     }
 
-    private void IsInitialDoor()
+    public void IsInitialDoor()
     {
         if (isInitialDoor)
         {

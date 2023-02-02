@@ -79,6 +79,7 @@ public class InterfaceManager : MonoBehaviour
             isGamePlaying = true;
             Time.timeScale = 1f;
             backButton.SetActive(true);
+            GameManager.GM.DM.CloseInitialDoor();
             AudioManager.instance.ChangeToMapMusic();
             AudioManager.instance.PlayRobotOn();
         }
@@ -418,6 +419,7 @@ public class InterfaceManager : MonoBehaviour
         backButton.SetActive(true);
         AudioManager.instance.ChangeToMapMusic();
         AudioManager.instance.PlayRobotOn();
+        GameManager.GM.DM.CloseInitialDoor();
     }
 
     public void Continue()
