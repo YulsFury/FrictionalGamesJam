@@ -6,9 +6,8 @@ public class DoorManager : MonoBehaviour
 {
     [HideInInspector] public List<DoorController> DoorsList;
     public GameObject doors;
-    void Start()
+    void Awake()
     {
-
         int numOfChildren = doors.transform.childCount;
         for (int i = 0; i < numOfChildren; i++)
         {

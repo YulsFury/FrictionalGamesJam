@@ -22,14 +22,16 @@ public class DoorController : MonoBehaviour
     public Color32 RadarScannerDoorColor;
     void Start()
     {
-        doorOpen = true;
-        isAvailable = false;
-
-        DisableCollisions();
-    
         sprite = GetComponentInChildren<SpriteRenderer>();
         spriteScale = GetComponentInChildren<SpriteRenderer>().transform.localScale;
+        isAvailable = false;
 
+        if (!isInitialDoor)
+        {
+            doorOpen = true;
+            DisableCollisions();
+        }
+        
         UpdateDoorColor();
     }
 
