@@ -111,7 +111,6 @@ public class InterfaceManager : MonoBehaviour
         int numberOfKeyItemsActivated = GameManager.GM.KIM.keyItemsActivated;
         for (int i = dataTilesCount - 1; i >= 0; i--)
         {
-            Debug.Log(i);
             if(numberOfKeyItemsActivated <= i)
             {
                 dataTiles.transform.GetChild(i).GetComponent<Animator>().enabled = true;
