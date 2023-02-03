@@ -46,6 +46,7 @@ public class UploadKeyItem : MonoBehaviour
 
         else if (isAvailable && !canUpload && GameManager.GM.PC.isInMovementScreen)
         {
+            AudioManager.instance.PlayUINegative();
             GetComponent<Animator>().enabled = true;
             GetComponent<Animator>().SetTrigger("NotCompleted");
             GameManager.GM.IM.WarningDataNotCompleted();
