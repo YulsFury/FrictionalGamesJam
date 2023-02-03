@@ -45,16 +45,24 @@ public class Radar : MonoBehaviour
 
                 radarMask.transform.localScale = Vector3.zero;
 
-                if (active)
+                ActivateRadar();
+                GameManager.GM.ReduceBatteryOvertime(BatteryController.overtimeSources.Radar);
+                active = true;
+                GameManager.GM.IM.ShowRadarWarning(true);
+
+                /*if (active)
                 {
                     ActivateRadar();
-                }
+                }*/
             }
         }
         else
         {
             isRadarScreenActivate = activateRadarScreen;
             DeactivateRadar();
+            GameManager.GM.StopReduceBatteryOvertime(BatteryController.overtimeSources.Radar);
+            active = false;
+            GameManager.GM.IM.ShowRadarWarning(false);
             radarMask.transform.localScale = new Vector3(400, 400, 400);
         }
     }
