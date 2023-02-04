@@ -36,7 +36,7 @@ public class KeyItemController : MonoBehaviour
     public void EnableKeyItem()
     {
         this.gameObject.SetActive(true);
-        sprite.color = InteractableColor;
+        ToggleAvailability(true);
         isAvailable = true;
     }
 
@@ -49,8 +49,7 @@ public class KeyItemController : MonoBehaviour
             GetComponentInChildren<SpriteRenderer>().transform.localScale = spriteScale;
             AudioManager.instance.PlayUIDeviceDisconect();
             GameManager.GM.KIM.AddActivatedKeyItem();
-        }
-                    
+        }                 
     }
 
     private void OnMouseOver()
@@ -117,6 +116,11 @@ public class KeyItemController : MonoBehaviour
                 if (GameManager.GM.PC.isInMovementScreen)
                 {
                     sprite.color = InteractableColor;
+                }
+
+                else
+                {
+                    sprite.color = NonInteractablecolor;
                 }
             }
         }

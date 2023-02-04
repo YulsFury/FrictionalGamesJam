@@ -112,6 +112,10 @@ public class UploadKeyItem : MonoBehaviour
             {
                 sprite.color = canUpload ? readyInteractableColor : interactableColor;
             }
+            else
+            {
+                sprite.color = nonInteractableColor;
+            }
         }
         else
         {

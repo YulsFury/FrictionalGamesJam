@@ -335,6 +335,8 @@ public class InterfaceManager : MonoBehaviour
             GameManager.GM.PC.GetComponent<Scanner>().SwitchFinalRoomColor(false);
             GameManager.GM.RM.ScannerRadarChangeRoomColorOfRooms();
             GameManager.GM.DM.ScannerRadarChangeColorOfDoors();
+            GameManager.GM.KIM.UpdateRoomColorOfKeyItems();
+            uploadKeyItem.GetComponent<UploadKeyItem>().UpdateColorUpload();
 
             mapToggle.interactable = true;
             mapToggle.isOn = false;
@@ -366,6 +368,8 @@ public class InterfaceManager : MonoBehaviour
             GameManager.GM.PC.GetComponent<Scanner>().StopScanner();
             GameManager.GM.RM.ScannerRadarChangeRoomColorOfRooms();
             GameManager.GM.DM.ScannerRadarChangeColorOfDoors();
+            GameManager.GM.KIM.UpdateRoomColorOfKeyItems();
+            uploadKeyItem.GetComponent<UploadKeyItem>().UpdateColorUpload();
 
             mapToggle.interactable = true;
             mapToggle.isOn = false;
