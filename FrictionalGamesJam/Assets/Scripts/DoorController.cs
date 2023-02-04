@@ -26,12 +26,9 @@ public class DoorController : MonoBehaviour
         spriteScale = GetComponentInChildren<SpriteRenderer>().transform.localScale;
         isAvailable = false;
 
-        if (!isInitialDoor)
-        {
-            doorOpen = true;
-            DisableCollisions();
-        }
-        
+        doorOpen = true;
+        DisableCollisions();
+
         UpdateDoorColor();
     }
 

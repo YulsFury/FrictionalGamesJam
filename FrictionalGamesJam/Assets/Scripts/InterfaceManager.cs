@@ -79,7 +79,7 @@ public class InterfaceManager : MonoBehaviour
             isGamePlaying = true;
             Time.timeScale = 1f;
             backButton.SetActive(true);
-            GameManager.GM.DM.CloseInitialDoor();
+            StartCoroutine(CloseIntialDoor());
             AudioManager.instance.ChangeToMapMusic();
             AudioManager.instance.PlayRobotOn();
         }
@@ -91,6 +91,8 @@ public class InterfaceManager : MonoBehaviour
         {
             dataTiles.transform.GetChild(i).GetComponent<Animator>().enabled = false;
         }
+
+
     }
 
     public void UpdateDataProgress(int keyItemsActivated, Color progressColor)
@@ -561,5 +563,12 @@ public class InterfaceManager : MonoBehaviour
         {
             warningRadarImage.SetActive(activate);
         }
+    }
+
+    IEnumerator CloseIntialDoor()
+    {
+        yield return new WaitForEndOfFrame();
+
+        GameManager.GM.DM.CloseInitialDoor();
     }
 }

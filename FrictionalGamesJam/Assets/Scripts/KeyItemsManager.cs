@@ -9,10 +9,9 @@ public class KeyItemsManager : MonoBehaviour
 
     [HideInInspector] public List<KeyItemController> keyItemsList;
 
-    public int keyItemsActivated;
+    [HideInInspector] public int keyItemsActivated;
 
     public UploadKeyItem uploadKeyItem;
-    public GameObject progress;
     public Color progressColor = Color.green;
 
     private void Awake()
