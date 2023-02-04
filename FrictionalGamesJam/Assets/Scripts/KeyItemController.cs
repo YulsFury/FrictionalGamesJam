@@ -107,4 +107,30 @@ public class KeyItemController : MonoBehaviour
 
         Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), GameManager.GM.PC.GetComponent<Collider2D>(), true);
     }
+
+    public void UpdateColorKeyItem()
+    {
+        if (isAvailable)
+        {
+            if (!activated)
+            {
+                if (GameManager.GM.PC.isInMovementScreen)
+                {
+                    sprite.color = InteractableColor;
+                }
+            }
+        }
+
+        else
+        {
+            if (!activated)
+            {
+                if (GameManager.GM.PC.isInMovementScreen)
+                {
+                    sprite.color = NonInteractablecolor;
+                }
+            }
+
+        }
+    }
 }

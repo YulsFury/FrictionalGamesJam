@@ -53,4 +53,12 @@ public class KeyItemsManager : MonoBehaviour
             uploadKeyItem.EnableUploadKeyItem();
         }
     }
+
+    public void UpdateRoomColorOfKeyItems()
+    {
+        foreach (KeyItemController keyItem in keyItemsList)
+        {
+            keyItem.UpdateColorKeyItem();
+        }
+    }
 }

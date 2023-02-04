@@ -4217,6 +4217,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3257158386296075051, guid: d44d28cac8275774d8c3e600e6735d08, type: 3}
+      propertyPath: uploadKeyItem
+      value: 
+      objectReference: {fileID: 751792801}
     - target: {fileID: 3270230410241229314, guid: d44d28cac8275774d8c3e600e6735d08, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -4387,6 +4391,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d44d28cac8275774d8c3e600e6735d08, type: 3}
+--- !u!1 &751792801 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4019491567218544550, guid: 1f42a4383dada9f48b6fbc74b1ec4d4a, type: 3}
+  m_PrefabInstance: {fileID: 1072017778}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &755109490
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7707,7 +7716,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 752218628, guid: 1f42a4383dada9f48b6fbc74b1ec4d4a, type: 3}
   m_PrefabInstance: {fileID: 1072017778}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 751792801}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1920e8d7b886b484cac1acff7013b011, type: 3}
@@ -8708,7 +8717,6 @@ MonoBehaviour:
   keyItemsList: []
   keyItemsActivated: 0
   uploadKeyItem: {fileID: 1072017780}
-  progress: {fileID: 0}
   progressColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!1001 &1238739396
 PrefabInstance:

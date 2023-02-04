@@ -55,7 +55,7 @@ public class UploadKeyItem : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if(isAvailable)
+        if(isAvailable && GameManager.GM.PC.isInMovementScreen)
         {
             GetComponentInChildren<SpriteRenderer>().transform.localScale = spriteScale * scaleFactor;
         }   
@@ -102,5 +102,23 @@ public class UploadKeyItem : MonoBehaviour
         }
 
         Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), GameManager.GM.PC.GetComponent<Collider2D>(), true);
+    }
+
+    public void UpdateColorUpload()
+    {
+        if (isAvailable)
+        {
+            if (GameManager.GM.PC.isInMovementScreen)
+            {
+                sprite.color = canUpload ? readyInteractableColor : interactableColor;
+            }
+        }
+        else
+        {
+            if (GameManager.GM.PC.isInMovementScreen)
+            {
+                sprite.color = canUpload ? readyNonInteractableColor : nonInteractableColor;
+            }
+        }
     }
 }

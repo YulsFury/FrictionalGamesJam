@@ -11,6 +11,7 @@ public class InterfaceManager : MonoBehaviour
 
     [Header("Data")]
     public GameObject dataTiles;
+    public GameObject uploadKeyItem;
 
     [Header("Scanner")]
     public Slider ScannerCooldownSlider;
@@ -302,6 +303,8 @@ public class InterfaceManager : MonoBehaviour
             GameManager.GM.PC.GetComponent<Scanner>().StopScanner();
             GameManager.GM.RM.UpdateRoomColorOfRooms();
             GameManager.GM.DM.UpdateRoomColorOfDoors();
+            GameManager.GM.KIM.UpdateRoomColorOfKeyItems();
+            uploadKeyItem.GetComponent<UploadKeyItem>().UpdateColorUpload();
 
             mapToggle.interactable = false;
 
