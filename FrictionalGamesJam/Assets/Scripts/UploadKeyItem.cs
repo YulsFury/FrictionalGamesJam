@@ -92,6 +92,7 @@ public class UploadKeyItem : MonoBehaviour
     void  DisableAnimator()
     {
         GetComponent<Animator>().enabled = false;
+        UpdateColorUpload();
     }
 
     void DisableCollisions()
