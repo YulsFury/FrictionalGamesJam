@@ -449,7 +449,7 @@ public class InterfaceManager : MonoBehaviour
         backButton.SetActive(true);
         AudioManager.instance.ChangeToMapMusic();
         AudioManager.instance.PlayRobotOn();
-        GameManager.GM.DM.CloseInitialDoor();
+        StartCoroutine(CloseIntialDoor());
     }
 
     public void Continue()
@@ -574,8 +574,14 @@ public class InterfaceManager : MonoBehaviour
 
     IEnumerator CloseIntialDoor()
     {
-        yield return new WaitForEndOfFrame();
+        if (CrossSceneInfo.firstTimePlaying)
+        {
+            yield return new WaitForEndOfFrame();
 
-        GameManager.GM.DM.CloseInitialDoor();
+            GameManager.GM.DM.CloseInitialDoor();
+
+            CrossSceneInfo.firstTimePlaying = false;
+        }
+        
     }
 }
